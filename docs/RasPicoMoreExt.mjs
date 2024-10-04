@@ -2032,7 +2032,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             PORT: {
               type: ArgumentType$1.STRING,
-              defaultValue: "6"
+              defaultValue: "3"
             }
           }
         }, {
@@ -2125,7 +2125,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
   }, {
     key: "websockclose",
     value: function websockclose(args) {
-      this.picoserial.writeData('\x04'); // CTRL+D
+      this.picoserial.picowrite('\x04'); // CTRL+D
     }
   }], [{
     key: "formatMessage",
