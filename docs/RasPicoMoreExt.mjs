@@ -2011,7 +2011,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             PORT: {
               type: ArgumentType$1.STRING,
-              defaultValue: "2"
+              defaultValue: "4"
             }
           }
         }, {
@@ -2025,7 +2025,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             TEXT: {
               type: ArgumentType$1.STRING,
-              defaultValue: "hello"
+              defaultValue: "help()"
             }
           }
         }, {
@@ -2041,7 +2041,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             SCRIPT: {
               type: ArgumentType$1.STRING,
-              defaultValue: '3 + 4'
+              defaultValue: '2 + 4'
             }
           }
         }],
@@ -2074,7 +2074,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }
 
     /**
-     * 送信
+     * コマンド送信
      * Send Message.
      * @param {TEXT} args - the message to be sent.
      */
