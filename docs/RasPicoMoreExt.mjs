@@ -1630,6 +1630,7 @@ var EXTENSION_ID = 'xcratchExample';
  */
 var PicoSerial = /*#__PURE__*/function () {
   function PicoSerial() {
+    var _this = this;
     _classCallCheck(this, PicoSerial);
     this.picowriter = null;
     // ポート選択ドロップダウン
@@ -1642,13 +1643,14 @@ var PicoSerial = /*#__PURE__*/function () {
     this.picoport = undefined;
     // 現在使用しているリーダー
     this.picoreader = undefined;
+    // 接続ステータス
+    this.status = 0; // 0:未接続 1:接続中 2:接続済み
 
     /*
         <select id="ports">
         <option value="prompt">Click 'Connect' to add a port...</option>
         </select>
     */
-
     // 1. select要素を作成
     var selectElement = document.createElement('select');
     selectElement.id = 'ports';
@@ -1666,7 +1668,23 @@ var PicoSerial = /*#__PURE__*/function () {
     // 3. select要素をDOMに追加
     document.body.appendChild(selectElement);
     this.portSelector = document.getElementById('ports');
+
+    // シリアルポートの接続イベントを監視
+    navigator.serial.addEventListener('connect', function (event) {
+      console.log('Serial port connected:', event);
+      // 必要な処理をここに追加
+      _this.status = 2;
+    });
+
+    // シリアルポートの切断イベントを監視
+    navigator.serial.addEventListener('disconnect', function (event) {
+      console.log('Serial port disconnected:', event);
+      // 必要な処理をここに追加
+      // 例えば、UIを更新したり、リソースを解放したりする
+      _this.status = 0;
+    });
   }
+
   /**
    * 指定されたSerialPortを検索して返します。
    *
@@ -1828,7 +1846,7 @@ var PicoSerial = /*#__PURE__*/function () {
     key: "openpicoport",
     value: (function () {
       var _openpicoport = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
-        var _this = this;
+        var _this2 = this;
         var ports, _reader, _yield$_reader$read, value, done, textDecoder;
         return _regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
@@ -1838,7 +1856,7 @@ var PicoSerial = /*#__PURE__*/function () {
             case 2:
               ports = _context3.sent;
               ports.forEach(function (port) {
-                return _this.addNewPort(port);
+                return _this2.addNewPort(port);
               });
               _context3.next = 6;
               return this.getSelectedPort();
@@ -2149,7 +2167,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     value: function websockSend(args) {
       try {
         var text = Cast$1.toString(args.TEXT);
-        this.picoserial.picowrite(text);
+        this.picoserial.picowrite(text + '\r\n');
       } catch (error) {
         console.log(error);
       }
