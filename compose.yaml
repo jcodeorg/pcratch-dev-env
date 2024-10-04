@@ -5,7 +5,7 @@ services:
     tty: true
     volumes:
       - ./app/:/app
-      - ./doc/:/doc
+      - ./docs/:/docs
       - ../raspico-more/:/raspico-more
       - ../xcx-example/:/xcx-example
       - ../scratch-vm/:/scratch-vm
