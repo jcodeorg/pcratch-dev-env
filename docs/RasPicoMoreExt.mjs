@@ -1931,11 +1931,12 @@ var PicoSerial = /*#__PURE__*/function () {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
               this.getWritablePort();
-              _context5.next = 3;
+              log$1.log("picowrite: ".concat(s, " : ").concat(this.picowriter));
+              _context5.next = 4;
               return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(new TextEncoder().encode(s));
-            case 3:
-              this.releaseLock();
             case 4:
+              this.releaseLock();
+            case 5:
             case "end":
               return _context5.stop();
           }
@@ -2032,7 +2033,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             PORT: {
               type: ArgumentType$1.STRING,
-              defaultValue: "3"
+              defaultValue: "8"
             }
           }
         }, {
@@ -2125,6 +2126,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
   }, {
     key: "websockclose",
     value: function websockclose(args) {
+      log$1.log('websockclose');
       this.picoserial.picowrite('\x04'); // CTRL+D
     }
   }], [{
