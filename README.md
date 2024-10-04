@@ -8,7 +8,7 @@ docker exec -it raspico-more /bin/bash
 
 
 # モジュール
-cd ../xcx-example
+cd ../raspico-more-ext
 npm install
 npm install minilog
 npm run build

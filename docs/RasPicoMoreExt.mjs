@@ -1810,8 +1810,6 @@ var PicoSerial = /*#__PURE__*/function () {
               _context2.t0 = _context2["catch"](6);
               console.error(_context2.t0);
             case 14:
-              this.markDisconnected();
-            case 15:
             case "end":
               return _context2.stop();
           }
@@ -1851,30 +1849,25 @@ var PicoSerial = /*#__PURE__*/function () {
               }
               return _context3.abrupt("return");
             case 8:
-              this.markConnected();
-              _context3.prev = 9;
-              _context3.next = 12;
+              _context3.prev = 8;
+              _context3.next = 11;
               return this.picoport.open({
                 baudRate: 115200
               });
-            case 12:
-              term.writeln('<CONNECTED>');
-              _context3.next = 21;
+            case 11:
+              _context3.next = 17;
               break;
-            case 15:
-              _context3.prev = 15;
-              _context3.t0 = _context3["catch"](9);
+            case 13:
+              _context3.prev = 13;
+              _context3.t0 = _context3["catch"](8);
               console.error(_context3.t0);
-              if (_context3.t0 instanceof Error) {
-                term.writeln("<ERROR: ".concat(_context3.t0.message, ">"));
-              }
-              this.markDisconnected();
+              //this.markDisconnected();
               return _context3.abrupt("return");
-            case 21:
+            case 17:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, this, [[9, 15]]);
+        }, _callee3, this, [[8, 13]]);
       }));
       function openpicoport() {
         return _openpicoport.apply(this, arguments);
@@ -1888,19 +1881,34 @@ var PicoSerial = /*#__PURE__*/function () {
     )
   }, {
     key: "getWritablePort",
-    value: function getWritablePort() {
-      if (this.picoport && this.picoport.writable) {
-        this.picowriter = this.picoport.writable.getWriter();
-      } else {
-        this.picowriter = null;
+    value: (function () {
+      var _getWritablePort = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4() {
+        return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              if (this.picoport && this.picoport.writable) {
+                this.picowriter = this.picoport.writable.getWriter();
+              } else {
+                this.picowriter = null;
+              }
+              return _context4.abrupt("return", this.picowriter);
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4, this);
+      }));
+      function getWritablePort() {
+        return _getWritablePort.apply(this, arguments);
       }
-      return this.picowriter;
-    }
+      return getWritablePort;
+    }()
     /**
      * Releases the lock held by the `picowriter` if it exists.
      * This method checks if the `picowriter` is defined and, if so,
      * calls its `releaseLock` method to release any held resources.
      */
+    )
   }, {
     key: "releaseLock",
     value: function releaseLock() {
@@ -1917,18 +1925,24 @@ var PicoSerial = /*#__PURE__*/function () {
   }, {
     key: "picowrite",
     value: (function () {
-      var _picowrite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(data) {
+      var _picowrite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(data) {
         var _this$picowriter;
-        return _regeneratorRuntime.wrap(function _callee4$(_context4) {
-          while (1) switch (_context4.prev = _context4.next) {
+        return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
             case 0:
-              _context4.next = 2;
-              return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(data);
+              _context5.next = 2;
+              return this.getWritablePort();
             case 2:
+              _context5.next = 4;
+              return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(data);
+            case 4:
+              _context5.next = 6;
+              return this.releaseLock();
+            case 6:
             case "end":
-              return _context4.stop();
+              return _context5.stop();
           }
-        }, _callee4, this);
+        }, _callee5, this);
       }));
       function picowrite(_x) {
         return _picowrite.apply(this, arguments);
@@ -2001,6 +2015,20 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }, {
+          // 送信
+          opcode: "websockSend",
+          text: formatMessage({
+            id: "websock.send",
+            default: "[TEXT] を送信"
+          }),
+          blockType: BlockType$1.COMMAND,
+          arguments: {
+            TEXT: {
+              type: ArgumentType$1.STRING,
+              defaultValue: "hello"
+            }
+          }
+        }, {
           opcode: 'do-it',
           blockType: BlockType$1.REPORTER,
           blockAllThreads: false,
@@ -2025,7 +2053,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     value: function doIt(args) {
       var statement = Cast$1.toString(args.SCRIPT);
       var func = new Function("return (".concat(statement, ")"));
-      log$1.log("connectPico doIt: ".concat(statement));
+      log$1.log("doIt: ".concat(statement));
       return func.call(this);
     }
 
@@ -2040,6 +2068,22 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       log$1.log("connectPico: ".concat(port));
       try {
         this.picoserial.openpicoport();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    /**
+     * 送信
+     * Send Message.
+     * @param {TEXT} args - the message to be sent.
+     */
+  }, {
+    key: "websockSend",
+    value: function websockSend(args) {
+      try {
+        var text = Cast$1.toString(args.TEXT);
+        this.picoserial.picowrite(text);
       } catch (error) {
         console.log(error);
       }
