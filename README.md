@@ -8,8 +8,9 @@ docker exec -it raspico-more /bin/bash
 
 
 # モジュール
-
 cd ../xcx-example
+npm install
+npm install minilog
 npm run build
 cp ./dist/xcratchExample.mjs ../docs/
 https://jcodeorg.github.io/raspico-more-dev/xcratchExample.mjs

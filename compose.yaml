@@ -6,7 +6,7 @@ services:
     volumes:
       - ./app/:/app
       - ./docs/:/docs
-      - ../raspico-more/:/raspico-more
+      - ../raspico-more-ext/:/raspico-more-ext
       - ../xcx-example/:/xcx-example
       - ../scratch-vm/:/scratch-vm
     # ports:
