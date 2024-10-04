@@ -1946,6 +1946,30 @@ var PicoSerial = /*#__PURE__*/function () {
       }
       return picowrite;
     }())
+  }, {
+    key: "writeData",
+    value: function () {
+      var _writeData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(data) {
+        var _this$picowriter2;
+        return _regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
+            case 0:
+              this.getWritablePort();
+              _context6.next = 3;
+              return (_this$picowriter2 = this.picowriter) === null || _this$picowriter2 === void 0 ? void 0 : _this$picowriter2.write(data);
+            case 3:
+              this.releaseLock();
+            case 4:
+            case "end":
+              return _context6.stop();
+          }
+        }, _callee6, this);
+      }));
+      function writeData(_x2) {
+        return _writeData.apply(this, arguments);
+      }
+      return writeData;
+    }()
   }]);
 }();
 /**
@@ -2008,7 +2032,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             PORT: {
               type: ArgumentType$1.STRING,
-              defaultValue: "1"
+              defaultValue: "6"
             }
           }
         }, {
@@ -2026,6 +2050,15 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }, {
+          // 切断
+          opcode: "websockclose",
+          text: formatMessage({
+            id: "websock.close",
+            default: "切断"
+          }),
+          blockType: BlockType$1.COMMAND,
+          arguments: {}
+        }, {
           opcode: 'do-it',
           blockType: BlockType$1.REPORTER,
           blockAllThreads: false,
@@ -2038,7 +2071,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             SCRIPT: {
               type: ArgumentType$1.STRING,
-              defaultValue: '2 + 4'
+              defaultValue: '1 + 4'
             }
           }
         }],
@@ -2084,6 +2117,15 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       } catch (error) {
         console.log(error);
       }
+    }
+    /**
+     * 切断
+     * close
+     */
+  }, {
+    key: "websockclose",
+    value: function websockclose(args) {
+      this.picoserial.writeData('\x04'); // CTRL+D
     }
   }], [{
     key: "formatMessage",
