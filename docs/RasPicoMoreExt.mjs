@@ -1735,7 +1735,7 @@ var PicoSerial = /*#__PURE__*/function () {
               break;
             case 15:
               selectedOption = (_this$portSelector3 = this.portSelector) === null || _this$portSelector3 === void 0 ? void 0 : _this$portSelector3.selectedOptions[0];
-              this.picoport = selectedOption.port;
+              this.picoport = selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.port;
             case 17:
             case "end":
               return _context.stop();
