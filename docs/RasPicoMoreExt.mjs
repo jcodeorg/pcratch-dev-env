@@ -1642,6 +1642,30 @@ var PicoSerial = /*#__PURE__*/function () {
     this.picoport = undefined;
     // 現在使用しているリーダー
     this.picoreader = undefined;
+
+    /*
+        <select id="ports">
+        <option value="prompt">Click 'Connect' to add a port...</option>
+        </select>
+    */
+
+    // 1. select要素を作成
+    var selectElement = document.createElement('select');
+    selectElement.id = 'ports';
+    // 2. option要素を作成して追加
+    var options = [{
+      value: 'prompt',
+      text: "Click 'Connect' to add a port..."
+    }];
+    options.forEach(function (optionData) {
+      var optionElement = document.createElement('option');
+      optionElement.value = optionData.value;
+      optionElement.text = optionData.text;
+      selectElement.appendChild(optionElement);
+    });
+    // 3. select要素をDOMに追加
+    document.body.appendChild(selectElement);
+    this.portSelector = document.getElementById('ports');
   }
   /**
    * 指定されたSerialPortを検索して返します。
@@ -1712,35 +1736,36 @@ var PicoSerial = /*#__PURE__*/function () {
         return _regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
+              console.log('portSelector:', this.portSelector);
               if (!(((_this$portSelector2 = this.portSelector) === null || _this$portSelector2 === void 0 ? void 0 : _this$portSelector2.value) == 'prompt')) {
-                _context.next = 15;
+                _context.next = 16;
                 break;
               }
-              _context.prev = 1;
+              _context.prev = 2;
               serial = navigator.serial;
-              _context.next = 5;
+              _context.next = 6;
               return serial.requestPort({});
-            case 5:
+            case 6:
               this.picoport = _context.sent;
-              _context.next = 11;
+              _context.next = 12;
               break;
-            case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](1);
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](2);
               return _context.abrupt("return");
-            case 11:
+            case 12:
               portOption = this.maybeAddNewPort(this.picoport);
               portOption.selected = true;
-              _context.next = 17;
+              _context.next = 18;
               break;
-            case 15:
+            case 16:
               selectedOption = (_this$portSelector3 = this.portSelector) === null || _this$portSelector3 === void 0 ? void 0 : _this$portSelector3.selectedOptions[0];
               this.picoport = selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.port;
-            case 17:
+            case 18:
             case "end":
               return _context.stop();
           }
-        }, _callee, this, [[1, 8]]);
+        }, _callee, this, [[2, 9]]);
       }));
       function getSelectedPort() {
         return _getSelectedPort.apply(this, arguments);
@@ -1805,42 +1830,51 @@ var PicoSerial = /*#__PURE__*/function () {
     key: "openpicoport",
     value: (function () {
       var _openpicoport = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
+        var _this = this;
+        var ports;
         return _regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return this.getSelectedPort();
+              return navigator.serial.getPorts();
             case 2:
+              ports = _context3.sent;
+              ports.forEach(function (port) {
+                return _this.addNewPort(port);
+              });
+              _context3.next = 6;
+              return this.getSelectedPort();
+            case 6:
               if (this.picoport) {
-                _context3.next = 4;
+                _context3.next = 8;
                 break;
               }
               return _context3.abrupt("return");
-            case 4:
+            case 8:
               this.markConnected();
-              _context3.prev = 5;
-              _context3.next = 8;
+              _context3.prev = 9;
+              _context3.next = 12;
               return this.picoport.open({
                 baudRate: 115200
               });
-            case 8:
+            case 12:
               term.writeln('<CONNECTED>');
-              _context3.next = 17;
+              _context3.next = 21;
               break;
-            case 11:
-              _context3.prev = 11;
-              _context3.t0 = _context3["catch"](5);
+            case 15:
+              _context3.prev = 15;
+              _context3.t0 = _context3["catch"](9);
               console.error(_context3.t0);
               if (_context3.t0 instanceof Error) {
                 term.writeln("<ERROR: ".concat(_context3.t0.message, ">"));
               }
               this.markDisconnected();
               return _context3.abrupt("return");
-            case 17:
+            case 21:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, this, [[5, 11]]);
+        }, _callee3, this, [[9, 15]]);
       }));
       function openpicoport() {
         return _openpicoport.apply(this, arguments);
