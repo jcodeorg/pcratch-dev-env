@@ -1925,20 +1925,17 @@ var PicoSerial = /*#__PURE__*/function () {
   }, {
     key: "picowrite",
     value: (function () {
-      var _picowrite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(data) {
+      var _picowrite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(s) {
         var _this$picowriter;
         return _regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
-              _context5.next = 2;
-              return this.getWritablePort();
-            case 2:
-              _context5.next = 4;
-              return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(data);
+              this.getWritablePort();
+              _context5.next = 3;
+              return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(new TextEncoder().encode(s));
+            case 3:
+              this.releaseLock();
             case 4:
-              _context5.next = 6;
-              return this.releaseLock();
-            case 6:
             case "end":
               return _context5.stop();
           }
@@ -2011,7 +2008,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             PORT: {
               type: ArgumentType$1.STRING,
-              defaultValue: "4"
+              defaultValue: "1"
             }
           }
         }, {
