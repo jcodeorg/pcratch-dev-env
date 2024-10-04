@@ -1829,7 +1829,7 @@ var PicoSerial = /*#__PURE__*/function () {
     value: (function () {
       var _openpicoport = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
         var _this = this;
-        var ports;
+        var ports, _reader, _yield$_reader$read, value, done, textDecoder;
         return _regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -1855,19 +1855,45 @@ var PicoSerial = /*#__PURE__*/function () {
                 baudRate: 115200
               });
             case 11:
-              _context3.next = 17;
+              _reader = this.picoport.readable.getReader(); // 3. データを受信するためのイベントリスナーを設定する
+            case 12:
+              _context3.next = 15;
+              return _reader.read();
+            case 15:
+              _yield$_reader$read = _context3.sent;
+              value = _yield$_reader$read.value;
+              done = _yield$_reader$read.done;
+              if (!done) {
+                _context3.next = 20;
+                break;
+              }
+              return _context3.abrupt("break", 23);
+            case 20:
+              if (value) {
+                // 受信したデータを処理する
+                textDecoder = new TextDecoder();
+                console.log('Received:', textDecoder.decode(value));
+              }
+              _context3.next = 12;
               break;
-            case 13:
-              _context3.prev = 13;
+            case 23:
+              _context3.next = 28;
+              break;
+            case 25:
+              _context3.prev = 25;
               _context3.t0 = _context3["catch"](8);
               console.error(_context3.t0);
               //this.markDisconnected();
-              return _context3.abrupt("return");
-            case 17:
+            case 28:
+              _context3.prev = 28;
+              // リーダーをリリースする
+              reader.releaseLock();
+              return _context3.finish(28);
+            case 31:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, this, [[8, 13]]);
+        }, _callee3, this, [[8, 25, 28, 31]]);
       }));
       function openpicoport() {
         return _openpicoport.apply(this, arguments);
@@ -2051,10 +2077,19 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }, {
-          // 切断
+          // CTRL-D
           opcode: "websockclose",
           text: formatMessage({
             id: "websock.close",
+            default: "切断"
+          }),
+          blockType: BlockType$1.COMMAND,
+          arguments: {}
+        }, {
+          // CTRL-C
+          opcode: "ctrlc",
+          text: formatMessage({
+            id: "send.ctrlc",
             default: "切断"
           }),
           blockType: BlockType$1.COMMAND,
@@ -2128,6 +2163,16 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     value: function websockclose(args) {
       log$1.log('websockclose');
       this.picoserial.picowrite('\x04'); // CTRL+D
+    }
+    /**
+     * 切断
+     * close
+     */
+  }, {
+    key: "ctrlc",
+    value: function ctrlc(args) {
+      log$1.log('CTRL-C');
+      this.picoserial.picowrite('\x03'); // CTRL+C
     }
   }], [{
     key: "formatMessage",
