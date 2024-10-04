@@ -12,5 +12,5 @@ cd ../xcx-example
 npm install
 npm install minilog
 npm run build
-cp ./dist/xcratchExample.mjs ../docs/
-https://jcodeorg.github.io/raspico-more-dev/xcratchExample.mjs
+cp ./dist/RasPicoMoreExt.mjs ../docs/
+https://jcodeorg.github.io/raspico-more-dev/RasPicoMoreExt.mjs
