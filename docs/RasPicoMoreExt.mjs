@@ -2036,6 +2036,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
   }, {
     key: "connectPico",
     value: function connectPico(args) {
+      log$1.log("connectPico: ".concat(this.picoserial));
       try {
         this.picoserial.openpicoport();
       } catch (error) {
