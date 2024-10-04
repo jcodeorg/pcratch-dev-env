@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    container_name: raspico-more
+    tty: true
+    volumes:
+      - ./app/:/app
+      - ./doc/:/doc
+      - ../raspico-more/:/raspico-more
+      - ../xcx-example/:/xcx-example
+      - ../scratch-vm/:/scratch-vm
+    # ports:
+    #   - "5173:5173" # development server
