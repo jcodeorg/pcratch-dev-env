@@ -1931,7 +1931,11 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }
 
     // シリアル接続
-    this.picoserial = new PicoSerial();
+    try {
+      this.picoserial = new PicoSerial();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   /**
@@ -1948,6 +1952,21 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         blockIconURI: img,
         showStatusButton: false,
         blocks: [{
+          // Picoに接続する
+          opcode: "connectPico",
+          text: formatMessage({
+            id: "websock.bind",
+            default: "送受信 ポート [PORT]",
+            description: "サーバーとして受信を待機します"
+          }),
+          blockType: BlockType$1.COMMAND,
+          arguments: {
+            PORT: {
+              type: ArgumentType$1.STRING,
+              defaultValue: "7"
+            }
+          }
+        }, {
           opcode: 'do-it',
           blockType: BlockType$1.REPORTER,
           blockAllThreads: false,
@@ -1961,21 +1980,6 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             SCRIPT: {
               type: ArgumentType$1.STRING,
               defaultValue: '3 + 4'
-            }
-          }
-        }, {
-          // Picoに接続する
-          opcode: "connectPico",
-          text: formatMessage({
-            id: "websock.bind",
-            default: "送受信 ポート [PORT]",
-            description: "サーバーとして受信を待機します"
-          }),
-          blockType: BlockType$1.COMMAND,
-          arguments: {
-            PORT: {
-              type: ArgumentType$1.STRING,
-              defaultValue: "7"
             }
           }
         }],
@@ -1999,12 +2003,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     key: "connectPico",
     value: function connectPico(args) {
       try {
-        this.wsockOpen();
-        this.port = Cast$1.toString(args.PORT);
-        this.wsockSend(JSON.stringify({
-          MSGTYPE: "BIND",
-          room: this.port
-        }));
+        this.picoserial.openpicoport();
       } catch (error) {
         console.log(error);
       }
