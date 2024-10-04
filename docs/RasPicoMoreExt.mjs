@@ -1216,18 +1216,18 @@ var log = minilog('vm');
 var log$1 = /*@__PURE__*/getDefaultExportFromCjs(log);
 
 var en = {
-	"xcratchExample.name": "Xcratch Example",
+	"xcratchExample.name": "Rasberry Pi Pico More Extension",
 	"xcratchExample.doIt": "do it [SCRIPT]"
 };
 var ja = {
-	"xcratchExample.name": "Xcratchの例",
+	"xcratchExample.name": "Rasberry Pi Pico More Extension",
 	"xcratchExample.doIt": "[SCRIPT] を実行する"
 };
 var translations = {
 	en: en,
 	ja: ja,
 	"ja-Hira": {
-	"xcratchExample.name": "エクスクラッチのれい",
+	"xcratchExample.name": "Rasberry Pi Pico More Extension",
 	"xcratchExample.doIt": "[SCRIPT] をじっこうする"
 }
 };
