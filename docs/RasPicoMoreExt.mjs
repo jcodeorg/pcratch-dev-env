@@ -1997,7 +1997,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             PORT: {
               type: ArgumentType$1.STRING,
-              defaultValue: "7"
+              defaultValue: "2"
             }
           }
         }, {
@@ -2025,7 +2025,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     value: function doIt(args) {
       var statement = Cast$1.toString(args.SCRIPT);
       var func = new Function("return (".concat(statement, ")"));
-      log$1.log("doIt: ".concat(statement));
+      log$1.log("connectPico doIt: ".concat(statement));
       return func.call(this);
     }
 
@@ -2036,7 +2036,8 @@ var ExtensionBlocks = /*#__PURE__*/function () {
   }, {
     key: "connectPico",
     value: function connectPico(args) {
-      log$1.log("connectPico: ".concat(this.picoserial));
+      var port = Cast$1.toString(args.PORT);
+      log$1.log("connectPico: ".concat(port));
       try {
         this.picoserial.openpicoport();
       } catch (error) {
