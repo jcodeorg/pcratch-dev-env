@@ -2174,7 +2174,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockAllThreads: false,
           text: formatMessage({
             id: 'dumpValue',
-            default: 'プロパティ [SCRIPT]',
+            default: 'プロパティ変数 [SCRIPT]',
             description: 'プロパティ変数を表示する'
           }),
           arguments: {
@@ -2223,7 +2223,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var statement = Cast$1.toString(args.SCRIPT);
       log$1.log("dumpValue: ".concat(statement));
       try {
-        log$1.log("this._v_: ".concat(this._v_));
+        console.log('this._v_:', this._v_);
         var value = this._v_[statement];
         return value;
       } catch (error) {
