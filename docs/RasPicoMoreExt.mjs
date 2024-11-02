@@ -1905,7 +1905,9 @@ var PicoSerial = /*#__PURE__*/function () {
             case 28:
               _context3.prev = 28;
               // リーダーをリリースする
-              reader.releaseLock();
+              if (reader && reader.releaseLock) {
+                reader.releaseLock();
+              }
               return _context3.finish(28);
             case 31:
             case "end":
