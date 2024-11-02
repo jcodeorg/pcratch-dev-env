@@ -41,7 +41,7 @@ var entry = {
       description: 'name of the extension'
     });
   },
-  extensionId: 'xcratchExample',
+  extensionId: 'pcratchMicroPythonExtension',
   extensionURL: 'https://xcratch.github.io/xcx-example/dist/xcratchExample.mjs',
   collaborator: 'xcratch',
   iconURL: img$2,
