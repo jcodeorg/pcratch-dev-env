@@ -1873,47 +1873,51 @@ var PicoSerial = /*#__PURE__*/function () {
                 baudRate: 115200
               });
             case 11:
-              _reader = this.picoport.readable.getReader(); // 3. データを受信するためのイベントリスナーを設定する
-            case 12:
-              _context3.next = 15;
+              _reader = this.picoport.readable.getReader();
+              console.log('Connected!!');
+              // 3. データを受信するためのイベントリスナーを設定する
+            case 13:
+              _context3.next = 16;
               return _reader.read();
-            case 15:
+            case 16:
               _yield$_reader$read = _context3.sent;
               value = _yield$_reader$read.value;
               done = _yield$_reader$read.done;
               if (!done) {
-                _context3.next = 20;
+                _context3.next = 22;
                 break;
               }
-              return _context3.abrupt("break", 23);
-            case 20:
+              // リーダーが閉じられた場合
+              console.log('Disconnected.');
+              return _context3.abrupt("break", 25);
+            case 22:
               if (value) {
                 // 受信したデータを処理する
                 textDecoder = new TextDecoder();
                 console.log('Received:', textDecoder.decode(value));
               }
-              _context3.next = 12;
-              break;
-            case 23:
-              _context3.next = 28;
+              _context3.next = 13;
               break;
             case 25:
-              _context3.prev = 25;
+              _context3.next = 30;
+              break;
+            case 27:
+              _context3.prev = 27;
               _context3.t0 = _context3["catch"](8);
               console.error(_context3.t0);
               //this.markDisconnected();
-            case 28:
-              _context3.prev = 28;
+            case 30:
+              _context3.prev = 30;
               // リーダーをリリースする
               if (reader && reader.releaseLock) {
                 reader.releaseLock();
               }
-              return _context3.finish(28);
-            case 31:
+              return _context3.finish(30);
+            case 33:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, this, [[8, 25, 28, 31]]);
+        }, _callee3, this, [[8, 27, 30, 33]]);
       }));
       function openpicoport() {
         return _openpicoport.apply(this, arguments);
