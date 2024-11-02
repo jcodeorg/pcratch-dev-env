@@ -1686,12 +1686,12 @@ var SerialProcessor = /*#__PURE__*/function () {
         var jsonString = line.substring(4);
         try {
           var jsonData = JSON.parse(jsonString);
-          console.log('Parsed JSON:', jsonData);
           if (_typeof$1(this.parentInstance._v_) === 'object' && this.parentInstance._v_ !== null) {
             Object.assign(this.parentInstance._v_, jsonData);
           } else {
             this.parentInstance._v_ = jsonData;
           }
+          console.log('Parsed JSON:', this.parentInstance._v_);
         } catch (e) {
           console.error('Failed to parse JSON:', e);
         }
@@ -2174,8 +2174,8 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockAllThreads: false,
           text: formatMessage({
             id: 'dumpValue',
-            default: '変数 [SCRIPT]',
-            description: '変数を表示する'
+            default: 'プロパティ [SCRIPT]',
+            description: 'プロパティ変数を表示する'
           }),
           arguments: {
             SCRIPT: {
@@ -2223,6 +2223,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var statement = Cast$1.toString(args.SCRIPT);
       log$1.log("dumpValue: ".concat(statement));
       try {
+        log$1.log("this._v_: ".concat(this._v_));
         var value = this._v_[statement];
         return value;
       } catch (error) {
