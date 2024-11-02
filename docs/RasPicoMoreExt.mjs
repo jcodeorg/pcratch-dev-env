@@ -2169,15 +2169,6 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }, {
-          // CTRL-C
-          opcode: "ctrlc",
-          text: formatMessage({
-            id: "send.ctrlc",
-            default: "CTRL-C"
-          }),
-          blockType: BlockType$1.COMMAND,
-          arguments: {}
-        }, {
           opcode: 'dumpValue',
           blockType: BlockType$1.REPORTER,
           blockAllThreads: false,
@@ -2284,16 +2275,6 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var ctrlCode = code - 64;
       log$1.log("CTRL-: ".concat(text, " : ").concat(code, " : ").concat(ctrlCode));
       this.picoserial.picowrite(String.fromCharCode(ctrlCode));
-    }
-    /**
-     * 切断
-     * close
-     */
-  }, {
-    key: "ctrlc",
-    value: function ctrlc(args) {
-      log$1.log('CTRL-C');
-      this.picoserial.picowrite('\x03'); // CTRL+C
     }
   }], [{
     key: "formatMessage",
