@@ -2187,7 +2187,9 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               defaultValue: 'adc00'
             }
           }
-        }, '---', {
+        },
+        //              '---',
+        {
           opcode: 'getLightLevel',
           text: formatMessage({
             id: 'mbitMore.lightLevel',
