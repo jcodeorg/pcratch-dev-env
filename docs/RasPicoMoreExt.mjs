@@ -2141,11 +2141,11 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }, {
-          // 送信
-          opcode: "websockSend",
+          // コマンドを実行
+          opcode: "execCommand",
           text: formatMessage({
             id: "websock.send",
-            default: "[TEXT] を送信"
+            default: "[TEXT] を実行"
           }),
           blockType: BlockType$1.COMMAND,
           arguments: {
@@ -2248,13 +2248,13 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }
 
     /**
-     * コマンド送信
+     * コマンド実行
      * Send Message.
      * @param {TEXT} args - the message to be sent.
      */
   }, {
-    key: "websockSend",
-    value: function websockSend(args) {
+    key: "execCommand",
+    value: function execCommand(args) {
       try {
         var text = Cast$1.toString(args.TEXT);
         this.picoserial.picowrite(text + '\r\n');
