@@ -64,6 +64,16 @@ var entry = {
   translationMap: translations$1
 };
 
+function _typeof$1(o) {
+  "@babel/helpers - typeof";
+
+  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, _typeof$1(o);
+}
+
 function asyncGeneratorStep(n, t, e, r, o, a, c) {
   try {
     var i = n[a](c),
@@ -92,16 +102,6 @@ function _asyncToGenerator(n) {
 
 function _classCallCheck(a, n) {
   if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _typeof$1(o) {
-  "@babel/helpers - typeof";
-
-  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
-    return typeof o;
-  } : function (o) {
-    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
-  }, _typeof$1(o);
 }
 
 function toPrimitive(t, r) {
@@ -1604,10 +1604,6 @@ var translations = {
 
 var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABgWlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kctLQkEUh7+0MHpgUESLFhLWSsMKpDZBRlggEWbQa6PXV6B2ufdGRNugrVAQtem1qL+gtkHrICiKINoFrYvalNzOVUGJPMOZ881v5hxmzoAtklGyer0PsjlDCwcDrvmFRZfjFTsObHTiiSq6OjYzE6KmfT1QZ8U7r1Wr9rl/rTme0BWoaxQeVVTNEJ4UDq0bqsW7wh1KOhoXPhf2aHJB4XtLj5X4zeJUiX8s1iLhcbC1CbtSVRyrYiWtZYXl5bizmTWlfB/rJS2J3NysxB7xbnTCBAngYooJxvEzwIjMfrwM0i8rauT7ivnTrEquIrPKBhorpEhj4BF1TaonJCZFT8jIsGH1/29f9eTQYKl6SwAaXkzzoxccO1DIm+b3sWkWTsD+DFe5Sv7qEQx/ip6vaO5DcG7BxXVFi+3B5TZ0PalRLVqU7OK2ZBLez6B1AdpvoWmp1LPyPqePENmUr7qB/QPok/PO5V8gz2fGkateTgAAAAlwSFlzAAALEwAACxMBAJqcGAAACQxJREFUWIXtmGt0VdURx39zzrkX8oLwSIhY3iAokYURsBBsQCO2aitraavL1mWF2pZVUFFpfdtWHtaqYMUlaGm11epCq/XRWqmIAUHDS40QgzwUECQYSCCQ1z3nTD/sc869NwkBvrD6obPW+bBnz+z579lnZs9s+B8nOdUGVfV04GLgwoB1APgAeFFEEqcaTyowR1XvVVVX26fdqnpta72T8qCq5gNXAP0AF9gHLBWR/cfRiwNvAhdEvMYD4DUh8RyId0kVv0lE/nAyuFDVXFV9UVW9dnaeUNXnVTX3GLqWqj4QCvs1mzWxYoY2vzDOfEtLNLF2rvoNX6eu+d1Q/7geVNUzgDeAIRHTbQSxwO6UKloJXCIiO1N0beAR4BeArXXbSLx9A3gtbexI7mBiFy4CJwNgPTBGRLRDgKrqAOuAkQD+npV4lc+gtZ8BguQOxi78CVbvcaHKF8AoETmgqt2B54FJAHpoB+67N6FNBw2gnD5ITl/8mk3QcggAe+hV2CNvDNcqFpE1VkcAgZ+H4Lyq53DfuwM9WAXqg3po7RbcVbPwPv1rKN8fWKqqhUB5BK5uG+7KWyNwVsFoYhctwTn/QWITH41Owv+qPNX2EIDjAZwKoA3VeBWLI6ZkFSA5faKxV7EIf+eycHgBsBEYDODvfofE2z9DG0wcSe5gnOJ5EMsKxkOQWDYAeuRLs3lDvQGcYyFT1U5AIYC//TVQz+x+0GScUbNAfbzKp/E2LQHAXTePWE5fpPswgBjq4236I17lM8mN5Q7BOf/B8D8zdup3oy2HzXzXQebfNlQNHXuwT7SBRH3EtAdcElizsIdPwer/bTP2WkiU3YIe2g5uI+7qu9LAWX1LiZUuRjLzkxZa6nFXzQLf5GfrtLGp9ldABx4EdgM+YKXu2K9ej91jeDR2Rt9Oon4XeqASWg6ReGc60ikXrd+V3MjZP8U+s1UOVh93zV1o/W4j1qUf9pk/Cmc/FJHPoQMPikgzsB3AGnBZ5HoTxVuSglaMWMl8pNvQwCuHk+CcTJzieW3BtRzGLZuJX73BjONdUo9eMcFJhwADWgwmJVgDLjMcrxn3vTuguS4pFcsmNmEBkjs4ucGs04iVLsI6fXzaglq3jcSyKfjV66MNOsVzkexvhCL3iMjaaJ2O0AWBUgX0x2smsXxa5D3pcRaxCY+Ck5lUaD5EYsV0iOcQK54Hnbqmred/+S5u+f3gNhlGvCtO8Rys/HNCkeeAa0VETwhgALIEWA7Y2rAf9z9T0KZao9xzBLGSR9KiErfB5DWx09bxNv8Zb/OfojQiuUNwxs9Dsk4LRZYBl4tIU6reCRULqjodeAxAa7eQWHEjJI6YBfJGEit5GOzO7St7LbhrZ+PvWh6xrD4X4Jx3V6rOs8ANrcGdDEDBeHEigNZUkFgxA3zXGOxVhFOyoI3XtLnO3CAHqyKePXwKduGU0LQCvwQeTj3WVDpekIQ0LQSH12TyWwAOywmi3G6jJLHsZHQH5Fevj668AOU1wMBjGT6Rf/AmYAEAiSMkVs5CayrMpB3HGXt/m0htTf72V3E3zo8SsmT0xBl3P9JzRChyGLheRF4+KYCqeiXwIoA21eKWzUTrtppJJxNn/ANYvc5NB7N/I5LTH8nonr7WgU24q+80hSqYBD5iGvbQq1OvtwXAr0QkqseOCVBVv4m5bjqTOGJSzKEdZjLehVjJw0j3s9LBff4G7rrfIZ274xTPQXoUpq/ZeAB3zd3JEwCs3sU4592dWlWXA5eJSM0xAarqQEwjk4efwF15a5T1JaMHTskCpGv6b+NteQHvo4WY/x6TgItmYg26vNXiPl7FE3hVz0eyktkLZ9xspEe04feAUhFpbgNQVbsBa4BhoLhrH8D//I2k50oXIzl908F98lRQGLQNRGvQZJyimWClX/v+3tW45bMhqGSwHJzRt2P1/04o8riITE8DGDQ3bwETALzKv+B9sjjySGzCAiRvZDq4jfPxtr4Uje1hP0QTR/G3/yPiSc+zTVBk5KU74+g+3DX3oAcrkzYufALpfiZAA1AQ5YYg1y0BJgP4u97G2/BQaAJnzJ2tolVxy+fg73gtCW7ENOzCqVi9i5HMPPx95ebmaNiP/8W/TXGafXoSeDwbe8AlaFONaSPUR+t3Yg+4FCAGbEnNg3cD14FJxG757KTh4dcn677Qcx89hv/Fm8kNjJqVWi5hDfwesYkLkYyehhEkbe+Tp1KrZnO0594Wede0FF44O9AKvHcR8FswZXdi1e3JIrLfxdiFU9PA+dtextuyNMBm4Yy9D2vQ5HB6B7ABgqOd9DRWwejA6aYKd8tuTk3WYMXAjgeLJ8BrjpxsB63hS0ABLfW4K2ZAY9A/5I0kVjw3NU/hf/V+4F3jBbvoZuyBURtbgfl/Hwd6AqPFycDqNwnERvd/aHAe/QrduQzpnAvxrvifLcX/sszY7HYG9pArw/VeEVWdDLwCpvkJOzTJ6Uus9EmI50TgtG4bieXTTMUC2Gd8H/ucm8Ppj4GJIlIbyateAzwJZIG55rwPfh1VQ+2RM+aOsPZUoI8FFAHgNuJt/buRsjvhfOuhdHCNNaZ/CMBZvYtTe9g9wKWp4ABE5G/AKGAzgNVrFM6kZ7AKxrQLzh56dbIwhrdEZI8DDANMZxUazz8nLdpwG3FXzUq2jt2G4oz9TXj0RwJwe9ozKiJVqjoGc+w/Nol+Pv7+jfg7XjfFazwbe/AVYUcYbngqmKYpaNmSKVGP7DGRJLZpbt6/L3hNAMnMT+0ffOAqEfm4XZckQTYA16tqGTAfyLXyi7Dyi9oT34spXPeCKbdMxGXmRXer1u/GLZuJ9+mzJN66Dn/vaqPqZOKc//tk6oAZIvKvjsC1Avo0pqFfCBxtNV0LzAGGisiGSCd4HKoEbH9fOe7K29LzVEh23FQvBeeFnPkicsuJgmtNqmphnvH6A1uBPe0VrRIIPwLMBPCr1+GuuTd5RxJc5uPnpRafrwJXiIjHqSBVzVHVj6PXOa9F/a8r1Nv+uvoHq1S9ROrb3T9VNeuUAGsFMktVXzjG82xIi4MnuVNGrasZAcYCPwBKA3YLpmFaIiJV/J/S6b82VDQYGIn3DAAAAABJRU5ErkJggg==";
 
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e  ) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t.return || t.return(); } finally { if (u) throw o; } } }; }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-
 /**
  * Formatter which is used for translation.
  * This will be replaced which is used in the runtime.
@@ -1632,6 +1628,79 @@ var EXTENSION_ID = 'xcratchExample';
 /**
  * PicoSerialクラスは、シリアルポートの選択と接続を管理します。
  */
+var SerialProcessor = /*#__PURE__*/function () {
+  function SerialProcessor(parentInstance) {
+    _classCallCheck(this, SerialProcessor);
+    this.buffer = '';
+    this.parentInstance = parentInstance; // 元のインスタンスを保存
+  }
+  return _createClass(SerialProcessor, [{
+    key: "processData",
+    value: function () {
+      var _processData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee(reader) {
+        var _yield$reader$read, value, done, textDecoder, decodedValue, newlineIndex, line;
+        return _regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 3;
+              return reader.read();
+            case 3:
+              _yield$reader$read = _context.sent;
+              value = _yield$reader$read.value;
+              done = _yield$reader$read.done;
+              if (!done) {
+                _context.next = 9;
+                break;
+              }
+              console.log('Disconnected.');
+              return _context.abrupt("break", 12);
+            case 9:
+              if (value) {
+                textDecoder = new TextDecoder();
+                decodedValue = textDecoder.decode(value);
+                this.buffer += decodedValue;
+                newlineIndex = void 0;
+                while ((newlineIndex = this.buffer.indexOf('\n')) !== -1) {
+                  line = this.buffer.substring(0, newlineIndex).trim();
+                  this.buffer = this.buffer.substring(newlineIndex + 1);
+                  this.processLine(line);
+                }
+              }
+              _context.next = 0;
+              break;
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, this);
+      }));
+      function processData(_x) {
+        return _processData.apply(this, arguments);
+      }
+      return processData;
+    }()
+  }, {
+    key: "processLine",
+    value: function processLine(line) {
+      if (line.startsWith('_v_=')) {
+        var jsonString = line.substring(4);
+        try {
+          var jsonData = JSON.parse(jsonString);
+          console.log('Parsed JSON:', jsonData);
+          if (_typeof$1(this.parentInstance._v_) === 'object' && this.parentInstance._v_ !== null) {
+            Object.assign(this.parentInstance._v_, jsonData);
+          } else {
+            this.parentInstance._v_ = jsonData;
+          }
+        } catch (e) {
+          console.error('Failed to parse JSON:', e);
+        }
+      } else {
+        console.log('Received line:', line);
+      }
+    }
+  }]);
+}();
 var PicoSerial = /*#__PURE__*/function () {
   function PicoSerial() {
     var _this = this;
@@ -1650,7 +1719,9 @@ var PicoSerial = /*#__PURE__*/function () {
     // 接続ステータス
     this.status = 0; // 0:未接続 1:接続中 2:接続済み
     // 返却されたデータ
-    this._v_ = {};
+    this._v_ = {
+      "dummy": 123
+    };
 
     /*
         <select id="ports">
@@ -1754,42 +1825,42 @@ var PicoSerial = /*#__PURE__*/function () {
   }, {
     key: "getSelectedPort",
     value: (function () {
-      var _getSelectedPort = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+      var _getSelectedPort = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
         var _this$portSelector2;
         var serial, portOption, _this$portSelector3, selectedOption;
-        return _regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
+        return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
             case 0:
               console.log('portSelector:', this.portSelector);
               if (!(((_this$portSelector2 = this.portSelector) === null || _this$portSelector2 === void 0 ? void 0 : _this$portSelector2.value) == 'prompt')) {
-                _context.next = 16;
+                _context2.next = 16;
                 break;
               }
-              _context.prev = 2;
+              _context2.prev = 2;
               serial = navigator.serial;
-              _context.next = 6;
+              _context2.next = 6;
               return serial.requestPort({});
             case 6:
-              this.picoport = _context.sent;
-              _context.next = 12;
+              this.picoport = _context2.sent;
+              _context2.next = 12;
               break;
             case 9:
-              _context.prev = 9;
-              _context.t0 = _context["catch"](2);
-              return _context.abrupt("return");
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](2);
+              return _context2.abrupt("return");
             case 12:
               portOption = this.maybeAddNewPort(this.picoport);
               portOption.selected = true;
-              _context.next = 18;
+              _context2.next = 18;
               break;
             case 16:
               selectedOption = (_this$portSelector3 = this.portSelector) === null || _this$portSelector3 === void 0 ? void 0 : _this$portSelector3.selectedOptions[0];
               this.picoport = selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.port;
             case 18:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
-        }, _callee, this, [[2, 9]]);
+        }, _callee2, this, [[2, 9]]);
       }));
       function getSelectedPort() {
         return _getSelectedPort.apply(this, arguments);
@@ -1803,41 +1874,41 @@ var PicoSerial = /*#__PURE__*/function () {
   }, {
     key: "disconnectFromPort",
     value: (function () {
-      var _disconnectFromPort = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
+      var _disconnectFromPort = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
         var localPort;
-        return _regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
+        return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
             case 0:
               // Move |port| into a local variable so that connectToPort() doesn't try to
               // close it on exit.
               localPort = this.picoport;
               this.picoport = undefined;
               if (!this.picoreader) {
-                _context2.next = 5;
+                _context3.next = 5;
                 break;
               }
-              _context2.next = 5;
+              _context3.next = 5;
               return this.picoreader.cancel();
             case 5:
               if (!localPort) {
-                _context2.next = 14;
+                _context3.next = 14;
                 break;
               }
-              _context2.prev = 6;
-              _context2.next = 9;
+              _context3.prev = 6;
+              _context3.next = 9;
               return localPort.close();
             case 9:
-              _context2.next = 14;
+              _context3.next = 14;
               break;
             case 11:
-              _context2.prev = 11;
-              _context2.t0 = _context2["catch"](6);
-              console.error(_context2.t0);
+              _context3.prev = 11;
+              _context3.t0 = _context3["catch"](6);
+              console.error(_context3.t0);
             case 14:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
-        }, _callee2, this, [[6, 11]]);
+        }, _callee3, this, [[6, 11]]);
       }));
       function disconnectFromPort() {
         return _disconnectFromPort.apply(this, arguments);
@@ -1851,99 +1922,56 @@ var PicoSerial = /*#__PURE__*/function () {
   }, {
     key: "openpicoport",
     value: (function () {
-      var _openpicoport = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
+      var _openpicoport = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4() {
         var _this2 = this;
-        var ports, reader, _yield$reader$read, value, done, textDecoder, decodedValue, lines, _iterator, _step, line, jsonString, jsonData;
-        return _regeneratorRuntime.wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
+        var ports, reader, serialProcessor;
+        return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
             case 0:
-              _context3.next = 2;
+              _context4.next = 2;
               return navigator.serial.getPorts();
             case 2:
-              ports = _context3.sent;
+              ports = _context4.sent;
               ports.forEach(function (port) {
                 return _this2.addNewPort(port);
               });
-              _context3.next = 6;
+              _context4.next = 6;
               return this.getSelectedPort();
             case 6:
               console.log('selectedPort:', this.picoport);
               if (this.picoport) {
-                _context3.next = 9;
+                _context4.next = 9;
                 break;
               }
-              return _context3.abrupt("return");
+              return _context4.abrupt("return");
             case 9:
               //this.markConnected();
               console.log('Connected!');
-              _context3.prev = 10;
-              _context3.next = 13;
+              _context4.prev = 10;
+              _context4.next = 13;
               return this.picoport.open({
                 baudRate: 115200
               });
             case 13:
               reader = this.picoport.readable.getReader();
               console.log('Connected!!');
-              // 3. データを受信するためのイベントリスナーを設定する
-            case 15:
-              _context3.next = 18;
-              return reader.read();
-            case 18:
-              _yield$reader$read = _context3.sent;
-              value = _yield$reader$read.value;
-              done = _yield$reader$read.done;
-              if (!done) {
-                _context3.next = 24;
-                break;
-              }
-              // リーダーが閉じられた場合
-              console.log('Disconnected.');
-              return _context3.abrupt("break", 27);
-            case 24:
-              if (value) {
-                // 受信したデータを処理する
-                textDecoder = new TextDecoder();
-                decodedValue = textDecoder.decode(value);
-                console.log('Received:', decodedValue);
-                // 受信したデータを改行で分割
-                lines = decodedValue.split('\n');
-                _iterator = _createForOfIteratorHelper(lines);
-                try {
-                  for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                    line = _step.value;
-                    if (line.startsWith('_v_=')) {
-                      // _v_=ではじまる行を見つけた場合
-                      jsonString = line.substring(4); // _v_=の後の部分を取得
-                      try {
-                        jsonData = JSON.parse(jsonString);
-                        Object.assign(this._v_, jsonData);
-                        console.log('Parsed JSON:', this._v_);
-                      } catch (e) {
-                        console.error('Failed to parse JSON:', e);
-                      }
-                    }
-                  }
-                } catch (err) {
-                  _iterator.e(err);
-                } finally {
-                  _iterator.f();
-                }
-              }
-              _context3.next = 15;
+              // 1行毎に解析して、this._v_ に受信した変数を格納する
+              serialProcessor = new SerialProcessor(this);
+              serialProcessor.processData(reader).catch(console.error);
+
+              //term.writeln('<CONNECTED>');
+              _context4.next = 22;
               break;
-            case 27:
-              _context3.next = 32;
-              break;
-            case 29:
-              _context3.prev = 29;
-              _context3.t0 = _context3["catch"](10);
-              console.error(_context3.t0);
+            case 19:
+              _context4.prev = 19;
+              _context4.t0 = _context4["catch"](10);
+              console.error(_context4.t0);
               //this.markDisconnected();
-            case 32:
+            case 22:
             case "end":
-              return _context3.stop();
+              return _context4.stop();
           }
-        }, _callee3, this, [[10, 29]]);
+        }, _callee4, this, [[10, 19]]);
       }));
       function openpicoport() {
         return _openpicoport.apply(this, arguments);
@@ -1958,21 +1986,21 @@ var PicoSerial = /*#__PURE__*/function () {
   }, {
     key: "getWritablePort",
     value: (function () {
-      var _getWritablePort = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4() {
-        return _regeneratorRuntime.wrap(function _callee4$(_context4) {
-          while (1) switch (_context4.prev = _context4.next) {
+      var _getWritablePort = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5() {
+        return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
             case 0:
               if (this.picoport && this.picoport.writable) {
                 this.picowriter = this.picoport.writable.getWriter();
               } else {
                 this.picowriter = null;
               }
-              return _context4.abrupt("return", this.picowriter);
+              return _context5.abrupt("return", this.picowriter);
             case 2:
             case "end":
-              return _context4.stop();
+              return _context5.stop();
           }
-        }, _callee4, this);
+        }, _callee5, this);
       }));
       function getWritablePort() {
         return _getWritablePort.apply(this, arguments);
@@ -2001,24 +2029,24 @@ var PicoSerial = /*#__PURE__*/function () {
   }, {
     key: "picowrite",
     value: (function () {
-      var _picowrite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(s) {
+      var _picowrite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(s) {
         var _this$picowriter;
-        return _regeneratorRuntime.wrap(function _callee5$(_context5) {
-          while (1) switch (_context5.prev = _context5.next) {
+        return _regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
             case 0:
               this.getWritablePort();
               log$1.log("picowrite: ".concat(s, " : ").concat(this.picowriter));
-              _context5.next = 4;
+              _context6.next = 4;
               return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(new TextEncoder().encode(s));
             case 4:
               this.releaseLock();
             case 5:
             case "end":
-              return _context5.stop();
+              return _context6.stop();
           }
-        }, _callee5, this);
+        }, _callee6, this);
       }));
-      function picowrite(_x) {
+      function picowrite(_x2) {
         return _picowrite.apply(this, arguments);
       }
       return picowrite;
@@ -2026,23 +2054,23 @@ var PicoSerial = /*#__PURE__*/function () {
   }, {
     key: "writeData",
     value: function () {
-      var _writeData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(data) {
+      var _writeData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee7(data) {
         var _this$picowriter2;
-        return _regeneratorRuntime.wrap(function _callee6$(_context6) {
-          while (1) switch (_context6.prev = _context6.next) {
+        return _regeneratorRuntime.wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
             case 0:
               this.getWritablePort();
-              _context6.next = 3;
+              _context7.next = 3;
               return (_this$picowriter2 = this.picowriter) === null || _this$picowriter2 === void 0 ? void 0 : _this$picowriter2.write(data);
             case 3:
               this.releaseLock();
             case 4:
             case "end":
-              return _context6.stop();
+              return _context7.stop();
           }
-        }, _callee6, this);
+        }, _callee7, this);
       }));
-      function writeData(_x2) {
+      function writeData(_x3) {
         return _writeData.apply(this, arguments);
       }
       return writeData;
@@ -2203,8 +2231,13 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     value: function dumpValue(args) {
       var statement = Cast$1.toString(args.SCRIPT);
       log$1.log("dumpValue: ".concat(statement));
-      var value = this._v_[statement];
-      return value;
+      try {
+        var value = this._v_[statement];
+        return value;
+      } catch (error) {
+        console.log(error);
+      }
+      return undefined;
     }
 
     /**
