@@ -1760,12 +1760,21 @@ var PicoSerial = /*#__PURE__*/function () {
   }
 
   /**
-   * 指定されたSerialPortを検索して返します。
-   *
-   * @param {SerialPort} port 検索するポート
-   * @return {PortOption}
+   * 
+   * @returns {boolean} 接続中かどうか
    */
   return _createClass(PicoSerial, [{
+    key: "isConnected",
+    value: function isConnected() {
+      return this.status === 2;
+    }
+    /**
+     * 指定されたSerialPortを検索して返します。
+     *
+     * @param {SerialPort} port 検索するポート
+     * @return {PortOption}
+     */
+  }, {
     key: "findPortOption",
     value: function findPortOption(port) {
       if (!this.portSelector) return null;
@@ -2701,6 +2710,9 @@ var Machine = /*#__PURE__*/function () {
     key: "isConnected",
     value: function isConnected() {
       console.log("machine.isConnected()");
+      if (this.picoserial) {
+        return this.picoserial.isConnected();
+      }
       return false;
     }
 
