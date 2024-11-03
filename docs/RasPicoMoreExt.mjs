@@ -1915,6 +1915,9 @@ var PicoSerial = /*#__PURE__*/function () {
               _context3.t0 = _context3["catch"](6);
               console.error(_context3.t0);
             case 14:
+              this.status = 0;
+              //this.markDisconnected();
+            case 15:
             case "end":
               return _context3.stop();
           }
@@ -1965,24 +1968,29 @@ var PicoSerial = /*#__PURE__*/function () {
               });
             case 13:
               reader = this.picoport.readable.getReader();
-              console.log('Connected!!');
+              console.log('Connected!?!');
+
+              // 必要な処理をここに追加
+              this.status = 2;
+              this._runtime.emit(this._runtime.constructor.PERIPHERAL_CONNECTED);
+
               // 1行毎に解析して、this._v_ に受信した変数を格納する
               serialProcessor = new SerialProcessor(_v_);
               serialProcessor.processData(reader).catch(console.error);
 
               //term.writeln('<CONNECTED>');
-              _context4.next = 22;
+              _context4.next = 24;
               break;
-            case 19:
-              _context4.prev = 19;
+            case 21:
+              _context4.prev = 21;
               _context4.t0 = _context4["catch"](10);
               console.error(_context4.t0);
               //this.markDisconnected();
-            case 22:
+            case 24:
             case "end":
               return _context4.stop();
           }
-        }, _callee4, this, [[10, 19]]);
+        }, _callee4, this, [[10, 21]]);
       }));
       function openpicoport(_x2) {
         return _openpicoport.apply(this, arguments);
