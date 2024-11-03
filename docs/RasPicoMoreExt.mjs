@@ -1589,11 +1589,16 @@ var en = {
 	"pcratchPico.connectPico": "Connect to the Micro-Python device [PORT]"
 };
 var ja = {
+	"pcratchPico.name": "ぷくらっちPico拡張機能",
 	"pcratchPico.connectPico": "MicroPythonデバイスと接続 [PORT]",
 	"pcratchPico.execCommand": "[TEXT] を実行",
 	"pcratchPico.sendCtrlCode": "CTRL- [TEXT] を送信",
 	"pcratchPico.dumpValue": "デバイスの返却値! [SCRIPT]",
 	"pcratchPico.getAdc00": "ADC0",
+	"pcratchPico.getAdc01": "ADC1",
+	"pcratchPico.getAdc02": "ADC2",
+	"pcratchPico.getAdc03": "ADC3",
+	"pcratchPico.getAdc04": "ADC4",
 	"pcratchPico.lightLevel": "あかるさ"
 };
 var translations = {
@@ -2378,7 +2383,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     key: "EXTENSION_NAME",
     get: function get() {
       return formatMessage({
-        id: 'pcratchPico.entry.name',
+        id: 'pcratchPico.name',
         default: 'pcratchPico',
         description: 'pcratch Micro-Python Extension'
       });
