@@ -1632,7 +1632,7 @@ var SerialProcessor = /*#__PURE__*/function () {
   function SerialProcessor(parentInstance) {
     _classCallCheck(this, SerialProcessor);
     this.buffer = '';
-    this.parentInstance = parentInstance; // 元のインスタンスを保存
+    this.parentInstance = parentInstance; // 呼び出し元のインスタンスを保存
   }
   return _createClass(SerialProcessor, [{
     key: "processData",
@@ -1686,12 +1686,12 @@ var SerialProcessor = /*#__PURE__*/function () {
         var jsonString = line.substring(4);
         try {
           var jsonData = JSON.parse(jsonString);
-          if (_typeof$1(this._v_) === 'object' && this._v_ !== null) {
-            Object.assign(this._v_, jsonData);
+          if (_typeof$1(this.parentInstance._v_) === 'object' && this.parentInstance._v_ !== null) {
+            Object.assign(this.parentInstance._v_, jsonData);
           } else {
-            this._v_ = jsonData;
+            this.parentInstance._v_ = jsonData;
           }
-          console.log('Parsed JSON:', this._v_);
+          console.log('Parsed JSON _v_:', this.parentInstance._v_);
         } catch (e) {
           console.error('Failed to parse JSON:', e);
         }
