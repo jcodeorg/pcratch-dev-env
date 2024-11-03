@@ -1223,8 +1223,8 @@ var webExports = web.exports;
 
 var minilog = webExports;
 minilog.enable();
-var log$1 = minilog('vm');
-var log$2 = /*@__PURE__*/getDefaultExportFromCjs(log$1);
+var log = minilog('vm');
+var log$1 = /*@__PURE__*/getDefaultExportFromCjs(log);
 
 var en = {
 	"pcratchPico.connectPico": "Connect to the Micro-Python device [PORT]"
@@ -2033,7 +2033,7 @@ var PicoSerial = /*#__PURE__*/function () {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
               this.getWritablePort();
-              log.log("picowrite: ".concat(s, " : ").concat(this.picowriter));
+              log$1.log("picowrite: ".concat(s, " : ").concat(this.picowriter));
               _context6.next = 4;
               return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(new TextEncoder().encode(s));
             case 4:
@@ -3165,7 +3165,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     value: function doIt(args) {
       var statement = Cast$1.toString(args.SCRIPT);
       var func = new Function("return (".concat(statement, ")"));
-      log$2.log("doIt: ".concat(statement));
+      log$1.log("doIt: ".concat(statement));
       return func.call(this);
     }
 
@@ -3178,7 +3178,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     key: "dumpValue",
     value: function dumpValue(args) {
       var statement = Cast$1.toString(args.SCRIPT);
-      log$2.log("dumpValue: ".concat(statement));
+      log$1.log("dumpValue: ".concat(statement));
       try {
         console.log('this._v_:', this._v_);
         var value = this._v_[statement];
@@ -3197,7 +3197,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     key: "connectPico",
     value: function connectPico(args) {
       var port = Cast$1.toString(args.PORT);
-      log$2.log("connectPico: ".concat(port));
+      log$1.log("connectPico: ".concat(port));
       try {
         this.picoserial.openpicoport(this._v_);
       } catch (error) {
@@ -3231,7 +3231,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var textUpper = text.toUpperCase();
       var code = textUpper.charCodeAt(0);
       var ctrlCode = code - 64;
-      log$2.log("CTRL-: ".concat(text, " : ").concat(code, " : ").concat(ctrlCode));
+      log$1.log("CTRL-: ".concat(text, " : ").concat(code, " : ").concat(ctrlCode));
       this.picoserial.picowrite(String.fromCharCode(ctrlCode));
     }
   }], [{
