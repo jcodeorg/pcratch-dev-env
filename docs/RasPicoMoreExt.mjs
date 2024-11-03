@@ -1629,10 +1629,14 @@ var EXTENSION_ID = 'pcratchPico';
  * PicoSerialクラスは、シリアルポートの選択と接続を管理します。
  */
 var SerialProcessor = /*#__PURE__*/function () {
-  function SerialProcessor(parentInstance) {
+  /**
+   * 
+   * @param {*} _v_ デバイスから返却作成された値を格納するオブジェクト
+   */
+  function SerialProcessor(_v_) {
     _classCallCheck(this, SerialProcessor);
     this.buffer = '';
-    this.parentInstance = parentInstance; // 呼び出し元のインスタンスを保存
+    this._v_ = _v_; // デバイスから返却作成された値を格納するオブジェクトを保存
   }
   return _createClass(SerialProcessor, [{
     key: "processData",
@@ -1686,12 +1690,12 @@ var SerialProcessor = /*#__PURE__*/function () {
         var jsonString = line.substring(4);
         try {
           var jsonData = JSON.parse(jsonString);
-          if (_typeof$1(this.parentInstance._v_) === 'object' && this.parentInstance._v_ !== null) {
-            Object.assign(this.parentInstance._v_, jsonData);
+          if (_typeof$1(this._v_) === 'object' && this._v_ !== null) {
+            Object.assign(this._v_, jsonData);
           } else {
-            this.parentInstance._v_ = jsonData;
+            this._v_ = jsonData;
           }
-          console.log('Parsed JSON _v_:', this.parentInstance._v_);
+          console.log('Parsed JSON this._v_:', this._v_);
         } catch (e) {
           console.error('Failed to parse JSON:', e);
         }
@@ -1913,12 +1917,13 @@ var PicoSerial = /*#__PURE__*/function () {
     }()
     /**
      * ポートをオープンします
+     * @param {string} _v_ - デバイスから返却された値を格納するオブジェクト
      */
     )
   }, {
     key: "openpicoport",
     value: (function () {
-      var _openpicoport = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4() {
+      var _openpicoport = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(_v_) {
         var _this2 = this;
         var ports, reader, serialProcessor;
         return _regeneratorRuntime.wrap(function _callee4$(_context4) {
@@ -1952,7 +1957,7 @@ var PicoSerial = /*#__PURE__*/function () {
               reader = this.picoport.readable.getReader();
               console.log('Connected!!');
               // 1行毎に解析して、this._v_ に受信した変数を格納する
-              serialProcessor = new SerialProcessor(this);
+              serialProcessor = new SerialProcessor(_v_);
               serialProcessor.processData(reader).catch(console.error);
 
               //term.writeln('<CONNECTED>');
@@ -1969,7 +1974,7 @@ var PicoSerial = /*#__PURE__*/function () {
           }
         }, _callee4, this, [[10, 19]]);
       }));
-      function openpicoport() {
+      function openpicoport(_x2) {
         return _openpicoport.apply(this, arguments);
       }
       return openpicoport;
@@ -2042,7 +2047,7 @@ var PicoSerial = /*#__PURE__*/function () {
           }
         }, _callee6, this);
       }));
-      function picowrite(_x2) {
+      function picowrite(_x3) {
         return _picowrite.apply(this, arguments);
       }
       return picowrite;
@@ -2066,7 +2071,7 @@ var PicoSerial = /*#__PURE__*/function () {
           }
         }, _callee7, this);
       }));
-      function writeData(_x3) {
+      function writeData(_x4) {
         return _writeData.apply(this, arguments);
       }
       return writeData;
@@ -2317,7 +2322,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var port = Cast$1.toString(args.PORT);
       log$1.log("connectPico: ".concat(port));
       try {
-        this.picoserial.openpicoport();
+        this.picoserial.openpicoport(this._v_);
       } catch (error) {
         console.log(error);
       }
