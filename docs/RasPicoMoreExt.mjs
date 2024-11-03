@@ -3062,7 +3062,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }, {
-          // コマンドを実行
+          // コマンドを送信して実行させる
           opcode: "execCommand",
           text: formatMessage({
             id: "pcratchPico.execCommand",
@@ -3072,7 +3072,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           arguments: {
             TEXT: {
               type: ArgumentType$1.STRING,
-              defaultValue: "help()"
+              defaultValue: "dumpADC()"
             }
           }
         }, {
@@ -3090,6 +3090,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }, {
+          // デバイスの返却値を表示する
           opcode: 'dumpValue',
           blockType: BlockType$1.REPORTER,
           blockAllThreads: false,
@@ -3105,6 +3106,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }, {
+          // ADC0 の値を表示する
           opcode: 'getAdc00',
           text: formatMessage({
             id: 'pcratchPico.getAdc00',
