@@ -1703,9 +1703,12 @@ var SerialProcessor = /*#__PURE__*/function () {
   }]);
 }();
 var PicoSerial = /*#__PURE__*/function () {
-  function PicoSerial() {
+  function PicoSerial(runtime) {
     var _this = this;
     _classCallCheck(this, PicoSerial);
+    // ランタイムを保存
+    this._runtime = runtime;
+    // 書き込み Stream
     this.picowriter = null;
     // ポート選択ドロップダウン
     this.portSelector = undefined;
@@ -1745,9 +1748,10 @@ var PicoSerial = /*#__PURE__*/function () {
 
     // シリアルポートの接続イベントを監視
     navigator.serial.addEventListener('connect', function (event) {
-      console.log('Serial port connected:', event);
+      console.log('Serial port connected!!:', event);
       // 必要な処理をここに追加
       _this.status = 2;
+      _this._runtime.emit(_this._runtime.constructor.PERIPHERAL_CONNECTED);
     });
 
     // シリアルポートの切断イベントを監視
@@ -2112,7 +2116,7 @@ var Machine = /*#__PURE__*/function () {
     // シリアル接続
     this.picoserial = null;
     try {
-      this.picoserial = new PicoSerial();
+      this.picoserial = new PicoSerial(this.runtime);
     } catch (error) {
       console.log(error);
     }
@@ -2711,6 +2715,7 @@ var Machine = /*#__PURE__*/function () {
     value: function isConnected() {
       console.log("machine.isConnected()");
       if (this.picoserial) {
+        console.log(this.picoserial.isConnected());
         return this.picoserial.isConnected();
       }
       return false;
