@@ -1632,6 +1632,11 @@ var Machine = /*#__PURE__*/function () {
 
     /**
      * The BluetoothLowEnergy connection socket for reading/writing peripheral data.
+     * 以下の関数を用意しなければならない：
+     * scan()
+     * connect(peripheralId)
+     * disconnect()
+     * isConnected()
      * @type {BLE}
      * @private
      */
@@ -2154,7 +2159,8 @@ var Machine = /*#__PURE__*/function () {
   }, {
     key: "scan",
     value: function scan() {
-      return Promise.resolve();
+      console.log("machine.scan()");
+      return;
     }
 
     /**
@@ -2164,9 +2170,10 @@ var Machine = /*#__PURE__*/function () {
   }, {
     key: "connect",
     value: function connect(id) {
-      if (this._ble) {
-        this._ble.connectPeripheral(id);
-      }
+      console.log("machine.connect()", id);
+      //if (this._ble) {
+      //    this._ble.connectPeripheral(id);
+      //}
     }
 
     /**
@@ -2175,10 +2182,8 @@ var Machine = /*#__PURE__*/function () {
   }, {
     key: "disconnect",
     value: function disconnect() {
-      if (this._ble) {
-        this._ble.disconnect();
-      }
-      this.onDisconnect();
+      console.log("machine.disconnect()");
+      return;
     }
 
     /**
@@ -2187,11 +2192,8 @@ var Machine = /*#__PURE__*/function () {
   }, {
     key: "onDisconnect",
     value: function onDisconnect() {
-      this.stopUpdater();
-      if (this._timeoutID) {
-        window.clearTimeout(this._timeoutID);
-        this._timeoutID = null;
-      }
+      console.log("machine.onDisconnect()");
+      return;
     }
 
     /**
@@ -2201,11 +2203,8 @@ var Machine = /*#__PURE__*/function () {
   }, {
     key: "isConnected",
     value: function isConnected() {
-      var connected = false;
-      if (this._ble) {
-        connected = this._ble.isConnected();
-      }
-      return connected;
+      console.log("machine.isConnected()");
+      return false;
     }
 
     /**
