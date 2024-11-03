@@ -57,6 +57,17 @@ var entry = {
   disabled: false,
   bluetoothRequired: false,
   internetConnectionRequired: false,
+  launchPeripheralConnectionFlow: true,
+  useAutoScan: false,
+  connectionIconURL: img$1,
+  connectionSmallIconURL: img$1,
+  get connectingMessage() {
+    return formatMessage$1({
+      defaultMessage: 'Connecting',
+      description: 'Message to help people connect to their micro:bit.',
+      id: 'gui.extension.microbit.connectingMessage'
+    });
+  },
   helpLink: 'https://xcratch.github.io/xcx-example/',
   setFormatMessage: function setFormatMessage(formatter) {
     formatMessage$1 = formatter;
@@ -2969,12 +2980,25 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     this._v_ = {
       "dummy": 123
     };
+
+    //this.connectPeripheral(); // ペリフェラルに接続
   }
 
   /**
-   * @returns {object} metadata for this extension and its blocks.
+   * Request connection to the peripheral.
+   * Request user to choose a device, and then connect it automatically.
    */
   return _createClass(ExtensionBlocks, [{
+    key: "connectPeripheral",
+    value: function connectPeripheral() {
+      console.log('connectPeripheral');
+      this.runtime.connectPeripheral(ExtensionBlocks.EXTENSION_ID, 'device-id');
+    }
+
+    /**
+     * @returns {object} metadata for this extension and its blocks.
+     */
+  }, {
     key: "getInfo",
     value: function getInfo() {
       setupTranslations();
