@@ -2232,22 +2232,6 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             description: 'how much the amount of light falling on the LEDs on micro:bit'
           }),
           blockType: BlockType$1.REPORTER
-        }, {
-          opcode: 'do-it',
-          blockType: BlockType$1.REPORTER,
-          blockAllThreads: false,
-          text: formatMessage({
-            id: 'xcratchExample.doIt',
-            default: 'do it [SCRIPT]',
-            description: 'execute javascript for example'
-          }),
-          func: 'doIt',
-          arguments: {
-            SCRIPT: {
-              type: ArgumentType$1.STRING,
-              defaultValue: '1 + 4'
-            }
-          }
         }],
         menus: {}
       };
