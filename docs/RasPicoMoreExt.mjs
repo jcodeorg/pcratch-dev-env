@@ -1697,9 +1697,9 @@ var Machine = /*#__PURE__*/function () {
      * @private
      */
     this.buttonEvents = {};
-    Object.keys(MbitMoreButtonStateIndex).forEach(function (name) {
-      _this.buttonEvents[name] = {};
-    });
+    //Object.keys(MbitMoreButtonStateIndex).forEach(name => {
+    //    this.buttonEvents[name] = {};
+    //});
 
     /**
      * The most recently received gesture events.
@@ -1723,9 +1723,10 @@ var Machine = /*#__PURE__*/function () {
     this.receivedData = {};
     this.analogIn = [0, 1, 2];
     this.analogValue = [];
-    this.analogIn.forEach(function (pinIndex) {
-      _this.analogValue[pinIndex] = 0;
-    });
+    //this.analogIn.forEach(pinIndex => {
+    //    this.analogValue[pinIndex] = 0;
+    //});
+
     this.gpio = [0, 1, 2, 8, 12, 13, 14, 15, 16];
     this.gpio.forEach(function (pinIndex) {
       _this.digitalLevel[pinIndex] = 0;
@@ -2117,13 +2118,7 @@ var Machine = /*#__PURE__*/function () {
   }, {
     key: "stopTone",
     value: function stopTone(util) {
-      if (!this.isConnected()) {
-        return Promise.resolve();
-      }
-      return this.sendCommandSet([{
-        id: BLECommand.CMD_AUDIO << 5 | MbitMoreAudioCommand.STOP_TONE,
-        message: new Uint8Array([])
-      }], util);
+      return Promise.resolve();
     }
 
     /**
