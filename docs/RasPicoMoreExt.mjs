@@ -1611,6 +1611,1161 @@ var translations = {
 
 var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFUmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSfvu78nIGlkPSdXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQnPz4KPHg6eG1wbWV0YSB4bWxuczp4PSdhZG9iZTpuczptZXRhLyc+CjxyZGY6UkRGIHhtbG5zOnJkZj0naHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyc+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpBdHRyaWI9J2h0dHA6Ly9ucy5hdHRyaWJ1dGlvbi5jb20vYWRzLzEuMC8nPgogIDxBdHRyaWI6QWRzPgogICA8cmRmOlNlcT4KICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0nUmVzb3VyY2UnPgogICAgIDxBdHRyaWI6Q3JlYXRlZD4yMDI0LTExLTAyPC9BdHRyaWI6Q3JlYXRlZD4KICAgICA8QXR0cmliOkV4dElkPjE8L0F0dHJpYjpFeHRJZD4KICAgICA8QXR0cmliOkZiSWQ+NTI1MjY1OTE0MTc5NTgwPC9BdHRyaWI6RmJJZD4KICAgICA8QXR0cmliOlRvdWNoVHlwZT4yPC9BdHRyaWI6VG91Y2hUeXBlPgogICAgPC9yZGY6bGk+CiAgIDwvcmRmOlNlcT4KICA8L0F0dHJpYjpBZHM+CiA8L3JkZjpEZXNjcmlwdGlvbj4KCiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0nJwogIHhtbG5zOkNvbnRhaW5zQWlHZW5lcmF0ZWRDb250ZW50PSdodHRwczovL2NhbnZhLmNvbS9leHBvcnQnPgogIDxDb250YWluc0FpR2VuZXJhdGVkQ29udGVudDpDb250YWluc0FpR2VuZXJhdGVkQ29udGVudD5ZZXM8L0NvbnRhaW5zQWlHZW5lcmF0ZWRDb250ZW50OkNvbnRhaW5zQWlHZW5lcmF0ZWRDb250ZW50PgogPC9yZGY6RGVzY3JpcHRpb24+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpkYz0naHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8nPgogIDxkYzp0aXRsZT4KICAgPHJkZjpBbHQ+CiAgICA8cmRmOmxpIHhtbDpsYW5nPSd4LWRlZmF1bHQnPuWQjeensOacquioreWumuOBruODh+OCtuOCpOODsyAtIDE8L3JkZjpsaT4KICAgPC9yZGY6QWx0PgogIDwvZGM6dGl0bGU+CiA8L3JkZjpEZXNjcmlwdGlvbj4KCiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0nJwogIHhtbG5zOnBkZj0naHR0cDovL25zLmFkb2JlLmNvbS9wZGYvMS4zLyc+CiAgPHBkZjpBdXRob3I+5LyK6Jek5Yqf5LiAPC9wZGY6QXV0aG9yPgogPC9yZGY6RGVzY3JpcHRpb24+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczp4bXA9J2h0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8nPgogIDx4bXA6Q3JlYXRvclRvb2w+Q2FudmEgKFJlbmRlcmVyKTwveG1wOkNyZWF0b3JUb29sPgogPC9yZGY6RGVzY3JpcHRpb24+CjwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9J3InPz7iMGNDAAAI40lEQVR4nO2Y62+b5RnGr/d17Pjw2kl8iB07jmPHsXNO2yQ0SQ+iokBTdQikMm1MsK4FcdjGvkxikyaxTRpIOzBgTNAJNAoMCoNqKlCgh6RNQ5q0aWM7zTlN7DRxYid2fLbf8z5MTJOoSNNEGh96/QHX9dN9P8+t+3kIfMtF/L8BVtNtwPXqNuB6RW6kmUajadJo1N/fSE/JRpgQBCExm80HHQ7HsdJS64PZbNaRzWbPiqKYW6/3uisolUqpmpqad7dv2/Yqz/Myi7mEUMjlD3d0dJzTaDSNUql0Xf7rOoNtbW0tSqXicF19/aa333qPkMmkAAGkUmnotIVoam6KpFOpX3R1df2dYRj+VjJuqcVarZbcu7fjgF6nfU+n09vMZgsxOjYGrVYLpVKBmuoqLCwsQK3WKNvatu+TyaSOhWDwDMuy9Fqz1tziuroaw2OHHjnCc+wbVzxX1WfPnoe7yo3XX/8bSJKEVqvHk0/+GM89/zyUCiVEiKTVYnl4U2PDea1W17jWvJuuIEVRuHv37vb62uqPA/7pXQODI0QsFsfTT/8UAi/A4/FgYmoGeSSwGFpEwD+Lezs6MOTzYnR0DJls1tjc3HKI5YRAIh4bFgRB2DBAiqLI7dvan6FUysORaKRk0DcOvV6HF174E64ODcHj8cDhcCLHsGAzSUgEDpYSA3ou+tDa1o50JoOJa35UV7kkgoDvUGqVeykcPimKIrNa9qqXpL6+vqS99Y6XZgP+/f7ri0SZ1Qy7oxJ79tyDDz/8CKNTASjVGkglEnh9V9FQUQJIZOBEAk2b6uEdC2D7tnZwTBYnTnwKnuVQ5bKJkejKoMfjO7CyEhm65Qq2tLRsad7ScCoYXGj/sm+QsNutePyJp5BMJnD6TCcGhiZQbDSh97IXs8EQWEFENJUDLUhgKy/H4nwAu3c043y/FwqFCg/u34/xiXH09A0QDru1pLra/b1EIjWfSiV9oijePCBJkhKVSvWUyWR6yz8bNI5NTuOhh/bj4IGDOH78OHzDYwhFk7h/3x7U19eh7+IVWAwU3vzdw/jrcz/D1PQsPL5hiCQwOj4Dm0UPKYDBoTFsaWpGmdUCvz8AlmUVVW73A6IoKYrHYz08z3+t5V8DzMvLUxsMhsPOStczdnu5YnFxAU89+TgaGhtx5MjbuBYI4vLVCRQWFiKyksA/PjiGnQ0GHP3tHjRWOyGVF2FPuxtqjQKXPDPYurkMo5NBJFNJVDtL4RueRGGRDi13tOCLU52YmpohMjl6q7G4eBdN050SCRnjOO7GgHK5vMzlcn1msZR2hENhwjc0gt137UI2x2BmegY9lzzI5RjUVbuxFI1jaHwSh+6uwEuPN0BTQEGSrwEpKwABEe6KcsiVSrzyXjfiGQabHEWYXmLRVGtE/5URaHXFqK2thUIuQ2N9DaHRqK1qTeF3Y/H4aC6bmfxvN/8XUKfX71arC7YAInbu2AajyYSzPf1QUWp0f9kHs9GIxx49iOhSBHvvuhMKJYWeyQy6PBFwNAdRYABBQJYBPjztxW8Of45QnEVOlCOQUmEluoTIShY6nQEXLl4CTecwMjUDhmXQ1taKSqejxG53vPbss8U3rmAux7pEUrbfZrMR0UgUefkKjM3MwVFejv0P3IfIUhi+oauQkBxC0SSy6QwCS0l0jWTAixK01xmREVX45csn8Ic3TyKWyuL3v/45zMU6ZGgapCQP6iIT0uk0qtxuJJNx9A8MwuWwobdvAHPBEKYmx8IMXfeXQCBwwzM4wXIglyOJtjKbVaItpMDxAMvzWI7E0NbaAr1WC6utHKREBkqlgrOyAiq1Bp8NXMfp/mm8+8UQPukdAcsDTocNmWQa2Wwa5/oGUV5ahjwJCVdlBeauz+LzM+fgsttAKRVYXo5gdMTbz9KZH/j9/vANKyiKgiBwuS6W57sXwrF7dXqDuqmhFvkKJU509iIWi+O+fXuRiKeg0xZgZj4EXVEBKJUKo9cCCERymIskUVhQgF/95EeYnV/EuYseOB0ONNU4QBD/mY09vb3oH/SiusIGu82CLy9c5P3Xhl8RBe6HgiDMf+MtFkURHJML8Bx/bGklVSGSkkqDXkdU2ssxEZjD0OgEqtyVIEkZat12kAINp9OFPu8IttRVwVSohl6nxcnT3djZuhkquQxMNo1Sixkmgx5vvHMUoeUItm6qRSi8hIFL/QvR8PUnCIh/FARh9THzlQSeiQk8+8/lCCOLphLNtjJrntVsBCsI+ODjk1AqFXC7KhFcjGJ6PgTvpB+FGgrGIgqBYAjtDRb4F6Owmktwx5ZGxOJJvPbW+6h0lMFYWIDlSFT0XekbyCaj+yCK3Wsa1F+J5xiBY5JnOJ4cnA2G7yooKqKcditMOh3OX/bi6tg13LNrO9JZGiuJDMrMJvR4xqHMlyHNEqCUStxz5zZ4fcP4orsPFWVmlOh1GB4Z5sd8/X/m2ewjAMLfxLDqsiCKAuh0bJLJZt5fjqXa0jRXWmo2EfqiIgQWwoglkmjf2oJalx00w6HSbgWllGPr5lrsaG3BS68dQZZhUGO3ghR4dJ/rDIdnJw6JAvciAG61/Jtet3iOTuTo9PvJJE2kaHa7o7yMKNAoMTUbwvD4FHIMC5qhQZIECjQU0ukM3jn2KeRSKSosRgyPjuHyhbP9mdjSPlEUem42d00btcixDJ9LdybiidHwSmJHTVUVpVTKoSvQ4HhXL64HQ3DZLPDPzePCZR9qneWospei62wnOz0y+DJHpw8AYmgtmWte+QWBA5tLDmdTyU8C8+Gdsnyq2GTQEcGlZVSUGsHxHLI0g3KTAZRMgn99dHR5ZTHwoMCzrwJYdf9bN+BX4tlchMlm3o0nUyWsQDbUu52EIj8PAi8gFktg8fqM2Nd96hSTjt0viuLAreas610s8AzN8Lnj0cWFhVSOu3NzfW1+NBLBtZHB3Nyk90Xw7KMAIuvJ2KCvDymkSk2rktIczaVXCDodfwIQPwdw4+G2Bm3o34xEIlEBEHmez2yU57f+8+g24Hp1G3C9+tYD/hsImxngnkqVpQAAAABJRU5ErkJggg==";
 
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
+}
+
+function _arrayWithoutHoles(r) {
+  if (Array.isArray(r)) return _arrayLikeToArray(r);
+}
+
+function _iterableToArray(r) {
+  if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r);
+}
+
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+  }
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _toConsumableArray(r) {
+  return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread();
+}
+
+/**
+ * Manage communication with a MicroBit peripheral over a Scrath Link client socket.
+ */
+var Machine = /*#__PURE__*/function () {
+  /**
+   * Construct a MicroBit communication object.
+   * @param {Runtime} runtime - the Scratch 3.0 runtime
+   * @param {string} extensionId - the id of the extension
+   */
+  function Machine(runtime, extensionId) {
+    var _this = this;
+    _classCallCheck(this, Machine);
+    /**
+     * The Scratch 3.0 runtime used to trigger the green flag button.
+     * @type {Runtime}
+     * @private
+     */
+    this.runtime = runtime;
+
+    /**
+     * The BluetoothLowEnergy connection socket for reading/writing peripheral data.
+     * @type {BLE}
+     * @private
+     */
+    this._ble = null;
+    this.runtime.registerPeripheralExtension(extensionId, this);
+
+    /**
+     * The id of the extension this peripheral belongs to.
+     */
+    this._extensionId = extensionId;
+    this.digitalLevel = {};
+    this.lightLevel = 0;
+    this.temperature = 0;
+    this.soundLevel = 0;
+    this.pitch = 0;
+    this.roll = 0;
+    this.acceleration = {
+      x: 0,
+      y: 0,
+      z: 0
+    };
+    this.compassHeading = 0;
+    this.magneticForce = {
+      x: 0,
+      y: 0,
+      z: 0
+    };
+    this.buttonState = {};
+
+    /**
+     * The most recently received button events for each buttons.
+     * @type {Object} - Store of buttons which has events.
+     * @private
+     */
+    this.buttonEvents = {};
+    Object.keys(MbitMoreButtonStateIndex).forEach(function (name) {
+      _this.buttonEvents[name] = {};
+    });
+
+    /**
+     * The most recently received gesture events.
+     * @type {Object <number, number>} - Store of gesture ID and timestamp.
+     * @private
+     */
+    this.gestureEvents = {};
+
+    /**
+     * The most recently received events for each pin.
+     * @type {Object} - Store of pins which has events.
+     * @private
+     */
+    this._pinEvents = {};
+
+    /**
+     * The most recently received data from micro:bit.
+     * @type {Object} - Store of received data
+     * @private
+     */
+    this.receivedData = {};
+    this.analogIn = [0, 1, 2];
+    this.analogValue = [];
+    this.analogIn.forEach(function (pinIndex) {
+      _this.analogValue[pinIndex] = 0;
+    });
+    this.gpio = [0, 1, 2, 8, 12, 13, 14, 15, 16];
+    this.gpio.forEach(function (pinIndex) {
+      _this.digitalLevel[pinIndex] = 0;
+    });
+
+    /**
+     * Interval ID for data reading timeout.
+     * @type {number}
+     * @private
+     */
+    this._timeoutID = null;
+
+    /**
+     * A flag that is true while we are busy sending data to the BLE socket.
+     * @type {boolean}
+     * @private
+     */
+    this.bleBusy = true;
+
+    /**
+     * ID for a timeout which is used to clear the busy flag if it has been
+     * true for a long time.
+     */
+    this.bleBusyTimeoutID = null;
+    this.onDisconnect = this.onDisconnect.bind(this);
+    this._onConnect = this._onConnect.bind(this);
+    this.onNotify = this.onNotify.bind(this);
+    this.stopTone = this.stopTone.bind(this);
+    if (this.runtime) {
+      this.runtime.on('PROJECT_STOP_ALL', this.stopTone);
+    }
+    this.analogInUpdateInterval = 100; // milli-seconds
+    this.analogInLastUpdated = [Date.now(), Date.now(), Date.now()];
+
+    /**
+     * A time interval to wait (in milliseconds) while a block that sends a BLE message is running.
+     * @type {number}
+     */
+    this.sendCommandInterval = 30;
+    this.initConfig();
+
+    // keyboard state monitor
+    this.keyState = {};
+    document.body.addEventListener('keydown', function (e) {
+      _this.keyState[e.code] = {
+        key: e.key,
+        code: e.code,
+        alt: e.altKey,
+        ctrl: e.ctrlKey,
+        meta: e.metaKey,
+        shift: e.shiftKey
+      };
+    });
+    document.body.addEventListener('keyup', function (e) {
+      delete _this.keyState[e.code];
+    });
+  }
+
+  /**
+   * Initialize configuration of the micro:bit.
+   */
+  return _createClass(Machine, [{
+    key: "initConfig",
+    value: function initConfig() {
+      this.config = {};
+      this.config.mic = false;
+      this.config.pinMode = {};
+    }
+
+    /**
+     * Start updating process for micro:bit state and motion.
+     */
+  }, {
+    key: "startUpdater",
+    value: function startUpdater() {
+      var _this2 = this;
+      if (this.updater) {
+        clearTimeout(this.updater);
+      }
+      if (this.bleAccessWaiting) {
+        this.updater = setTimeout(function () {
+          return _this2.startUpdater();
+        }, 0);
+        return;
+      }
+      this.updateState().then(function () {
+        return _this2.updateMotion();
+      }).finally(function () {
+        _this2.updater = setTimeout(function () {
+          return _this2.startUpdater();
+        }, _this2.microbitUpdateInterval);
+      });
+    }
+
+    /**
+     * Stop updating process for micro:bit state and motion.
+     */
+  }, {
+    key: "stopUpdater",
+    value: function stopUpdater() {
+      clearTimeout(this.updater);
+    }
+
+    /**
+     * @param {string} text - the text to display.
+     * @param {number} delay - The time to delay between characters, in milliseconds.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
+     */
+  }, {
+    key: "displayText",
+    value: function displayText(text, delay, util) {
+      var textLength = Math.min(18, text.length);
+      var textData = new Uint8Array(textLength + 1);
+      for (var i = 0; i < textLength; i++) {
+        textData[i] = text.charCodeAt(i);
+      }
+      return this.sendCommandSet([{
+        id: BLECommand.CMD_DISPLAY << 5 | MbitMoreDisplayCommand.TEXT,
+        message: new Uint8Array([Math.min(255, Math.max(0, delay) / 10)].concat(_toConsumableArray(textData)))
+      }], util);
+    }
+
+    /**
+     * Send display pixcels command to micro:bit.
+     * @param {Array.<Array.<number>>} matrix - pattern to display.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
+     */
+  }, {
+    key: "displayPixels",
+    value: function displayPixels(matrix, util) {
+      var cmdSet = [{
+        id: BLECommand.CMD_DISPLAY << 5 | MbitMoreDisplayCommand.PIXELS_0,
+        message: new Uint8Array([].concat(_toConsumableArray(matrix[0]), _toConsumableArray(matrix[1]), _toConsumableArray(matrix[2])))
+      }, {
+        id: BLECommand.CMD_DISPLAY << 5 | MbitMoreDisplayCommand.PIXELS_1,
+        message: new Uint8Array([].concat(_toConsumableArray(matrix[3]), _toConsumableArray(matrix[4])))
+      }];
+      return this.sendCommandSet(cmdSet, util);
+    }
+
+    /**
+     * Set pull mode to the pin.
+     * @param {number} pinIndex - index of the pin
+     * @param {MbitMorePullModeID} pullMode - pull mode to set
+     * @param {BlockUtility} util - utility object provided from the runtime
+     * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
+     */
+  }, {
+    key: "setPullMode",
+    value: function setPullMode(pinIndex, pullMode, util) {
+      this.config.pinMode[pinIndex] = MbitMorePinMode.INPUT;
+      return this.sendCommandSet([{
+        id: BLECommand.CMD_PIN << 5 | MbitMorePinCommand.SET_PULL,
+        message: new Uint8Array([pinIndex, pullMode])
+      }], util);
+    }
+
+    /**
+     * Set pin to digital output mode on the level.
+     * @param {number} pinIndex - Index of pin.
+     * @param {boolean} level - Value in digital (true = High)
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
+     */
+  }, {
+    key: "setPinOutput",
+    value: function setPinOutput(pinIndex, level, util) {
+      this.config.pinMode[pinIndex] = MbitMorePinMode.OUTPUT;
+      return this.sendCommandSet([{
+        id: BLECommand.CMD_PIN << 5 | MbitMorePinCommand.SET_OUTPUT,
+        message: new Uint8Array([pinIndex, level ? 1 : 0])
+      }], util);
+    }
+
+    /**
+     * Set the pin to PWM mode on the level.
+     * @param {number} pinIndex - index of the pin
+     * @param {number} level - value of analog output [0..1024].
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
+     */
+  }, {
+    key: "setPinPWM",
+    value: function setPinPWM(pinIndex, level, util) {
+      this.config.pinMode[pinIndex] = MbitMorePinMode.PWM;
+      var dataView = new DataView(new ArrayBuffer(2));
+      dataView.setUint16(0, level, true);
+      return this.sendCommandSet([{
+        id: BLECommand.CMD_PIN << 5 | MbitMorePinCommand.SET_PWM,
+        message: new Uint8Array([pinIndex, dataView.getUint8(0), dataView.getUint8(1)])
+      }], util);
+    }
+
+    /**
+     * Set the pin to Servo mode on the angle in the range and center.
+     * @param {number} pinIndex - index of the pin.
+     * @param {number} angle - the level to set on the output pin, in the range 0 - 180.
+     * @param {number} range - the span of possible values. '0' means default(2000).
+     * @param {number} center - the center point from which to calculate the lower and upper bounds.
+     *                          '0' means default(1500).
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
+     */
+  }, {
+    key: "setPinServo",
+    value: function setPinServo(pinIndex, angle, range, center, util) {
+      this.config.pinMode[pinIndex] = MbitMorePinMode.SERVO;
+      if (!range || range < 0) range = 0;
+      if (!center || center < 0) center = 0;
+      var dataView = new DataView(new ArrayBuffer(6));
+      dataView.setUint16(0, angle, true);
+      dataView.setUint16(2, range, true);
+      dataView.setUint16(4, center, true);
+      return this.sendCommandSet([{
+        id: BLECommand.CMD_PIN << 5 | MbitMorePinCommand.SET_SERVO,
+        message: new Uint8Array([pinIndex, dataView.getUint8(0), dataView.getUint8(1), dataView.getUint8(2), dataView.getUint8(3), dataView.getUint8(4), dataView.getUint8(5)])
+      }], util);
+    }
+
+    /**
+     * Read light level from the light sensor.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {number} - value of the light level [0..255].
+     */
+  }, {
+    key: "readLightLevel",
+    value: function readLightLevel() {
+      if (!this.isConnected()) {
+        return 0;
+      }
+      return this.lightLevel;
+    }
+
+    /**
+     * Update data of the analog input.
+     * @param {number} pinIndex - index of the pin to get value.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves value of analog input or undefined if this process was yield.
+     */
+  }, {
+    key: "readAnalogIn",
+    value: function readAnalogIn(pinIndex, util) {
+      var _this3 = this;
+      if (!this.isConnected()) {
+        return Promise.resolve(0);
+      }
+      if (Date.now() - this.analogInLastUpdated[pinIndex] < this.analogInUpdateInterval) {
+        return Promise.resolve(this.analogValue[pinIndex]);
+      }
+      if (this.bleBusy) {
+        this.bleAccessWaiting = true;
+        if (util) util.yield(); // re-try this call after a while.
+        return; // Do not return Promise.resolve() to re-try.
+      }
+      this.bleBusy = true;
+      this.bleBusyTimeoutID = window.setTimeout(function () {
+        _this3.bleBusy = false;
+        _this3.bleAccessWaiting = false;
+      }, 1000);
+      return new Promise(function (resolve) {
+        return _this3._ble.read(MM_SERVICE.ID, MM_SERVICE.ANALOG_IN_CH[pinIndex], false).then(function (result) {
+          window.clearTimeout(_this3.bleBusyTimeoutID);
+          _this3.bleBusy = false;
+          _this3.bleAccessWaiting = false;
+          if (!result) {
+            return resolve(_this3.analogValue[pinIndex]);
+          }
+          var data = base64ToUint8Array(result.message);
+          var dataView = new DataView(data.buffer, 0);
+          _this3.analogValue[pinIndex] = dataView.getUint16(0, true);
+          _this3.analogInLastUpdated = Date.now();
+          resolve(_this3.analogValue[pinIndex]);
+        });
+      });
+    }
+
+    /**
+     * Update data of digital level, light level, temperature, sound level.
+     * @return {Promise} - a Promise that resolves updated data holder.
+     */
+  }, {
+    key: "updateState",
+    value: function updateState() {
+      var _this4 = this;
+      if (!this.isConnected()) return Promise.resolve(this);
+      if (this.bleBusy) {
+        return Promise.resolve(this);
+      }
+      this.bleBusy = true;
+      this.bleBusyTimeoutID = window.setTimeout(function () {
+        _this4.bleBusy = false;
+      }, 1000);
+      return new Promise(function (resolve) {
+        _this4._ble.read(MM_SERVICE.ID, MM_SERVICE.STATE_CH, false).then(function (result) {
+          window.clearTimeout(_this4.bleBusyTimeoutID);
+          _this4.bleBusy = false;
+          if (!result) return resolve(_this4);
+          var data = base64ToUint8Array(result.message);
+          var dataView = new DataView(data.buffer, 0);
+          // Digital Input
+          var gpioData = dataView.getUint32(0, true);
+          for (var i = 0; i < _this4.gpio.length; i++) {
+            _this4.digitalLevel[_this4.gpio[i]] = gpioData >> _this4.gpio[i] & 1;
+          }
+          Object.keys(MbitMoreButtonStateIndex).forEach(function (name) {
+            _this4.buttonState[name] = gpioData >> 24 + MbitMoreButtonStateIndex[name] & 1;
+          });
+          _this4.lightLevel = dataView.getUint8(4);
+          _this4.temperature = dataView.getUint8(5) - 128;
+          _this4.soundLevel = dataView.getUint8(6);
+          _this4.resetConnectionTimeout();
+          resolve(_this4);
+        });
+      });
+    }
+
+    /**
+     * Read temperature (integer in celsius) from the micro:bit cpu.
+     * @return {number} - degrees of temperature [centigrade].
+     */
+  }, {
+    key: "readTemperature",
+    value: function readTemperature() {
+      if (!this.isConnected()) {
+        return 0;
+      }
+      return this.temperature;
+    }
+
+    /**
+     * Configure microphone.
+     * @param {boolean} use - true to use microphone.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {?Promise} - a Promise that resolves state of the microphone or undefined if the process was yield.
+     */
+  }, {
+    key: "configMic",
+    value: function configMic(use, util) {
+      var _this5 = this;
+      use = use === true;
+      if (!this.isConnected()) {
+        return Promise.resolve(false);
+      }
+      if (this.config.mic === use) {
+        return Promise.resolve(this.config.mic);
+      }
+      var sendPromise = this.sendCommandSet([{
+        id: BLECommand.CMD_CONFIG << 5 | MbitMoreConfig.MIC,
+        message: new Uint8Array([use ? 1 : 0]) // use microphone
+      }], util);
+      if (sendPromise) {
+        return sendPromise.then(function () {
+          _this5.config.mic = use;
+          return _this5.config.mic;
+        });
+      }
+      return;
+    }
+
+    /**
+     * Play tone on the speaker.
+     * @param {number} frequency - wave frequency to play [Hz]
+     * @param {number} volume laudness of tone [%]
+     * @param {object} util - utility object provided by the runtime.
+     * @return {?Promise} - a Promise that resolves to send command or undefined if this process was yield.
+     */
+  }, {
+    key: "playTone",
+    value: function playTone(frequency, volume, util) {
+      if (!this.isConnected()) {
+        return Promise.resolve();
+      }
+      var frequencyData = new DataView(new ArrayBuffer(4));
+      frequencyData.setUint32(0, Math.round(1000000 / frequency), true);
+      volume = Math.round(volume * 0xff / 100);
+      return this.sendCommandSet([{
+        id: BLECommand.CMD_AUDIO << 5 | MbitMoreAudioCommand.PLAY_TONE,
+        message: new Uint8Array([frequencyData.getUint8(0), frequencyData.getUint8(1), frequencyData.getUint8(2), frequencyData.getUint8(3), volume])
+      }], util);
+    }
+
+    /**
+     * Stop playing tone on the speaker.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {?Promise} - a Promise that resolves to send command or undefined if this process was yield.
+     */
+  }, {
+    key: "stopTone",
+    value: function stopTone(util) {
+      if (!this.isConnected()) {
+        return Promise.resolve();
+      }
+      return this.sendCommandSet([{
+        id: BLECommand.CMD_AUDIO << 5 | MbitMoreAudioCommand.STOP_TONE,
+        message: new Uint8Array([])
+      }], util);
+    }
+
+    /**
+     * Read sound level.
+     * @return {number} - level of loudness (0 .. 255).
+     */
+  }, {
+    key: "readSoundLevel",
+    value: function readSoundLevel() {
+      if (!this.isConnected()) {
+        return 0;
+      }
+      return this.soundLevel;
+    }
+
+    /**
+     * Update data of acceleration, magnetic force.
+     * @return {Promise} - a Promise that resolves updated data holder.
+     */
+  }, {
+    key: "updateMotion",
+    value: function updateMotion() {
+      var _this6 = this;
+      if (!this.isConnected()) return Promise.resolve(this);
+      if (this.bleBusy) {
+        return Promise.resolve(this);
+      }
+      this.bleBusy = true;
+      this.bleBusyTimeoutID = window.setTimeout(function () {
+        _this6.bleBusy = false;
+      }, 1000);
+      return new Promise(function (resolve) {
+        _this6._ble.read(MM_SERVICE.ID, MM_SERVICE.MOTION_CH, false).then(function (result) {
+          window.clearTimeout(_this6.bleBusyTimeoutID);
+          _this6.bleBusy = false;
+          if (!result) return resolve(_this6);
+          var data = base64ToUint8Array(result.message);
+          var dataView = new DataView(data.buffer, 0);
+          // Accelerometer
+          _this6.pitch = Math.round(dataView.getInt16(0, true) * 180 / Math.PI / 1000);
+          _this6.roll = Math.round(dataView.getInt16(2, true) * 180 / Math.PI / 1000);
+          _this6.acceleration.x = 1000 * dataView.getInt16(4, true) / G;
+          _this6.acceleration.y = 1000 * dataView.getInt16(6, true) / G;
+          _this6.acceleration.z = 1000 * dataView.getInt16(8, true) / G;
+          // Magnetometer
+          _this6.compassHeading = dataView.getUint16(10, true);
+          _this6.magneticForce.x = dataView.getInt16(12, true);
+          _this6.magneticForce.y = dataView.getInt16(14, true);
+          _this6.magneticForce.z = dataView.getInt16(16, true);
+          _this6.resetConnectionTimeout();
+          resolve(_this6);
+        });
+      });
+    }
+
+    /**
+     * Read pitch [degrees] of the micro:bit heading direction.
+     * @return {number} - degree of pitch.
+     */
+  }, {
+    key: "readPitch",
+    value: function readPitch() {
+      if (!this.isConnected()) {
+        return 0;
+      }
+      return this.pitch;
+    }
+
+    /**
+     * Read roll [degrees] of the micro:bit heading direction.
+     * @return {number} - degree of roll.
+     */
+  }, {
+    key: "readRoll",
+    value: function readRoll() {
+      if (!this.isConnected()) {
+        return 0;
+      }
+      return this.roll;
+    }
+
+    /**
+     * Read the value of gravitational acceleration [milli-g] for the axis.
+     * @param {AxisSymbol} axis - direction of acceleration.
+     * @return {number} - value of acceleration.
+     */
+  }, {
+    key: "readAcceleration",
+    value: function readAcceleration(axis) {
+      if (!this.isConnected()) {
+        return 0;
+      }
+      if (axis === AxisSymbol.Absolute) {
+        return Math.round(Math.sqrt(Math.pow(this.acceleration.x, 2) + Math.pow(this.acceleration.y, 2) + Math.pow(this.acceleration.z, 2)));
+      }
+      return this.acceleration[axis];
+    }
+
+    /**
+     * Read the angle (degrees) of heading direction from the north.
+     * @return {number} - degree of compass heading.
+     */
+  }, {
+    key: "readCompassHeading",
+    value: function readCompassHeading() {
+      if (!this.isConnected()) {
+        return 0;
+      }
+      return this.compassHeading;
+    }
+
+    /**
+     * Read value of magnetic force [micro teslas] for the axis.
+     * @param {AxisSymbol} axis - direction of magnetic force.
+     * @return {number} - value of magnetic force.
+     */
+  }, {
+    key: "readMagneticForce",
+    value: function readMagneticForce(axis) {
+      if (!this.isConnected()) {
+        return 0;
+      }
+      if (axis === AxisSymbol.Absolute) {
+        return Math.round(Math.sqrt(Math.pow(this.magneticForce.x, 2) + Math.pow(this.magneticForce.y, 2) + Math.pow(this.magneticForce.z, 2)));
+      }
+      return this.magneticForce[axis];
+    }
+
+    /**
+     * Start to scan Bluetooth LE devices to find micro:bit with MicroBit More service.
+     */
+  }, {
+    key: "scanBLE",
+    value: function scanBLE() {
+      var connectorClass = BLE;
+      this._ble = new connectorClass(this.runtime, this._extensionId, {
+        filters: [{
+          namePrefix: 'BBC micro:bit'
+        }, {
+          services: [MM_SERVICE.ID]
+        }]
+      }, this._onConnect, this.onDisconnect);
+    }
+
+    /**
+     * Start to scan USB serial devices to find micro:bit v2.
+     */
+  }, {
+    key: "scanSerial",
+    value: function scanSerial() {
+      this._ble = new WebSerial(this.runtime, this._extensionId, {
+        filters: [{
+          usbVendorId: 0x0d28,
+          usbProductId: 0x0204
+        }]
+      }, this._onConnect, this.onDisconnect);
+    }
+
+    /**
+     * Whether the key is pressed at this moment.
+     * @param {string} key - key in keyboard event
+     * @returns {boolean} - return true when the key is pressed
+     */
+  }, {
+    key: "isKeyPressing",
+    value: function isKeyPressing(key) {
+      return Object.values(this.keyState).find(function (state) {
+        return state.key === key;
+      });
+    }
+
+    /**
+     * Called by the runtime when user wants to scan for a peripheral.
+     */
+  }, {
+    key: "scan",
+    value: function scan() {
+      if (this._ble) {
+        this._ble.disconnect();
+      }
+      this.bleBusy = true;
+      if ('serial' in navigator && this.isKeyPressing('Shift')) {
+        this.scanSerial();
+      } else {
+        this.scanBLE();
+      }
+      // The key state is cleared because the keyup event will be dropped by the browser dialog.
+      this.keyState = {};
+    }
+
+    /**
+     * Called by the runtime when user wants to connect to a certain peripheral.
+     * @param {number} id - the id of the peripheral to connect to.
+     */
+  }, {
+    key: "connect",
+    value: function connect(id) {
+      if (this._ble) {
+        this._ble.connectPeripheral(id);
+      }
+    }
+
+    /**
+     * Disconnect from the micro:bit.
+     */
+  }, {
+    key: "disconnect",
+    value: function disconnect() {
+      if (this._ble) {
+        this._ble.disconnect();
+      }
+      this.onDisconnect();
+    }
+
+    /**
+     * Reset all the state and timeout/interval ids.
+     */
+  }, {
+    key: "onDisconnect",
+    value: function onDisconnect() {
+      this.stopUpdater();
+      if (this._timeoutID) {
+        window.clearTimeout(this._timeoutID);
+        this._timeoutID = null;
+      }
+    }
+
+    /**
+     * Return true if connected to the micro:bit.
+     * @return {boolean} - whether the micro:bit is connected.
+     */
+  }, {
+    key: "isConnected",
+    value: function isConnected() {
+      var connected = false;
+      if (this._ble) {
+        connected = this._ble.isConnected();
+      }
+      return connected;
+    }
+
+    /**
+     * Send a command to micro:bit.
+     * @param {object} command command to send.
+     * @param {number} command.id ID of the command.
+     * @param {Uint8Array} command.message Contents of the command.
+     * @return {Promise} a Promise that resolves when the data was sent and after send command interval.
+     */
+  }, {
+    key: "sendCommand",
+    value: function sendCommand(command) {
+      var _this7 = this;
+      var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
+      return new Promise(function (resolve) {
+        _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', false);
+        setTimeout(function () {
+          return resolve();
+        }, _this7.sendCommandInterval);
+      });
+    }
+
+    /**
+     * Send multiple commands sequentially.
+     * @param {Array.<{id: number, message: Uint8Array}>} commands array of command.
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when the all commands was sent.
+     */
+  }, {
+    key: "sendCommandSet",
+    value: function sendCommandSet(commands, util) {
+      var _this8 = this;
+      if (!this.isConnected()) return Promise.resolve();
+      if (this.bleBusy) {
+        this.bleAccessWaiting = true;
+        if (util) {
+          util.yield(); // re-try this call after a while.
+        } else {
+          setTimeout(function () {
+            return _this8.sendCommandSet(commands, util);
+          }, 1);
+        }
+        return; // Do not return Promise.resolve() to re-try.
+      }
+      this.bleBusy = true;
+      // Clear busy and BLE access waiting flag when the scratch-link does not respond.
+      this.bleBusyTimeoutID = window.setTimeout(function () {
+        _this8.bleBusy = false;
+        _this8.bleAccessWaiting = false;
+      }, 1000);
+      return new Promise(function (resolve) {
+        commands.reduce(function (acc, cur) {
+          return acc.then(function () {
+            return _this8.sendCommand(cur);
+          });
+        }, Promise.resolve()).then(function () {
+          window.clearTimeout(_this8.bleBusyTimeoutID);
+        }).catch(function (err) {
+          _this8._ble.handleDisconnectError(err);
+        }).finally(function () {
+          _this8.bleBusy = false;
+          _this8.bleAccessWaiting = false;
+          resolve();
+        });
+      });
+    }
+
+    /**
+     * Starts reading data from peripheral after BLE has connected to it.
+     */
+  }, {
+    key: "_onConnect",
+    value: function _onConnect() {
+      var _this9 = this;
+      this._ble.read(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, false).then(function (result) {
+        if (!result) {
+          throw new Error('Config is not readable');
+        }
+        var data = base64ToUint8Array(result.message);
+        var dataView = new DataView(data.buffer, 0);
+        _this9.hardware = dataView.getUint8(0);
+        _this9.protocol = dataView.getUint8(1);
+        _this9.route = dataView.getUint8(2);
+        _this9._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.ACTION_EVENT_CH, _this9.onNotify);
+        _this9._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.PIN_EVENT_CH, _this9.onNotify);
+        if (_this9.hardware === MbitMoreHardwareVersion.MICROBIT_V1) {
+          _this9.microbitUpdateInterval = 100; // milliseconds
+        } else {
+          _this9._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.MESSAGE_CH, _this9.onNotify);
+          _this9.microbitUpdateInterval = 50; // milliseconds
+        }
+        if (_this9.route === CommunicationRoute.SERIAL) {
+          _this9.sendCommandInterval = 100; // milliseconds
+        } else {
+          _this9.sendCommandInterval = 30; // milliseconds
+        }
+        _this9.initConfig();
+        _this9.bleBusy = false;
+        _this9.startUpdater();
+        _this9.resetConnectionTimeout();
+      }).catch(function (err) {
+        return _this9._ble.handleDisconnectError(err);
+      });
+    }
+
+    /**
+     * Process the data from the incoming BLE characteristic.
+     * @param {string} msg - the incoming BLE data.
+     * @private
+     */
+  }, {
+    key: "onNotify",
+    value: function onNotify(msg) {
+      var data = base64ToUint8Array(msg);
+      var dataView = new DataView(data.buffer, 0);
+      var dataFormat = dataView.getUint8(19);
+      if (dataFormat === MbitMoreDataFormat.ACTION_EVENT) {
+        var actionEventType = dataView.getUint8(0);
+        if (actionEventType === MbitMoreActionEvent.BUTTON) {
+          var buttonName = MbitMoreButtonID[dataView.getUint16(1, true)];
+          var eventName = MbitMoreButtonEventID[dataView.getUint8(3)];
+          this.buttonEvents[buttonName][eventName] = dataView.getUint32(4, true); // Timestamp
+        } else if (actionEventType === MbitMoreActionEvent.GESTURE) {
+          var gestureName = MbitMoreGestureID[dataView.getUint8(1)];
+          this.gestureEvents[gestureName] = dataView.getUint32(2, true); // Timestamp
+        }
+      } else if (dataFormat === MbitMoreDataFormat.PIN_EVENT) {
+        var pinIndex = dataView.getUint8(0);
+        if (!this._pinEvents[pinIndex]) {
+          this._pinEvents[pinIndex] = {};
+        }
+        var event = dataView.getUint8(1);
+        this._pinEvents[pinIndex][event] = {
+          value: dataView.getUint32(2, true),
+          // timesamp of the edge or duration of the pulse
+          timestamp: Date.now() // received time
+        };
+      } else if (dataFormat === MbitMoreDataFormat.DATA_NUMBER) {
+        var label = new TextDecoder().decode(data.slice(0, 8).filter(function (char) {
+          return char !== 0;
+        }));
+        this.receivedData[label] = {
+          content: dataView.getFloat32(8, true),
+          timestamp: Date.now()
+        };
+      } else if (dataFormat === MbitMoreDataFormat.DATA_TEXT) {
+        var _label = new TextDecoder().decode(data.slice(0, 8).filter(function (char) {
+          return char !== 0;
+        }));
+        this.receivedData[_label] = {
+          content: new TextDecoder().decode(data.slice(8, 20).filter(function (char) {
+            return char !== 0;
+          })),
+          timestamp: Date.now()
+        };
+      }
+      this.resetConnectionTimeout();
+    }
+
+    /**
+     * Cancel disconnect timeout and start counting again.
+     */
+  }, {
+    key: "resetConnectionTimeout",
+    value: function resetConnectionTimeout() {
+      var _this10 = this;
+      if (this._timeoutID) window.clearTimeout(this._timeoutID);
+      this._timeoutID = window.setTimeout(function () {
+        return _this10._ble.handleDisconnectError(BLEDataStoppedError);
+      }, BLETimeout);
+    }
+
+    /**
+     * Return whether the pin value is high.
+     * @param {number} pin - the pin to check.
+     * @return {boolean} - whether the pin is high or not.
+     */
+  }, {
+    key: "isPinHigh",
+    value: function isPinHigh(pin) {
+      var level = this.readDigitalLevel(pin);
+      return level === 1;
+    }
+
+    /**
+     * Read digital input from the pin.
+     * @param {number} pin - the pin to read.
+     * @return {number} - digital input value of the pin [0|1].
+     */
+  }, {
+    key: "readDigitalLevel",
+    value: function readDigitalLevel(pin) {
+      if (!this.isConnected()) {
+        return 0;
+      }
+      return this.digitalLevel[pin];
+    }
+
+    /**
+     * Return whether the button is pressed.
+     * @param {string} buttonName - name of the button
+     * @return {boolean} - true when it is pressed
+     */
+  }, {
+    key: "isButtonPressed",
+    value: function isButtonPressed(buttonName) {
+      if (!this.isConnected()) {
+        return false;
+      }
+      return this.buttonState[buttonName] === 1;
+    }
+
+    /**
+     * Return whether the pin is touch-mode.
+     * @param {number} pinIndex - indesx of the pin
+     * @return {boolean} - true when it is touch-mode
+     */
+  }, {
+    key: "isPinTouchMode",
+    value: function isPinTouchMode(pinIndex) {
+      return this.config.pinMode[pinIndex] === MbitMorePinMode.TOUCH;
+    }
+
+    /**
+     * Configurate touch mode of the pin.
+     * @param {number} pinIndex - index of the pin as a button.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {?Promise} - a Promise that resolves when configured or undefined if the process was yield.
+     */
+  }, {
+    key: "configTouchPin",
+    value: function configTouchPin(pinIndex, util) {
+      var _this11 = this;
+      if (!this.isConnected()) {
+        return Promise.resolve();
+      }
+      if (this.isPinTouchMode(pinIndex)) {
+        return Promise.resolve();
+      }
+      var sendPromise = this.sendCommandSet([{
+        id: BLECommand.CMD_CONFIG << 5 | MbitMoreConfig.TOUCH,
+        message: new Uint8Array([pinIndex, 1])
+      }], util);
+      if (sendPromise) {
+        return sendPromise.then(function () {
+          _this11.config.pinMode[pinIndex] = MbitMorePinMode.TOUCH;
+        });
+      }
+      return;
+    }
+
+    /**
+     * Return whether the touche-pin is touched.
+     * @param {string} buttonName - ID to check.
+     * @return {boolean} - whether the id is high or not.
+     */
+  }, {
+    key: "isTouched",
+    value: function isTouched(buttonName) {
+      if (!this.isConnected()) {
+        return false;
+      }
+      return this.buttonState[buttonName] === 1;
+    }
+
+    /**
+     * Return the last timestamp of the button event or undefined if the event is not received.
+     * @param {MbitMoreButtonName} buttonName - name of the button to get the event.
+     * @param {MbitMoreButtonEventName} eventName - name of event to get.
+     * @return {?number} Timestamp of the last event or null.
+     */
+  }, {
+    key: "getButtonEventTimestamp",
+    value: function getButtonEventTimestamp(buttonName, eventName) {
+      if (this.buttonEvents[buttonName] && this.buttonEvents[buttonName][eventName]) {
+        return this.buttonEvents[buttonName][eventName];
+      }
+      return null;
+    }
+
+    /**
+     * Return the last timestamp of the gesture event or undefined if the event is not received.
+     * @param {MbitMoreGestureName} gestureName - name of the event.
+     * @return {?number} Timestamp of the last event or null.
+     */
+  }, {
+    key: "getGestureEventTimestamp",
+    value: function getGestureEventTimestamp(gestureName) {
+      if (this.gestureEvents[gestureName]) {
+        return this.gestureEvents[gestureName];
+      }
+      return null;
+    }
+
+    /**
+     * Return the last value of the pin event or undefined if the event was not received.
+     * @param {number} pinIndex - index of the pin to get the event.
+     * @param {MbitMorePinEvent} event - event to get.
+     * @return {?number} Timestamp of the last event or null.
+     */
+  }, {
+    key: "getPinEventValue",
+    value: function getPinEventValue(pinIndex, event) {
+      if (this._pinEvents[pinIndex] && this._pinEvents[pinIndex][event]) {
+        return this._pinEvents[pinIndex][event].value;
+      }
+      return null;
+    }
+
+    /**
+     * Return the last timestamp of the pin event or undefined if the event was not received.
+     * @param {number} pinIndex - index of the pin to get the event.
+     * @param {MbitMorePinEvent} event - event to get.
+     * @return {?number} Timestamp of the last event or null.
+     */
+  }, {
+    key: "getPinEventTimestamp",
+    value: function getPinEventTimestamp(pinIndex, event) {
+      if (this._pinEvents[pinIndex] && this._pinEvents[pinIndex][event]) {
+        return this._pinEvents[pinIndex][event].timestamp;
+      }
+      return null;
+    }
+
+    /**
+     * Set event type to be get from the pin.
+     * @param {number} pinIndex - Index of the pin to set.
+     * @param {MbitMorePinEventType} eventType - Event type to set.
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
+     */
+  }, {
+    key: "listenPinEventType",
+    value: function listenPinEventType(pinIndex, eventType, util) {
+      return this.sendCommandSet([{
+        id: BLECommand.CMD_PIN << 5 | MbitMorePinCommand.SET_EVENT,
+        message: new Uint8Array([pinIndex, eventType])
+      }], util);
+    }
+
+    /**
+     * Send data to micro:bit.
+     * @param {string} label - label of the data [ascii]
+     * @param {string} content - content of the data [ascii | number]
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when sending done or undefined if this process was yield.
+     */
+  }, {
+    key: "sendData",
+    value: function sendData(label, content, util) {
+      var labelData = new Array(8).fill().map(function (_value, index) {
+        return label.charCodeAt(index);
+      });
+      var contentNumber = Number(content);
+      var contentData;
+      var type;
+      if (Number.isNaN(contentNumber)) {
+        type = MbitMoreSendingDataType.TEXT;
+        contentData = content.split('').map(function (ascii) {
+          return ascii.charCodeAt(0);
+        }).slice(0, 11);
+      } else {
+        type = MbitMoreSendingDataType.NUMBER;
+        var dataView = new DataView(new ArrayBuffer(4));
+        dataView.setFloat32(0, contentNumber, true);
+        contentData = [dataView.getUint8(0), dataView.getUint8(1), dataView.getUint8(2), dataView.getUint8(3)];
+      }
+      return this.sendCommandSet([{
+        id: BLECommand.CMD_DATA << 5 | type,
+        message: new Uint8Array([].concat(_toConsumableArray(labelData), _toConsumableArray(contentData)))
+      }], util);
+    }
+
+    /**
+     * Return the last data with the label or undefined if no data received with the label.
+     * @param {string} label - label to get.
+     * @return {?(number | string)} data of the label or null.
+     */
+  }, {
+    key: "getDataLabeled",
+    value: function getDataLabeled(label) {
+      if (this.receivedData[label]) {
+        return this.receivedData[label].content;
+      }
+      return null;
+    }
+
+    /**
+     * Return the last timestamp of the data or undefined if the data is not received.
+     * @param {string} label - label of the data.
+     * @return {?number} Timestamp of the last data or null.
+     */
+  }, {
+    key: "getDataTimestamp",
+    value: function getDataTimestamp(label) {
+      if (this.receivedData[label]) {
+        return this.receivedData[label].timestamp;
+      }
+      return null;
+    }
+  }]);
+}();
+
 /**
  * Formatter which is used for translation.
  * This will be replaced which is used in the runtime.
@@ -2111,6 +3266,9 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       // Replace 'formatMessage' to a formatter which is used in the runtime.
       formatMessage = runtime.formatMessage;
     }
+
+    // Create a new MicroBit peripheral instance
+    this.machine = new Machine(this.runtime, ExtensionBlocks.EXTENSION_ID);
 
     // シリアル接続
     try {
