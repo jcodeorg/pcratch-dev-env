@@ -33,13 +33,14 @@ var translations$1 = {
 var formatMessage$1 = function formatMessage(messageData) {
   return messageData.defaultMessage;
 };
+var version = 'v0.9.1';
 var entry = {
   get name() {
-    return formatMessage$1({
+    return "".concat(formatMessage$1({
       id: 'pcratchPico.entry.name',
-      defaultMessage: 'Xcratch Example',
-      description: 'name of the extension'
-    });
+      defaultMessage: 'Pcratch Pico controll Micro-Python device',
+      description: 'Pcratch Pico'
+    }), " (").concat(version, ")");
   },
   extensionId: 'pcratchPico',
   extensionURL: 'https://xcratch.github.io/xcx-example/dist/pcratchPico.mjs',
@@ -3050,7 +3051,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         name: ExtensionBlocks.EXTENSION_NAME,
         extensionURL: ExtensionBlocks.extensionURL,
         blockIconURI: img,
-        showStatusButton: false,
+        showStatusButton: true,
         blocks: [{
           // Picoに接続する
           opcode: "connectPico",
