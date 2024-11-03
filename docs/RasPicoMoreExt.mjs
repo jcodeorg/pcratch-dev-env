@@ -2649,7 +2649,7 @@ var Machine = /*#__PURE__*/function () {
     key: "scan",
     value: function scan() {
       console.log("machine.scan() new!!");
-      openpicoport();
+      this.openpicoport();
       return;
     }
     /**
