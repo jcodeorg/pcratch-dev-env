@@ -2121,6 +2121,9 @@ var Machine = /*#__PURE__*/function () {
     this._v_ = {
       "dummy": 123
     };
+    this._prev_ = {
+      "prev": 456
+    };
 
     // シリアル接続
     this.picoserial = null;
@@ -2261,9 +2264,34 @@ var Machine = /*#__PURE__*/function () {
   }
 
   /**
-   * Pico Serial
+   * イベント処理
    */
+  // 最後のイベントのIDを返却する
   return _createClass(Machine, [{
+    key: "getLastEventId",
+    value: function getLastEventId(name, event) {
+      var key = "".concat(name, "_").concat(event);
+      return this._v_[key];
+    }
+    // 前のイベントのIDを返却する
+  }, {
+    key: "getPrevEventId",
+    value: function getPrevEventId(name, event) {
+      var key = "".concat(name, "_").concat(event);
+      return this._prev_[key];
+    }
+    // 前のイベントのIDを最後のイベントのIDで上書きする
+  }, {
+    key: "updatePrevEventId",
+    value: function updatePrevEventId(name, event) {
+      var key = "".concat(name, "_").concat(event);
+      console.log("updatePrevEventId: ".concat(key, ": ").concat(this._prev_[key], " --> ").concat(this._v_[key]));
+      this._prev_[key] = this._v_[key];
+    }
+    /**
+     * Pico Serial
+     */
+  }, {
     key: "openpicoport",
     value: function openpicoport() {
       if (this.picoserial) {
@@ -3154,9 +3182,52 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             description: 'how much the amount of light falling on the LEDs on micro:bit'
           }),
           blockType: BlockType$1.REPORTER
+        }, {
+          opcode: 'whenButtonEvent',
+          text: formatMessage({
+            id: 'mbitMore.whenButtonEvent',
+            default: 'when button [NAME] is [EVENT]',
+            description: 'when the selected button on the micro:bit get the selected event'
+          }),
+          blockType: BlockType$1.HAT,
+          arguments: {
+            NAME: {
+              type: ArgumentType$1.STRING,
+              defaultValue: 'A'
+            },
+            EVENT: {
+              type: ArgumentType$1.STRING,
+              defaultValue: 'DOWN'
+            }
+          }
         }],
         menus: {}
       };
+    }
+    /**
+     * Test whether the event raised at the button.
+     * @param {object} args - the block's arguments.
+     * @param {string} args.NAME - name of the button.
+     * @param {string} args.EVENT - name of event to catch.
+     * @return {boolean} - true if the event raised.
+     */
+  }, {
+    key: "whenButtonEvent",
+    value: function whenButtonEvent(args) {
+      var _this = this;
+      if (!this.updateLastButtonEventTimer) {
+        this.updateLastButtonEventTimer = setTimeout(function () {
+          _this.machine.updatePrevEventId(name, event);
+          _this.updateLastButtonEventTimer = null;
+        }, this.runtime.currentStepTime);
+      }
+      var name = args.NAME;
+      var event = args.EVENT;
+      var lid = this.machine.getLastEventId(name, event);
+      if (!lid) return false;
+      var pid = this.machine.getPrevEventId(name, event);
+      if (!pid) return true;
+      return lid === pid;
     }
     /**
      * Get amount of light (0 - 255) on the LEDs.
