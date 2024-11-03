@@ -2617,7 +2617,12 @@ var Machine = /*#__PURE__*/function () {
     key: "scan",
     value: function scan() {
       console.log("machine.scan()");
-      this.scanSerial();
+      // シリアル接続
+      try {
+        this.picoserial = new PicoSerial();
+      } catch (error) {
+        console.log(error);
+      }
       return;
     }
     /**
