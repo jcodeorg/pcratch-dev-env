@@ -1586,19 +1586,21 @@ var log = minilog('vm');
 var log$1 = /*@__PURE__*/getDefaultExportFromCjs(log);
 
 var en = {
-	"xcratchExample.name": "Rasberry Pi Pico More Extension",
-	"xcratchExample.doIt": "do it [SCRIPT]"
+	"pcratchPico.connectPico": "Connect to the Micro-Python device [PORT]"
 };
 var ja = {
-	"xcratchExample.name": "Rasberry Pi Pico More Extension",
-	"xcratchExample.doIt": "[SCRIPT] を実行する"
+	"pcratchPico.connectPico": "MicroPythonデバイスと接続 [PORT]",
+	"pcratchPico.execCommand": "[TEXT] を実行",
+	"pcratchPico.sendCtrlCode": "CTRL- [TEXT] を送信",
+	"pcratchPico.dumpValue": "デバイスの返却値! [SCRIPT]",
+	"pcratchPico.getAdc00": "ADC0",
+	"pcratchPico.lightLevel": "あかるさ"
 };
 var translations = {
 	en: en,
 	ja: ja,
 	"ja-Hira": {
-	"xcratchExample.name": "Rasberry Pi Pico More Extension",
-	"xcratchExample.doIt": "[SCRIPT] をじっこうする"
+	"pcratchPico.connectPico": "MicroPythonデバイスとせつぞく [PORT]"
 }
 };
 
@@ -2135,7 +2137,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           // Picoに接続する
           opcode: "connectPico",
           text: formatMessage({
-            id: "websock.bind",
+            id: "pcratchPico.connectPico",
             default: "MicroPythonデバイスと接続 [PORT]",
             description: "MicroPythonデバイスとシリアル通信で接続します"
           }),
@@ -2150,7 +2152,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           // コマンドを実行
           opcode: "execCommand",
           text: formatMessage({
-            id: "websock.send",
+            id: "pcratchPico.execCommand",
             default: "[TEXT] を実行"
           }),
           blockType: BlockType$1.COMMAND,
@@ -2164,7 +2166,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           // CTRL-x を送信する
           opcode: "sendCtrlCode",
           text: formatMessage({
-            id: "websock.close",
+            id: "pcratchPico.sendCtrlCode",
             default: "CTRL- [TEXT] を送信"
           }),
           blockType: BlockType$1.COMMAND,
@@ -2179,7 +2181,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockType: BlockType$1.REPORTER,
           blockAllThreads: false,
           text: formatMessage({
-            id: 'dumpValue',
+            id: 'pcratchPico.dumpValue',
             default: 'デバイスの返却値! [SCRIPT]',
             description: 'デバイスの変数を表示する!'
           }),
@@ -2192,7 +2194,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         }, {
           opcode: 'getAdc00',
           text: formatMessage({
-            id: 'mbitMore.getAdc00',
+            id: 'pcratchPico.getAdc00',
             default: 'ADC0',
             description: 'ADC0の値'
           }),
@@ -2200,7 +2202,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         }, {
           opcode: 'getAdc01',
           text: formatMessage({
-            id: 'mbitMore.getAdc01',
+            id: 'pcratchPico.getAdc01',
             default: 'ADC1',
             description: 'ADC1の値'
           }),
@@ -2208,7 +2210,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         }, {
           opcode: 'getAdc02',
           text: formatMessage({
-            id: 'mbitMore.getAdc02',
+            id: 'pcratchPico.getAdc02',
             default: 'ADC2',
             description: 'ADC2の値'
           }),
@@ -2216,7 +2218,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         }, {
           opcode: 'getAdc03',
           text: formatMessage({
-            id: 'mbitMore.getAdc03',
+            id: 'pcratchPico.getAdc03',
             default: 'ADC3',
             description: 'ADC3の値'
           }),
@@ -2224,7 +2226,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         }, {
           opcode: 'getAdc04',
           text: formatMessage({
-            id: 'mbitMore.getAdc04',
+            id: 'pcratchPico.getAdc04',
             default: 'ADC4',
             description: 'ADC4の値'
           }),
@@ -2232,7 +2234,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         }, {
           opcode: 'getLightLevel',
           text: formatMessage({
-            id: 'mbitMore.lightLevel',
+            id: 'pcratchPico.lightLevel',
             default: 'light intensity',
             description: 'how much the amount of light falling on the LEDs on micro:bit'
           }),
@@ -2376,7 +2378,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     key: "EXTENSION_NAME",
     get: function get() {
       return formatMessage({
-        id: 'pcratchPico.name',
+        id: 'pcratchPico.entry.name',
         default: 'pcratchPico',
         description: 'pcratch Micro-Python Extension'
       });
