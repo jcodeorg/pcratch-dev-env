@@ -1605,14 +1605,6 @@ var translations = {
 var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFUmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSfvu78nIGlkPSdXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQnPz4KPHg6eG1wbWV0YSB4bWxuczp4PSdhZG9iZTpuczptZXRhLyc+CjxyZGY6UkRGIHhtbG5zOnJkZj0naHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyc+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpBdHRyaWI9J2h0dHA6Ly9ucy5hdHRyaWJ1dGlvbi5jb20vYWRzLzEuMC8nPgogIDxBdHRyaWI6QWRzPgogICA8cmRmOlNlcT4KICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0nUmVzb3VyY2UnPgogICAgIDxBdHRyaWI6Q3JlYXRlZD4yMDI0LTExLTAyPC9BdHRyaWI6Q3JlYXRlZD4KICAgICA8QXR0cmliOkV4dElkPjE8L0F0dHJpYjpFeHRJZD4KICAgICA8QXR0cmliOkZiSWQ+NTI1MjY1OTE0MTc5NTgwPC9BdHRyaWI6RmJJZD4KICAgICA8QXR0cmliOlRvdWNoVHlwZT4yPC9BdHRyaWI6VG91Y2hUeXBlPgogICAgPC9yZGY6bGk+CiAgIDwvcmRmOlNlcT4KICA8L0F0dHJpYjpBZHM+CiA8L3JkZjpEZXNjcmlwdGlvbj4KCiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0nJwogIHhtbG5zOkNvbnRhaW5zQWlHZW5lcmF0ZWRDb250ZW50PSdodHRwczovL2NhbnZhLmNvbS9leHBvcnQnPgogIDxDb250YWluc0FpR2VuZXJhdGVkQ29udGVudDpDb250YWluc0FpR2VuZXJhdGVkQ29udGVudD5ZZXM8L0NvbnRhaW5zQWlHZW5lcmF0ZWRDb250ZW50OkNvbnRhaW5zQWlHZW5lcmF0ZWRDb250ZW50PgogPC9yZGY6RGVzY3JpcHRpb24+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4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";
 
 /**
- * デバイスから返却された値
- */
-
-var _v_ = {
-  "dummy": 123
-};
-
-/**
  * Formatter which is used for translation.
  * This will be replaced which is used in the runtime.
  * @param {object} messageData - format-message object
@@ -1694,12 +1686,12 @@ var SerialProcessor = /*#__PURE__*/function () {
         var jsonString = line.substring(4);
         try {
           var jsonData = JSON.parse(jsonString);
-          if (_typeof$1(_v_) === 'object' && _v_ !== null) {
-            Object.assign(_v_, jsonData);
+          if (_typeof$1(this._v_) === 'object' && this._v_ !== null) {
+            Object.assign(this._v_, jsonData);
           } else {
-            _v_ = jsonData;
+            this._v_ = jsonData;
           }
-          console.log('Parsed JSON:', _v_);
+          console.log('Parsed JSON:', this._v_);
         } catch (e) {
           console.error('Failed to parse JSON:', e);
         }
@@ -1959,7 +1951,7 @@ var PicoSerial = /*#__PURE__*/function () {
             case 13:
               reader = this.picoport.readable.getReader();
               console.log('Connected!!');
-              // 1行毎に解析して、_v_ に受信した変数を格納する
+              // 1行毎に解析して、this._v_ に受信した変数を格納する
               serialProcessor = new SerialProcessor(this);
               serialProcessor.processData(reader).catch(console.error);
 
@@ -2114,6 +2106,11 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     } catch (error) {
       console.log(error);
     }
+
+    // デバイスから返却された値を格納するオブジェクト
+    this._v_ = {
+      "dummy": 123
+    };
   }
 
   /**
@@ -2187,9 +2184,47 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               defaultValue: 'adc00'
             }
           }
-        },
-        //              '---',
-        {
+        }, {
+          opcode: 'getAdc00',
+          text: formatMessage({
+            id: 'mbitMore.getAdc00',
+            default: 'ADC0',
+            description: 'ADC0の値'
+          }),
+          blockType: BlockType$1.REPORTER
+        }, {
+          opcode: 'getAdc01',
+          text: formatMessage({
+            id: 'mbitMore.getAdc01',
+            default: 'ADC1',
+            description: 'ADC1の値'
+          }),
+          blockType: BlockType$1.REPORTER
+        }, {
+          opcode: 'getAdc02',
+          text: formatMessage({
+            id: 'mbitMore.getAdc02',
+            default: 'ADC2',
+            description: 'ADC2の値'
+          }),
+          blockType: BlockType$1.REPORTER
+        }, {
+          opcode: 'getAdc03',
+          text: formatMessage({
+            id: 'mbitMore.getAdc03',
+            default: 'ADC3',
+            description: 'ADC3の値'
+          }),
+          blockType: BlockType$1.REPORTER
+        }, {
+          opcode: 'getAdc04',
+          text: formatMessage({
+            id: 'mbitMore.getAdc04',
+            default: 'ADC4',
+            description: 'ADC4の値'
+          }),
+          blockType: BlockType$1.REPORTER
+        }, {
           opcode: 'getLightLevel',
           text: formatMessage({
             id: 'mbitMore.lightLevel',
@@ -2229,6 +2264,36 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       // return Math.round(level * 1000 / 255) / 10;
       return 21;
     }
+    /**
+     * ADC 0-4 の値を取得する
+     * @param {object} args - the block's arguments.
+     * @return {number} 0 - 65535
+     */
+  }, {
+    key: "getAdc00",
+    value: function getAdc00() {
+      return this._v_ && this._v_["adc00"] !== undefined ? this._v_["adc00"] : 0;
+    }
+  }, {
+    key: "getAdc01",
+    value: function getAdc01() {
+      return this._v_ && this._v_["adc01"] !== undefined ? this._v_["adc01"] : 0;
+    }
+  }, {
+    key: "getAdc02",
+    value: function getAdc02() {
+      return this._v_ && this._v_["adc02"] !== undefined ? this._v_["adc02"] : 0;
+    }
+  }, {
+    key: "getAdc03",
+    value: function getAdc03() {
+      return this._v_ && this._v_["adc03"] !== undefined ? this._v_["adc03"] : 0;
+    }
+  }, {
+    key: "getAdc04",
+    value: function getAdc04() {
+      return this._v_ && this._v_["adc04"] !== undefined ? this._v_["adc04"] : 0;
+    }
   }, {
     key: "doIt",
     value: function doIt(args) {
@@ -2249,8 +2314,8 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var statement = Cast$1.toString(args.SCRIPT);
       log$1.log("dumpValue: ".concat(statement));
       try {
-        console.log('_v_:', _v_);
-        var value = _v_[statement];
+        console.log('this._v_:', this._v_);
+        var value = this._v_[statement];
         return value;
       } catch (error) {
         console.log(error);
