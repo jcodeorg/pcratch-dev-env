@@ -2245,6 +2245,7 @@ var Machine = /*#__PURE__*/function () {
     key: "openpicoport",
     value: function openpicoport() {
       if (this.picoserial) {
+        console.log("openpicoport!!");
         this.picoserial.openpicoport(this._v_);
       }
     }
@@ -2647,7 +2648,7 @@ var Machine = /*#__PURE__*/function () {
   }, {
     key: "scan",
     value: function scan() {
-      console.log("machine.scan()");
+      console.log("machine.scan() new!!");
       openpicoport();
       return;
     }
