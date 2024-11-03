@@ -2175,8 +2175,8 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockAllThreads: false,
           text: formatMessage({
             id: 'dumpValue',
-            default: 'デバイスの返却値 [SCRIPT]',
-            description: 'デバイスの変数を表示する'
+            default: 'デバイスの返却値! [SCRIPT]',
+            description: 'デバイスの変数を表示する!'
           }),
           arguments: {
             SCRIPT: {
