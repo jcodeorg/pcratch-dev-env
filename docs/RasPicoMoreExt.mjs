@@ -1883,9 +1883,9 @@ var PicoSerial = /*#__PURE__*/function () {
     */
     )
   }, {
-    key: "disconnectFromPort",
+    key: "disconnect",
     value: (function () {
-      var _disconnectFromPort = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
+      var _disconnect = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
         var localPort;
         return _regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
@@ -1924,10 +1924,10 @@ var PicoSerial = /*#__PURE__*/function () {
           }
         }, _callee3, this, [[6, 11]]);
       }));
-      function disconnectFromPort() {
-        return _disconnectFromPort.apply(this, arguments);
+      function disconnect() {
+        return _disconnect.apply(this, arguments);
       }
-      return disconnectFromPort;
+      return disconnect;
     }()
     /**
      * ポートをオープンします
@@ -2643,15 +2643,6 @@ var Machine = /*#__PURE__*/function () {
     }
 
     /**
-     * Start to scan Bluetooth LE devices to find micro:bit with MicroBit More service.
-     */
-  }, {
-    key: "scanBLE",
-    value: function scanBLE() {
-      return Promise.resolve();
-    }
-
-    /**
      * Whether the key is pressed at this moment.
      * @param {string} key - key in keyboard event
      * @returns {boolean} - return true when the key is pressed
@@ -2702,7 +2693,10 @@ var Machine = /*#__PURE__*/function () {
     key: "disconnect",
     value: function disconnect() {
       console.log("machine.disconnect()");
-      return;
+      if (this.picoserial) {
+        return this.picoserial.disconnect();
+      }
+      this.onDisconnect();
     }
 
     /**
