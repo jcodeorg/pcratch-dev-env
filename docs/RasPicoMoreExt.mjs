@@ -2023,6 +2023,7 @@ var Machine = /*#__PURE__*/function () {
   }, {
     key: "stopTone",
     value: function stopTone(util) {
+      console.log("machine.stopTone()");
       return Promise.resolve();
     }
 
@@ -2249,6 +2250,7 @@ var Machine = /*#__PURE__*/function () {
   }, {
     key: "onNotify",
     value: function onNotify(msg) {
+      console.log("machine.onNotify()", msg);
       return;
     }
 
