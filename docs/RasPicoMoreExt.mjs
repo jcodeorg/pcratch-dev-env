@@ -2095,6 +2095,19 @@ var Machine = /*#__PURE__*/function () {
      */
     this.runtime = runtime;
 
+    // デバイスから返却された値を格納するオブジェクト
+    this._v_ = {
+      "dummy": 123
+    };
+
+    // シリアル接続
+    this.picoserial = null;
+    try {
+      this.picoserial = new PicoSerial();
+    } catch (error) {
+      console.log(error);
+    }
+
     /**
      * The BluetoothLowEnergy connection socket for reading/writing peripheral data.
      * 以下の関数を用意しなければならない：
@@ -2226,9 +2239,27 @@ var Machine = /*#__PURE__*/function () {
   }
 
   /**
-   * Initialize configuration of the micro:bit.
+   * Pico Serial
    */
   return _createClass(Machine, [{
+    key: "openpicoport",
+    value: function openpicoport() {
+      if (this.picoserial) {
+        this.picoserial.openpicoport(this._v_);
+      }
+    }
+  }, {
+    key: "picowrite",
+    value: function picowrite(s) {
+      if (this.picoserial) {
+        this.picoserial.picowrite(s);
+      }
+    }
+
+    /**
+     * Initialize configuration of the micro:bit.
+     */
+  }, {
     key: "initConfig",
     value: function initConfig() {
       this.config = {};
@@ -2617,12 +2648,7 @@ var Machine = /*#__PURE__*/function () {
     key: "scan",
     value: function scan() {
       console.log("machine.scan()");
-      // シリアル接続
-      try {
-        this.picoserial = new PicoSerial();
-      } catch (error) {
-        console.log(error);
-      }
+      openpicoport();
       return;
     }
     /**
@@ -2972,38 +2998,24 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }
 
     // Create a new MicroBit peripheral instance
+    // machine.picowrite(string)
+    // machine.openpicoport(_v_)
     this.machine = new Machine(this.runtime, ExtensionBlocks.EXTENSION_ID);
 
     // シリアル接続
-    try {
-      this.picoserial = new PicoSerial();
-    } catch (error) {
-      console.log(error);
-    }
-
-    // デバイスから返却された値を格納するオブジェクト
-    this._v_ = {
-      "dummy": 123
-    };
+    //try {
+    //    this.picoserial = new PicoSerial();
+    //} catch (error) {
+    //    console.log(error);
+    //}
 
     //this.connectPeripheral(); // ペリフェラルに接続
   }
 
   /**
-   * Request connection to the peripheral.
-   * Request user to choose a device, and then connect it automatically.
+   * @returns {object} metadata for this extension and its blocks.
    */
   return _createClass(ExtensionBlocks, [{
-    key: "connectPeripheral",
-    value: function connectPeripheral() {
-      console.log('connectPeripheral');
-      this.runtime.connectPeripheral(ExtensionBlocks.EXTENSION_ID, 'device-id');
-    }
-
-    /**
-     * @returns {object} metadata for this extension and its blocks.
-     */
-  }, {
     key: "getInfo",
     value: function getInfo() {
       setupTranslations();
@@ -3143,27 +3155,27 @@ var ExtensionBlocks = /*#__PURE__*/function () {
   }, {
     key: "getAdc00",
     value: function getAdc00() {
-      return this._v_ && this._v_["adc00"] !== undefined ? this._v_["adc00"] : 0;
+      return this.machine._v_ && this.machine._v_["adc00"] !== undefined ? this.machine._v_["adc00"] : 0;
     }
   }, {
     key: "getAdc01",
     value: function getAdc01() {
-      return this._v_ && this._v_["adc01"] !== undefined ? this._v_["adc01"] : 0;
+      return this.machine._v_ && this.machine._v_["adc01"] !== undefined ? this.machine._v_["adc01"] : 0;
     }
   }, {
     key: "getAdc02",
     value: function getAdc02() {
-      return this._v_ && this._v_["adc02"] !== undefined ? this._v_["adc02"] : 0;
+      return this.machine._v_ && this.machine._v_["adc02"] !== undefined ? this.machine._v_["adc02"] : 0;
     }
   }, {
     key: "getAdc03",
     value: function getAdc03() {
-      return this._v_ && this._v_["adc03"] !== undefined ? this._v_["adc03"] : 0;
+      return this.machine._v_ && this.machine._v_["adc03"] !== undefined ? this.machine._v_["adc03"] : 0;
     }
   }, {
     key: "getAdc04",
     value: function getAdc04() {
-      return this._v_ && this._v_["adc04"] !== undefined ? this._v_["adc04"] : 0;
+      return this.machine._v_ && this.machine._v_["adc04"] !== undefined ? this.machine._v_["adc04"] : 0;
     }
   }, {
     key: "doIt",
@@ -3185,8 +3197,8 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var statement = Cast$1.toString(args.SCRIPT);
       log$1.log("dumpValue: ".concat(statement));
       try {
-        console.log('this._v_:', this._v_);
-        var value = this._v_[statement];
+        console.log('this.machine._v_:', this.machine._v_);
+        var value = this.machine._v_[statement];
         return value;
       } catch (error) {
         console.log(error);
@@ -3204,7 +3216,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var port = Cast$1.toString(args.PORT);
       log$1.log("connectPico: ".concat(port));
       try {
-        this.picoserial.openpicoport(this._v_);
+        this.machine.openpicoport();
       } catch (error) {
         console.log(error);
       }
@@ -3220,7 +3232,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     value: function execCommand(args) {
       try {
         var text = Cast$1.toString(args.TEXT);
-        this.picoserial.picowrite(text + '\r\n');
+        this.machine.picowrite(text + '\r\n');
       } catch (error) {
         console.log(error);
       }
@@ -3237,7 +3249,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var code = textUpper.charCodeAt(0);
       var ctrlCode = code - 64;
       log$1.log("CTRL-: ".concat(text, " : ").concat(code, " : ").concat(ctrlCode));
-      this.picoserial.picowrite(String.fromCharCode(ctrlCode));
+      this.machine.picowrite(String.fromCharCode(ctrlCode));
     }
   }], [{
     key: "formatMessage",
