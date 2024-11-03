@@ -2598,35 +2598,13 @@ var Machine = /*#__PURE__*/function () {
     }
 
     /**
-     * Start to scan USB serial devices to find micro:bit v2.
-     */
-  }, {
-    key: "scanSerial",
-    value:
-    /**
-     * Start to scan USB serial devices to find micro:bit v2.
-     */
-    function scanSerial() {
-      this._ble = new WebSerial(this.runtime, this._extensionId, {
-        filters: [{
-          usbVendorId: 0x0d28,
-          usbProductId: 0x0204
-        }]
-      }, this._onConnect, this.onDisconnect);
-    }
-    /**
-     * Called by the runtime when user wants to connect to a certain peripheral.
-     * @param {number} id - the id of the peripheral to connect to.
-     */
-  }, {
-    key: "isKeyPressing",
-    value:
-    /**
      * Whether the key is pressed at this moment.
      * @param {string} key - key in keyboard event
      * @returns {boolean} - return true when the key is pressed
      */
-    function isKeyPressing(key) {
+  }, {
+    key: "isKeyPressing",
+    value: function isKeyPressing(key) {
       return Object.values(this.keyState).find(function (state) {
         return state.key === key;
       });
@@ -2642,6 +2620,18 @@ var Machine = /*#__PURE__*/function () {
       this.scanSerial();
       return;
     }
+    /**
+     * Start to scan USB serial devices to find micro:bit v2.
+     */
+  }, {
+    key: "scanSerial",
+    value: function scanSerial() {
+      return;
+    }
+    /**
+     * Called by the runtime when user wants to connect to a certain peripheral.
+     * @param {number} id - the id of the peripheral to connect to.
+     */
   }, {
     key: "connect",
     value: function connect(id) {
