@@ -1709,8 +1709,6 @@ var PicoSerial = /*#__PURE__*/function () {
     _classCallCheck(this, PicoSerial);
     // ランタイムを保存
     this._runtime = runtime;
-    // 書き込み Stream
-    this.picowriter = null;
     // ポート選択ドロップダウン
     this.portSelector = undefined;
     // 接続ボタン
@@ -1720,7 +1718,9 @@ var PicoSerial = /*#__PURE__*/function () {
     // 現在使用しているポート
     this.picoport = undefined;
     // 現在使用しているリーダー
-    this.picoreader = undefined;
+    this.picoreader = null;
+    // 書き込み Stream
+    this.picowriter = null;
     // 接続ステータス
     this.status = 0; // 0:未接続 1:接続中 2:接続済み
 
@@ -1895,34 +1895,47 @@ var PicoSerial = /*#__PURE__*/function () {
               localPort = this.picoport;
               this.picoport = undefined;
               if (!this.picoreader) {
-                _context3.next = 5;
+                _context3.next = 7;
                 break;
               }
               _context3.next = 5;
               return this.picoreader.cancel();
             case 5:
-              if (!localPort) {
-                _context3.next = 14;
+              this.picoreader.releaseLock();
+              this.picoreader = null;
+            case 7:
+              if (!this.picowriter) {
+                _context3.next = 12;
                 break;
               }
-              _context3.prev = 6;
-              _context3.next = 9;
+              _context3.next = 10;
+              return this.picowriter.cancel();
+            case 10:
+              this.picowriter.releaseLock();
+              this.picowriter = null;
+            case 12:
+              if (!localPort) {
+                _context3.next = 21;
+                break;
+              }
+              _context3.prev = 13;
+              _context3.next = 16;
               return localPort.close();
-            case 9:
-              _context3.next = 14;
+            case 16:
+              _context3.next = 21;
               break;
-            case 11:
-              _context3.prev = 11;
-              _context3.t0 = _context3["catch"](6);
+            case 18:
+              _context3.prev = 18;
+              _context3.t0 = _context3["catch"](13);
               console.error(_context3.t0);
-            case 14:
+            case 21:
               this.status = 0;
               //this.markDisconnected();
-            case 15:
+            case 22:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, this, [[6, 11]]);
+        }, _callee3, this, [[13, 18]]);
       }));
       function disconnect() {
         return _disconnect.apply(this, arguments);
