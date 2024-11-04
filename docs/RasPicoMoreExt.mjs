@@ -1683,7 +1683,7 @@ var SerialProcessor = /*#__PURE__*/function () {
         return _processData.apply(this, arguments);
       }
       return processData;
-    }()
+    }() // 1行毎に解析して、this._v_ に受信した変数を格納する
   }, {
     key: "processLine",
     value: function processLine(line) {
@@ -1950,7 +1950,7 @@ var PicoSerial = /*#__PURE__*/function () {
     value: (function () {
       var _openpicoport = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4(_v_) {
         var _this2 = this;
-        var ports, reader, serialProcessor;
+        var ports, serialProcessor;
         return _regeneratorRuntime.wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -1979,7 +1979,7 @@ var PicoSerial = /*#__PURE__*/function () {
                 baudRate: 115200
               });
             case 13:
-              reader = this.picoport.readable.getReader();
+              this.picoreader = this.picoport.readable.getReader();
               console.log('Connected!?!');
 
               // 必要な処理をここに追加
@@ -1988,7 +1988,7 @@ var PicoSerial = /*#__PURE__*/function () {
 
               // 1行毎に解析して、this._v_ に受信した変数を格納する
               serialProcessor = new SerialProcessor(_v_);
-              serialProcessor.processData(reader).catch(console.error);
+              serialProcessor.processData(this.picoreader).catch(console.error);
 
               //term.writeln('<CONNECTED>');
               _context4.next = 24;
@@ -2010,105 +2010,48 @@ var PicoSerial = /*#__PURE__*/function () {
       return openpicoport;
     }()
     /**
-     * WritableStreamDefaultWriter を取得します。
-     * @return {WritableStreamDefaultWriter | null}
-     */
-    )
-  }, {
-    key: "getWritablePort",
-    value: (function () {
-      var _getWritablePort = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5() {
-        return _regeneratorRuntime.wrap(function _callee5$(_context5) {
-          while (1) switch (_context5.prev = _context5.next) {
-            case 0:
-              if (this.picoport && this.picoport.writable) {
-                this.picowriter = this.picoport.writable.getWriter();
-              } else {
-                this.picowriter = null;
-              }
-              return _context5.abrupt("return", this.picowriter);
-            case 2:
-            case "end":
-              return _context5.stop();
-          }
-        }, _callee5, this);
-      }));
-      function getWritablePort() {
-        return _getWritablePort.apply(this, arguments);
-      }
-      return getWritablePort;
-    }()
-    /**
-     * Releases the lock held by the `picowriter` if it exists.
-     * This method checks if the `picowriter` is defined and, if so,
-     * calls its `releaseLock` method to release any held resources.
-     */
-    )
-  }, {
-    key: "releaseLock",
-    value: function releaseLock() {
-      if (this.picowriter) {
-        this.picowriter.releaseLock();
-      }
-    }
-    /**
      * Writes the provided data to the Pico writer.
      *
      * @param {Uint8Array} data - The data to be written, represented as a Uint8Array.
      * @return A promise that resolves when the write operation is complete.
      */
-  }, {
-    key: "picowrite",
-    value: (function () {
-      var _picowrite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(s) {
-        var _this$picowriter;
-        var encoder, encoded;
-        return _regeneratorRuntime.wrap(function _callee6$(_context6) {
-          while (1) switch (_context6.prev = _context6.next) {
-            case 0:
-              this.getWritablePort();
-              encoder = new TextEncoder();
-              encoded = encoder.encode(s);
-              log$1.log("picowrite: ".concat(s, " : ").concat(encoded));
-              _context6.next = 6;
-              return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(encoded);
-            case 6:
-              this.releaseLock();
-            case 7:
-            case "end":
-              return _context6.stop();
-          }
-        }, _callee6, this);
-      }));
-      function picowrite(_x3) {
-        return _picowrite.apply(this, arguments);
-      }
-      return picowrite;
-    }())
+    )
   }, {
     key: "writeData",
-    value: function () {
-      var _writeData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee7(data) {
-        var _this$picowriter2;
-        return _regeneratorRuntime.wrap(function _callee7$(_context7) {
-          while (1) switch (_context7.prev = _context7.next) {
+    value: (function () {
+      var _writeData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5(data) {
+        return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
             case 0:
-              this.getWritablePort();
-              _context7.next = 3;
-              return (_this$picowriter2 = this.picowriter) === null || _this$picowriter2 === void 0 ? void 0 : _this$picowriter2.write(data);
-            case 3:
-              this.releaseLock();
+              if (!(this.picoport && this.picoport.writable)) {
+                _context5.next = 6;
+                break;
+              }
+              this.picowriter = this.picoport.writable.getWriter();
+              _context5.next = 4;
+              return this.picowriter.write(data);
             case 4:
+              this.picowriter.releaseLock();
+              this.picowriter = null;
+            case 6:
             case "end":
-              return _context7.stop();
+              return _context5.stop();
           }
-        }, _callee7, this);
+        }, _callee5, this);
       }));
-      function writeData(_x4) {
+      function writeData(_x3) {
         return _writeData.apply(this, arguments);
       }
       return writeData;
-    }()
+    }())
+  }, {
+    key: "picowrite",
+    value: function picowrite(s) {
+      var encoder = new TextEncoder();
+      var encoded = encoder.encode(s);
+      log$1.log("picowrite: ".concat(s, " : ").concat(encoded));
+      this.writeData(encoded);
+    }
   }]);
 }();
 
