@@ -2071,7 +2071,7 @@ var PicoSerial = /*#__PURE__*/function () {
               encoded = encoder.encode(s);
               log$1.log("picowrite: ".concat(s, " : ").concat(encoded));
               _context6.next = 6;
-              return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(s);
+              return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(encoded);
             case 6:
               this.releaseLock();
             case 7:
