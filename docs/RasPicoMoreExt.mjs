@@ -2062,16 +2062,19 @@ var PicoSerial = /*#__PURE__*/function () {
     value: (function () {
       var _picowrite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(s) {
         var _this$picowriter;
+        var encoder, encoded;
         return _regeneratorRuntime.wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
               this.getWritablePort();
-              log$1.log("picowrite: ".concat(s, " : ").concat(this.picowriter));
-              _context6.next = 4;
-              return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(new TextEncoder().encode(s));
-            case 4:
+              encoder = new TextEncoder();
+              encoded = encoder.encode(s);
+              log$1.log("picowrite: ".concat(s, " : ").concat(encoded));
+              _context6.next = 6;
+              return (_this$picowriter = this.picowriter) === null || _this$picowriter === void 0 ? void 0 : _this$picowriter.write(encoded);
+            case 6:
               this.releaseLock();
-            case 5:
+            case 7:
             case "end":
               return _context6.stop();
           }
