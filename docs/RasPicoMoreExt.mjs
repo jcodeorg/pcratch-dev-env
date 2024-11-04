@@ -1243,6 +1243,7 @@ var ja = {
 	"pcratchPico.getAdc04": "ADC4",
 	"pcratchPico.getPinValue": "ピン [PIN] の値",
 	"pcratchPico.whenPinEvent": "ピン [PIN] で [EVENT] イベントが起きたとき",
+	"pcratchPico.playTone": "ピン [PIN] で [FREQ] Hz [VOL] %の音を鳴らす",
 	"pcratchPico.lightLevel": "あかるさ"
 };
 var translations = {
@@ -1906,38 +1907,33 @@ var PicoSerial = /*#__PURE__*/function () {
               this.picoreader.releaseLock();
               this.picoreader = null;
             case 7:
-              if (!this.picowriter) {
-                _context3.next = 12;
-                break;
+              if (this.picowriter) {
+                // await this.picowriter.cancel();
+                this.picowriter.releaseLock();
+                this.picowriter = null;
               }
-              _context3.next = 10;
-              return this.picowriter.cancel();
-            case 10:
-              this.picowriter.releaseLock();
-              this.picowriter = null;
-            case 12:
               if (!localPort) {
-                _context3.next = 21;
+                _context3.next = 17;
                 break;
               }
-              _context3.prev = 13;
-              _context3.next = 16;
+              _context3.prev = 9;
+              _context3.next = 12;
               return localPort.close();
-            case 16:
-              _context3.next = 21;
+            case 12:
+              _context3.next = 17;
               break;
-            case 18:
-              _context3.prev = 18;
-              _context3.t0 = _context3["catch"](13);
+            case 14:
+              _context3.prev = 14;
+              _context3.t0 = _context3["catch"](9);
               console.error(_context3.t0);
-            case 21:
+            case 17:
               this.status = 0;
               //this.markDisconnected();
-            case 22:
+            case 18:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, this, [[13, 18]]);
+        }, _callee3, this, [[9, 14]]);
       }));
       function disconnect() {
         return _disconnect.apply(this, arguments);
@@ -2220,7 +2216,7 @@ var Machine = /*#__PURE__*/function () {
     //    this.analogValue[pinIndex] = 0;
     //});
 
-    this.gpio = [3, 5, 7, 9];
+    this.gpio = [2, 3, 4, 5, 6, 7, 8, 9];
     this.gpio.forEach(function (pinIndex) {
       _this.digitalLevel[pinIndex] = 0;
     });
@@ -3223,7 +3219,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             PIN: {
               type: ArgumentType$1.STRING,
               menu: 'gpio',
-              defaultValue: '0'
+              defaultValue: '7'
             }
           }
         }, {
@@ -3238,7 +3234,30 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             PIN: {
               type: ArgumentType$1.STRING,
               menu: 'gpio',
-              defaultValue: '0'
+              defaultValue: '7'
+            }
+          }
+        }, {
+          opcode: 'playTone',
+          text: formatMessage({
+            id: 'pcratchPico.playTone',
+            default: 'play tone [FREQ] Hz volume [VOL] % at [PIN]',
+            description: 'play tone on the speaker'
+          }),
+          blockType: BlockType$1.COMMAND,
+          arguments: {
+            PIN: {
+              type: ArgumentType$1.STRING,
+              menu: 'gpio',
+              defaultValue: '2'
+            },
+            FREQ: {
+              type: ArgumentType$1.NUMBER,
+              defaultValue: 440
+            },
+            VOL: {
+              type: ArgumentType$1.NUMBER,
+              defaultValue: 100
             }
           }
         }, {
@@ -3307,6 +3326,30 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       var key = "".concat(name, "_ANY");
       console.log('getPinValue:', key);
       return this.machine._v_[key];
+    }
+    /**
+     * Play tone on the speaker.
+     * @param {object} args - the block's arguments.
+     * @param {string} args.FREQ - wave frequency to play
+     * @param {string} args.VOL laudness of tone
+     * @param {object} util - utility object provided by the runtime.
+     * @return {promise | undefined} - a Promise that resolves when the command was sent
+     *                                 or undefined if this process was yield.
+     */
+  }, {
+    key: "playTone",
+    value: function playTone(args) {
+      var pin = parseInt(args.PIN, 10);
+      var frequency = parseInt(args.FREQ, 10);
+      var volume = parseInt(args.VOL, 10);
+      volume = Math.min(100, Math.max(0, volume));
+      try {
+        var text = Cast$1.toString("playTone(".concat(pin, ", ").concat(frequency, ", ").concat(volume, ")"));
+        this.machine.picowrite(text + '\r\n');
+      } catch (error) {
+        console.log(error);
+      }
+      return;
     }
   }, {
     key: "whenButtonEvent",
