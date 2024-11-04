@@ -1241,6 +1241,8 @@ var ja = {
 	"pcratchPico.getAdc02": "ADC2",
 	"pcratchPico.getAdc03": "ADC3",
 	"pcratchPico.getAdc04": "ADC4",
+	"pcratchPico.getPinValue": "ピン [PIN] の値",
+	"pcratchPico.whenPinEvent": "ピン [PIN] で [EVENT] イベントが起きたとき",
 	"pcratchPico.lightLevel": "あかるさ"
 };
 var translations = {
@@ -2218,7 +2220,7 @@ var Machine = /*#__PURE__*/function () {
     //    this.analogValue[pinIndex] = 0;
     //});
 
-    this.gpio = [0, 1, 2, 8, 12, 13, 14, 15, 16];
+    this.gpio = [3, 5, 7, 9];
     this.gpio.forEach(function (pinIndex) {
       _this.digitalLevel[pinIndex] = 0;
     });
@@ -2283,21 +2285,21 @@ var Machine = /*#__PURE__*/function () {
   return _createClass(Machine, [{
     key: "getLastEventId",
     value: function getLastEventId(name, event) {
-      var key = "".concat(name, "_").concat(event);
+      var key = "".concat(name, "_").concat(event, "_ID");
       return this._v_[key];
     }
     // 前のイベントのIDを返却する
   }, {
     key: "getPrevEventId",
     value: function getPrevEventId(name, event) {
-      var key = "".concat(name, "_").concat(event);
+      var key = "".concat(name, "_").concat(event, "_ID");
       return this._prev_[key];
     }
     // 前のイベントのIDを最後のイベントのIDで上書きする
   }, {
     key: "updatePrevEventId",
     value: function updatePrevEventId(name, event) {
-      var key = "".concat(name, "_").concat(event);
+      var key = "".concat(name, "_").concat(event, "_ID");
       console.log("updatePrevEventId: ".concat(key, ": ").concat(this._prev_[key], " --> ").concat(this._v_[key]));
       this._prev_[key] = this._v_[key];
     }
@@ -3073,11 +3075,21 @@ var ExtensionBlocks = /*#__PURE__*/function () {
 
     //this.connectPeripheral(); // ペリフェラルに接続
   }
-
-  /**
-   * @returns {object} metadata for this extension and its blocks.
-   */
   return _createClass(ExtensionBlocks, [{
+    key: "GPIO_MENU",
+    get: function get() {
+      return this.machine.gpio.map(function (pinIndex) {
+        return Object.create({
+          text: "P".concat(pinIndex.toString()),
+          value: pinIndex.toString()
+        });
+      });
+    }
+
+    /**
+     * @returns {object} metadata for this extension and its blocks.
+     */
+  }, {
     key: "getInfo",
     value: function getInfo() {
       setupTranslations();
@@ -3196,6 +3208,40 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           }),
           blockType: BlockType$1.REPORTER
         }, {
+          opcode: 'whenPinEvent',
+          text: formatMessage({
+            id: 'pcratchPico.whenPinEvent',
+            default: 'when catch [EVENT] at pin [PIN]',
+            description: 'when catch the event at the pin'
+          }),
+          blockType: BlockType$1.HAT,
+          arguments: {
+            EVENT: {
+              type: ArgumentType$1.STRING,
+              defaultValue: 'ANY'
+            },
+            PIN: {
+              type: ArgumentType$1.STRING,
+              menu: 'gpio',
+              defaultValue: '0'
+            }
+          }
+        }, {
+          opcode: 'getPinValue',
+          text: formatMessage({
+            id: 'pcratchPico.getPinValue',
+            default: 'value of pin [PIN]',
+            description: 'analog input value of the pin'
+          }),
+          blockType: BlockType$1.REPORTER,
+          arguments: {
+            PIN: {
+              type: ArgumentType$1.STRING,
+              menu: 'gpio',
+              defaultValue: '0'
+            }
+          }
+        }, {
           opcode: 'whenButtonEvent',
           text: formatMessage({
             id: 'mbitMore.whenButtonEvent',
@@ -3214,7 +3260,12 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }],
-        menus: {}
+        menus: {
+          gpio: {
+            acceptReporters: false,
+            items: this.GPIO_MENU
+          }
+        }
       };
     }
     /**
@@ -3225,10 +3276,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
      * @return {boolean} - true if the event raised.
      */
   }, {
-    key: "whenButtonEvent",
-    value: function whenButtonEvent(args) {
+    key: "whenPinEvent",
+    value: function whenPinEvent(args) {
       var _this = this;
-      var name = args.NAME;
+      var name = "P" + args.PIN;
       var event = args.EVENT;
       var lid = this.machine.getLastEventId(name, event);
       if (!lid) return false; // no event
@@ -3238,6 +3289,39 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         this.updateLastButtonEventTimer = setTimeout(function () {
           _this.machine.updatePrevEventId(name, event);
           _this.updateLastButtonEventTimer = null;
+        }, this.runtime.currentStepTime);
+      }
+      return true;
+    }
+    /**
+     * Return analog value of the pin.
+     * @param {object} args - the block's arguments.
+     * @param {number} args.PIN - pin ID.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves analog input value of the pin or undefined if this process was yield.
+     */
+  }, {
+    key: "getPinValue",
+    value: function getPinValue(args, util) {
+      var name = "P" + args.PIN;
+      var key = "".concat(name, "_ANY");
+      console.log('getPinValue:', key);
+      return this.machine._v_[key];
+    }
+  }, {
+    key: "whenButtonEvent",
+    value: function whenButtonEvent(args) {
+      var _this2 = this;
+      var name = args.NAME;
+      var event = args.EVENT;
+      var lid = this.machine.getLastEventId(name, event);
+      if (!lid) return false; // no event
+      var pid = this.machine.getPrevEventId(name, event);
+      if (lid === pid) return false; // no new event
+      if (!this.updateLastButtonEventTimer) {
+        this.updateLastButtonEventTimer = setTimeout(function () {
+          _this2.machine.updatePrevEventId(name, event);
+          _this2.updateLastButtonEventTimer = null;
         }, this.runtime.currentStepTime);
       }
       return true;
