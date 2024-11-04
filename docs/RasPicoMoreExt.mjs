@@ -3215,19 +3215,19 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     key: "whenButtonEvent",
     value: function whenButtonEvent(args) {
       var _this = this;
+      var name = args.NAME;
+      var event = args.EVENT;
+      var lid = this.machine.getLastEventId(name, event);
+      if (!lid) return false; // no event
+      var pid = this.machine.getPrevEventId(name, event);
+      if (lid === pid) return false; // no new event
       if (!this.updateLastButtonEventTimer) {
         this.updateLastButtonEventTimer = setTimeout(function () {
           _this.machine.updatePrevEventId(name, event);
           _this.updateLastButtonEventTimer = null;
         }, this.runtime.currentStepTime);
       }
-      var name = args.NAME;
-      var event = args.EVENT;
-      var lid = this.machine.getLastEventId(name, event);
-      if (!lid) return false;
-      var pid = this.machine.getPrevEventId(name, event);
-      if (!pid) return true;
-      return lid === pid;
+      return true;
     }
     /**
      * Get amount of light (0 - 255) on the LEDs.
