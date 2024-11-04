@@ -1243,7 +1243,7 @@ var ja = {
 	"pcratchPico.getAdc04": "ADC4",
 	"pcratchPico.getPinValue": "ピン [PIN] の値",
 	"pcratchPico.whenPinEvent": "ピン [PIN] で [EVENT] イベントが起きたとき",
-	"pcratchPico.playTone": "ピン [PIN] で [FREQ] Hz [VOL] %の音を鳴らす",
+	"pcratchPico.playTone": "ピン [PIN] で [FREQ] Hz [VOL] % DUTYの音を鳴らす",
 	"pcratchPico.lightLevel": "あかるさ"
 };
 var translations = {
@@ -3241,7 +3241,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           opcode: 'playTone',
           text: formatMessage({
             id: 'pcratchPico.playTone',
-            default: 'play tone [FREQ] Hz volume [VOL] % at [PIN]',
+            default: 'play tone [FREQ] Hz [VOL] % duty at [PIN]',
             description: 'play tone on the speaker'
           }),
           blockType: BlockType$1.COMMAND,
@@ -3257,25 +3257,43 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             },
             VOL: {
               type: ArgumentType$1.NUMBER,
-              defaultValue: 100
+              defaultValue: 50
             }
           }
         }, {
-          opcode: 'whenButtonEvent',
+          opcode: 'displayFill',
           text: formatMessage({
-            id: 'mbitMore.whenButtonEvent',
-            default: 'when button [NAME] is [EVENT]',
-            description: 'when the selected button on the micro:bit get the selected event'
+            id: 'pcratchPico.displayFill',
+            default: '画面を [VAL] で埋める',
+            description: '画面を埋める'
           }),
-          blockType: BlockType$1.HAT,
+          blockType: BlockType$1.COMMAND,
           arguments: {
-            NAME: {
+            VAL: {
+              type: ArgumentType$1.NUMBER,
+              defaultValue: 0
+            }
+          }
+        }, {
+          opcode: 'displayKanji',
+          text: formatMessage({
+            id: 'pcratchPico.displayKanji',
+            default: '画面 X [X] Y [Y] に [TEXT] を表示',
+            description: '漢字を表示'
+          }),
+          blockType: BlockType$1.COMMAND,
+          arguments: {
+            TEXT: {
               type: ArgumentType$1.STRING,
-              defaultValue: 'A'
+              defaultValue: 'ぷくらっち'
             },
-            EVENT: {
-              type: ArgumentType$1.STRING,
-              defaultValue: 'DOWN'
+            X: {
+              type: ArgumentType$1.NUMBER,
+              defaultValue: 0
+            },
+            Y: {
+              type: ArgumentType$1.NUMBER,
+              defaultValue: 0
             }
           }
         }],
@@ -3351,24 +3369,41 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       }
       return;
     }
+
+    /**
+     * Play tone on the speaker.
+     * @param {object} args - the block's arguments.
+     * @param {number} args.VAL 0 または 1
+     */
   }, {
-    key: "whenButtonEvent",
-    value: function whenButtonEvent(args) {
-      var _this2 = this;
-      var name = args.NAME;
-      var event = args.EVENT;
-      var lid = this.machine.getLastEventId(name, event);
-      if (!lid) return false; // no event
-      var pid = this.machine.getPrevEventId(name, event);
-      if (lid === pid) return false; // no new event
-      if (!this.updateLastButtonEventTimer) {
-        this.updateLastButtonEventTimer = setTimeout(function () {
-          _this2.machine.updatePrevEventId(name, event);
-          _this2.updateLastButtonEventTimer = null;
-        }, this.runtime.currentStepTime);
+    key: "displayFill",
+    value: function displayFill(args) {
+      var val = parseInt(args.VAL, 10);
+      try {
+        var text = Cast$1.toString("display.fill(".concat(val, ")"));
+        this.machine.picowrite(text + '\r\n');
+      } catch (error) {
+        console.log(error);
       }
-      return true;
+      return;
     }
+  }, {
+    key: "displayKanji",
+    value: function displayKanji(args) {
+      var x = parseInt(args.X, 10);
+      var y = parseInt(args.Y, 10);
+      var str = Cast$1.toString(args.TEXT);
+      try {
+        // ダブルクォーテーションをエスケープ
+        var escapedText = str.replace(/"/g, '\\"');
+        var text = Cast$1.toString("display.kanji(\"".concat(escapedText, "\", ").concat(x, ", ").concat(y, ")"));
+        this.machine.picowrite(text + '\r\n');
+      } catch (error) {
+        console.log(error);
+      }
+      return;
+    }
+
     /**
      * Get amount of light (0 - 255) on the LEDs.
      * @param {object} args - the block's arguments.
