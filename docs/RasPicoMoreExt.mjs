@@ -3343,7 +3343,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         // ダブルクォーテーションをエスケープ
         var escapedText = str.replace(/"/g, '\\"');
         var text = Cast$1.toString("display.kanji(\"".concat(escapedText, "\", ").concat(x, ", ").concat(y, ")"));
-        this.machine.picowrite(text + '\r\n');
+        this.machine.picowrite('\x04' + text + '\r\n' + '\x05'); // CTRL+D + text + CTRL+E 日本語問題対策
       } catch (error) {
         console.log(error);
       }
