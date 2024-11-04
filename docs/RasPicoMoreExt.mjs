@@ -3397,7 +3397,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         // ダブルクォーテーションをエスケープ
         var escapedText = str.replace(/"/g, '\\"');
         var text = Cast$1.toString("display.kanji(\"".concat(escapedText, "\", ").concat(x, ", ").concat(y, ")"));
-        this.machine.picowrite(text + '\r\n');
+        // UTF-8エンコード
+        var encoder = new TextEncoder();
+        var encodedText = encoder.encode(text);
+        this.machine.picowrite(encodedText + '\r\n');
       } catch (error) {
         console.log(error);
       }
