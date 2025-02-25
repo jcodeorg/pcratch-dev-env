@@ -4577,6 +4577,7 @@ var MicrobitMore = /*#__PURE__*/function () {
         dataView.setFloat32(0, contentNumber, true);
         contentData = [dataView.getUint8(0), dataView.getUint8(1), dataView.getUint8(2), dataView.getUint8(3)];
       }
+      console.log(label, content);
       return this.sendCommandSet([{
         id: BLECommand.CMD_DATA << 5 | type,
         message: new Uint8Array([].concat(_toConsumableArray(labelData), _toConsumableArray(contentData)))
