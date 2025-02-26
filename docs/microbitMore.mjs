@@ -4225,7 +4225,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       var _this7 = this;
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve) {
-        console.log('sendCommand6', command.id, command.message);
+        console.log('sendCommand7', command.id, command.message);
         _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', false // true // resolve after peripheral's response. // false
         );
         setTimeout(function () {
@@ -4563,7 +4563,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "sendData",
     value: function sendData(label, content, util) {
-      console.log("sendData5:", label, content, this.bleBusy);
+      console.log("sendData6:", label, content, this.bleBusy);
       var labelData = new Array(8).fill().map(function (_value, index) {
         return label.charCodeAt(index);
       });
