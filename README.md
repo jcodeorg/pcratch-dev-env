@@ -23,7 +23,7 @@ npm run build
 cp ./dist/microbitMore.mjs ../docs/
 https://jcodeorg.github.io/raspico-more-dev/microbitMore.mjs
 
-# なぜだか、buildできないです・・・
+# なぜだか、extension-supportなどのディレクトリが足りず、Buildできないです・・・
 mkdir /scratch-gui/node_modules/scratch-vm/src/extension-support
 mkdir /scratch-gui/node_modules/scratch-vm/src/util
 cp /mbit-more-v2/src/vm/extension-support/* /scratch-gui/node_modules/scratch-vm/src/extension-support
