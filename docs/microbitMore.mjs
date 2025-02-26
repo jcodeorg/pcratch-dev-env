@@ -4225,11 +4225,13 @@ var MicrobitMore = /*#__PURE__*/function () {
       var _this7 = this;
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve) {
-        console.log('sendCommand', command.id, command.message);
-        _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', false);
+        console.log('sendCommand2', command.id, command.message);
+        _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', true // resolve after peripheral's response. // false
+        );
         setTimeout(function () {
           return resolve();
-        }, _this7.sendCommandInterval);
+        }, 1000);
+        // setTimeout(() => resolve(), this.sendCommandInterval);
       });
     }
 
