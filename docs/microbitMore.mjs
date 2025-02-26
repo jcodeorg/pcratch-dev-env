@@ -4561,7 +4561,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "sendData",
     value: function sendData(label, content, util) {
-      console.log("sendData2:", label, content, this.bleBusy);
+      console.log("sendData3:", label, content, this.bleBusy);
       var labelData = new Array(8).fill().map(function (_value, index) {
         return label.charCodeAt(index);
       });
