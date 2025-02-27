@@ -30,3 +30,10 @@ cp /mbit-more-v2/src/vm/extension-support/* /scratch-gui/node_modules/scratch-vm
 cp /mbit-more-v2/src/vm/util/* /scratch-gui/node_modules/scratch-vm/src/util
 mkdir /scratch-gui/node_modules/scratch-vm/src/io
 cp /mbit-more-v2/src/vm/io/* /scratch-gui/node_modules/scratch-vm/src/io
+
+# ble.js の捜索
+cd /mbit-more-v2
+/scratch-gui/node_modules/scratch-vm/src/io/ble.js
+cd /scratch-gui/node_modules/scratch-vm/src/io/
+mv ble.js bak-ble.js # 一回退避
+cp /mbit-more-v2/src/vm/io/bak-ble.js ble.js

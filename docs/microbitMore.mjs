@@ -2149,6 +2149,7 @@ var BLE$1 = /*#__PURE__*/function (_JSONRPC) {
       var _this6 = this;
       var encoding = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
       var withResponse = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+      console.log('Write8');
       var params = {
         serviceId: serviceId,
         characteristicId: characteristicId,
@@ -2160,7 +2161,12 @@ var BLE$1 = /*#__PURE__*/function (_JSONRPC) {
       if (withResponse !== null) {
         params.withResponse = withResponse;
       }
-      return this.sendRemoteRequest('write', params).catch(function (e) {
+      console.log('Write7:', params);
+      return this.sendRemoteRequest('write', params).then(function (response) {
+        console.log('Write successful7:', response);
+        return response;
+      }).catch(function (e) {
+        console.error('Error in write7:', e);
         _this6.handleDisconnectError(e);
       });
     }
@@ -4225,7 +4231,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       var _this7 = this;
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve) {
-        console.log('sendCommand8', command.id, command.message);
+        console.log('sendCommand9', command.id, command.message);
         _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', false // true // resolve after peripheral's response. // false
         );
         setTimeout(function () {
