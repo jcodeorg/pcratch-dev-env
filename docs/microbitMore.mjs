@@ -4239,14 +4239,16 @@ var MicrobitMore = /*#__PURE__*/function () {
     value: function sendCommand(command) {
       var _this7 = this;
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
-      return new Promise(function (resolve) {
-        console.log('sendCommand2', command.id, command.message);
+      return new Promise(function (resolve, reject) {
+        console.log('sendCommand3', command.id, command.message);
         _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', false // true // resolve after peripheral's response. // false
-        );
-        setTimeout(function () {
-          return resolve();
-        }, 1000);
-        // setTimeout(() => resolve(), this.sendCommandInterval);
+        ).then(function () {
+          console.log('Write successful');
+          resolve();
+        }).catch(function (error) {
+          console.error('Write failed', error);
+          reject(error);
+        });
       });
     }
 
