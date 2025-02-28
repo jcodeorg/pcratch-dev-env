@@ -4235,12 +4235,11 @@ var MicrobitMore = /*#__PURE__*/function () {
      * @return {Promise} a Promise that resolves when the data was sent and after send command interval.
      */
   }, {
-    key: "sendCommand",
-    value: function sendCommand(command) {
+    key: "sendOneCommand",
+    value: function sendOneCommand(command) {
       var _this7 = this;
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve, reject) {
-        console.log('sendCommand4', command.id, command.message);
         _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', true // true // resolve after peripheral's response. // false
         ).then(function () {
           console.log('Write successful');
@@ -4274,6 +4273,8 @@ var MicrobitMore = /*#__PURE__*/function () {
         }
         return; // Do not return Promise.resolve() to re-try.
       }
+      console.log('sendCommand6');
+      var startTime = performance.now(); // 開始時刻を取得
       this.bleBusy = true;
       // Clear busy and BLE access waiting flag when the scratch-link does not respond.
       this.bleBusyTimeoutID = window.setTimeout(function () {
@@ -4283,7 +4284,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       return new Promise(function (resolve) {
         commands.reduce(function (acc, cur) {
           return acc.then(function () {
-            return _this8.sendCommand(cur);
+            return _this8.sendOneCommand(cur);
           });
         }, Promise.resolve()).then(function () {
           window.clearTimeout(_this8.bleBusyTimeoutID);
@@ -4292,6 +4293,8 @@ var MicrobitMore = /*#__PURE__*/function () {
         }).finally(function () {
           _this8.bleBusy = false;
           _this8.bleAccessWaiting = false;
+          var endTime = performance.now(); // 終了時刻を取得
+          console.log("sendCommandSet completed in ".concat(endTime - startTime, " ms")); // 経過時間を表示
           resolve();
         });
       });
@@ -4580,7 +4583,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "sendData",
     value: function sendData(label, content, util) {
-      console.log("sendData6:", label, content, this.bleBusy);
+      // console.log("sendData6:", label, content, this.bleBusy);
       var labelData = new Array(8).fill().map(function (_value, index) {
         return label.charCodeAt(index);
       });
