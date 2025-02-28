@@ -1911,6 +1911,7 @@ var WebBLE$1 = /*#__PURE__*/function () {
     value: function write(serviceId, characteristicId, message) {
       var encoding = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
       var withResponse = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+      console.log('ble-web.js:Write1');
       var value = encoding === 'base64' ? base64ToUint8Array$2(message) : message;
       return this._server.getPrimaryService(serviceId).then(function (service) {
         return service.getCharacteristic(characteristicId);
@@ -4231,7 +4232,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       var _this7 = this;
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve) {
-        console.log('sendCommand0', command.id, command.message);
+        console.log('sendCommand1', command.id, command.message);
         _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', false // true // resolve after peripheral's response. // false
         );
         setTimeout(function () {
