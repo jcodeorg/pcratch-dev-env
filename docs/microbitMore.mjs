@@ -4240,7 +4240,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       var _this7 = this;
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve, reject) {
-        console.log('sendCommand3', command.id, command.message);
+        console.log('sendCommand4', command.id, command.message);
         _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', true // true // resolve after peripheral's response. // false
         ).then(function () {
           console.log('Write successful');
