@@ -1911,17 +1911,20 @@ var WebBLE$1 = /*#__PURE__*/function () {
     value: function write(serviceId, characteristicId, message) {
       var encoding = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
       var withResponse = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
-      console.log('ble-web.js:Write1');
+      console.log('ble-web.js:Write');
       var value = encoding === 'base64' ? base64ToUint8Array$2(message) : message;
       return this._server.getPrimaryService(serviceId).then(function (service) {
         return service.getCharacteristic(characteristicId);
       }).then(function (characteristic) {
         if (withResponse && characteristic.writeValueWithResponse) {
+          console.log('ble-web.js:writeValueWithResponse');
           return characteristic.writeValueWithResponse(value);
         }
         if (characteristic.writeValueWithoutResponse) {
+          console.log('ble-web.js:writeValueWithoutResponse');
           return characteristic.writeValueWithoutResponse(value);
         }
+        console.log('ble-web.js:writeValue');
         return characteristic.writeValue(value);
       });
     }
