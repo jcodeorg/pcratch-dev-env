@@ -1912,10 +1912,13 @@ var WebBLE$1 = /*#__PURE__*/function () {
       var encoding = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
       var withResponse = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
       console.log('ble-web.js:Write');
+      var startTime = performance.now();
       var value = encoding === 'base64' ? base64ToUint8Array$2(message) : message;
       return this._server.getPrimaryService(serviceId).then(function (service) {
+        console.log('Service retrieved:', performance.now() - startTime, 'ms');
         return service.getCharacteristic(characteristicId);
       }).then(function (characteristic) {
+        console.log('Characteristic retrieved:', performance.now() - startTime, 'ms');
         if (withResponse && characteristic.writeValueWithResponse) {
           console.log('ble-web.js:writeValueWithResponse');
           return characteristic.writeValueWithResponse(value);
@@ -1926,6 +1929,8 @@ var WebBLE$1 = /*#__PURE__*/function () {
         }
         console.log('ble-web.js:writeValue');
         return characteristic.writeValue(value);
+      }).then(function () {
+        console.log('Write completed:', performance.now() - startTime, 'ms');
       });
     }
 
@@ -4235,7 +4240,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       var _this7 = this;
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve) {
-        console.log('sendCommand1', command.id, command.message);
+        console.log('sendCommand2', command.id, command.message);
         _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', false // true // resolve after peripheral's response. // false
         );
         setTimeout(function () {
