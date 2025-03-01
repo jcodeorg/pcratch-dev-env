@@ -4248,7 +4248,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "sendOneCommand",
     value: function sendOneCommand(command) {
-      console.log('sendOneCommand2');
+      console.log('sendOneCommand3');
       var data = new Uint8Array([command.id].concat(_toConsumableArray(command.message)));
       return this._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, null, true // true // resolve after peripheral's response. // false
       );
@@ -4274,7 +4274,7 @@ var MicrobitMore = /*#__PURE__*/function () {
           _this7.sendOneCommand(command).then(function () {
             setTimeout(function () {
               return _processNextCommand(index + 1);
-            }, 30); // 30ms: sendCommandInterval
+            }, 1); // 1ms: sendCommandInterval
           }).catch(function (error) {
             console.error('Error processing command:', error);
             reject(error);
