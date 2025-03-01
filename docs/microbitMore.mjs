@@ -4249,6 +4249,23 @@ var MicrobitMore = /*#__PURE__*/function () {
      * @return {Promise} a Promise that resolves when the data was sent and after send command interval.
      */
   }, {
+    key: "sendOneCommand22222",
+    value: function sendOneCommand22222(command) {
+      var _this7 = this;
+      console.log('sendOneCommand7');
+      var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
+      return new Promise(function (resolve, reject) {
+        _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', true // true // resolve after peripheral's response. // false
+        ).then(function () {
+          console.log('Write successful');
+          resolve();
+        }).catch(function (error) {
+          console.error('Write failed', error);
+          reject(error);
+        });
+      });
+    }
+  }, {
     key: "sendOneCommand",
     value:
     /**
@@ -4259,10 +4276,10 @@ var MicrobitMore = /*#__PURE__*/function () {
      * @return {Promise} a Promise that resolves when the data was sent and after send command interval.
      */
     function sendOneCommand(command) {
-      var _this7 = this;
+      var _this8 = this;
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve, reject) {
-        _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', true // true // resolve after peripheral's response. // false
+        _this8._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', true // true // resolve after peripheral's response. // false
         ).then(function () {
           console.log('Write successful');
           resolve();
@@ -4286,7 +4303,7 @@ var MicrobitMore = /*#__PURE__*/function () {
      * @return {?Promise} a Promise that resolves when the all commands was sent.
      */
     function sendCommandSet22222(commands, util) {
-      var _this8 = this;
+      var _this9 = this;
       if (!this.isConnected()) return Promise.resolve();
       if (this.bleBusy) {
         this.bleAccessWaiting = true;
@@ -4294,7 +4311,7 @@ var MicrobitMore = /*#__PURE__*/function () {
           util.yield(); // re-try this call after a while.
         } else {
           setTimeout(function () {
-            return _this8.sendCommandSet(commands, util);
+            return _this9.sendCommandSet(commands, util);
           }, 1);
         }
         return; // Do not return Promise.resolve() to re-try.
@@ -4303,21 +4320,21 @@ var MicrobitMore = /*#__PURE__*/function () {
       this.bleBusy = true;
       // Clear busy and BLE access waiting flag when the scratch-link does not respond.
       this.bleBusyTimeoutID = window.setTimeout(function () {
-        _this8.bleBusy = false;
-        _this8.bleAccessWaiting = false;
+        _this9.bleBusy = false;
+        _this9.bleAccessWaiting = false;
       }, 1000);
       return new Promise(function (resolve) {
         commands.reduce(function (acc, cur) {
           return acc.then(function () {
-            return _this8.sendOneCommand(cur);
+            return _this9.sendOneCommand(cur);
           });
         }, Promise.resolve()).then(function () {
-          window.clearTimeout(_this8.bleBusyTimeoutID);
+          window.clearTimeout(_this9.bleBusyTimeoutID);
         }).catch(function (err) {
-          _this8._ble.handleDisconnectError(err);
+          _this9._ble.handleDisconnectError(err);
         }).finally(function () {
-          _this8.bleBusy = false;
-          _this8.bleAccessWaiting = false;
+          _this9.bleBusy = false;
+          _this9.bleAccessWaiting = false;
           var endTime = performance.now(); // 終了時刻を取得
           console.log("sendCommandSet completed in ".concat(endTime - startTime, " ms")); // 経過時間を表示
           resolve();
@@ -4334,9 +4351,9 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "sendCommandSet",
     value: function sendCommandSet(commands, util) {
-      var _this9 = this;
+      var _this10 = this;
       commands.forEach(function (command) {
-        _this9.commandQueue.push(command);
+        _this10.commandQueue.push(command);
       });
 
       // キュー処理を開始
@@ -4353,18 +4370,18 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "processQueue",
     value: function processQueue() {
-      var _this10 = this;
+      var _this11 = this;
       if (this.processingQueue || this.commandQueue.length === 0) {
         return;
       }
       this.processingQueue = true;
       var _processNextCommand = function processNextCommand() {
-        if (_this10.commandQueue.length === 0) {
-          _this10.processingQueue = false;
+        if (_this11.commandQueue.length === 0) {
+          _this11.processingQueue = false;
           return;
         }
-        var command = _this10.commandQueue.shift();
-        _this10.sendOneCommand(command).then(function () {
+        var command = _this11.commandQueue.shift();
+        _this11.sendOneCommand(command).then(function () {
           _processNextCommand();
         }).catch(function (error) {
           console.error('Error processing command:', error);
@@ -4376,35 +4393,35 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "_onConnect",
     value: function _onConnect() {
-      var _this11 = this;
+      var _this12 = this;
       this._ble.read(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, false).then(function (result) {
         if (!result) {
           throw new Error('Config is not readable');
         }
         var data = base64ToUint8Array(result.message);
         var dataView = new DataView(data.buffer, 0);
-        _this11.hardware = dataView.getUint8(0);
-        _this11.protocol = dataView.getUint8(1);
-        _this11.route = dataView.getUint8(2);
-        _this11._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.ACTION_EVENT_CH, _this11.onNotify);
-        _this11._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.PIN_EVENT_CH, _this11.onNotify);
-        if (_this11.hardware === MbitMoreHardwareVersion.MICROBIT_V1) {
-          _this11.microbitUpdateInterval = 100; // milliseconds
+        _this12.hardware = dataView.getUint8(0);
+        _this12.protocol = dataView.getUint8(1);
+        _this12.route = dataView.getUint8(2);
+        _this12._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.ACTION_EVENT_CH, _this12.onNotify);
+        _this12._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.PIN_EVENT_CH, _this12.onNotify);
+        if (_this12.hardware === MbitMoreHardwareVersion.MICROBIT_V1) {
+          _this12.microbitUpdateInterval = 100; // milliseconds
         } else {
-          _this11._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.MESSAGE_CH, _this11.onNotify);
-          _this11.microbitUpdateInterval = 50; // milliseconds
+          _this12._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.MESSAGE_CH, _this12.onNotify);
+          _this12.microbitUpdateInterval = 50; // milliseconds
         }
-        if (_this11.route === CommunicationRoute.SERIAL) {
-          _this11.sendCommandInterval = 100; // milliseconds
+        if (_this12.route === CommunicationRoute.SERIAL) {
+          _this12.sendCommandInterval = 100; // milliseconds
         } else {
-          _this11.sendCommandInterval = 30; // milliseconds
+          _this12.sendCommandInterval = 30; // milliseconds
         }
-        _this11.initConfig();
-        _this11.bleBusy = false;
-        _this11.startUpdater();
-        _this11.resetConnectionTimeout();
+        _this12.initConfig();
+        _this12.bleBusy = false;
+        _this12.startUpdater();
+        _this12.resetConnectionTimeout();
       }).catch(function (err) {
-        return _this11._ble.handleDisconnectError(err);
+        return _this12._ble.handleDisconnectError(err);
       });
     }
 
@@ -4468,10 +4485,10 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "resetConnectionTimeout",
     value: function resetConnectionTimeout() {
-      var _this12 = this;
+      var _this13 = this;
       if (this._timeoutID) window.clearTimeout(this._timeoutID);
       this._timeoutID = window.setTimeout(function () {
-        return _this12._ble.handleDisconnectError(BLEDataStoppedError);
+        return _this13._ble.handleDisconnectError(BLEDataStoppedError);
       }, BLETimeout);
     }
 
@@ -4535,7 +4552,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "configTouchPin",
     value: function configTouchPin(pinIndex, util) {
-      var _this13 = this;
+      var _this14 = this;
       if (!this.isConnected()) {
         return Promise.resolve();
       }
@@ -4548,7 +4565,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       }], util);
       if (sendPromise) {
         return sendPromise.then(function () {
-          _this13.config.pinMode[pinIndex] = MbitMorePinMode.TOUCH;
+          _this14.config.pinMode[pinIndex] = MbitMorePinMode.TOUCH;
         });
       }
       return;
