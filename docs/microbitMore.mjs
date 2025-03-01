@@ -4267,9 +4267,9 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "sendOneCommand",
     value: function sendOneCommand(command) {
-      console.log('sendOneCommand0');
+      console.log('sendOneCommand1');
       var data = new Uint8Array([command.id].concat(_toConsumableArray(command.message)));
-      return this._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, null, false // true // resolve after peripheral's response. // false
+      return this._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, null, true // true // resolve after peripheral's response. // false
       );
     }
 
