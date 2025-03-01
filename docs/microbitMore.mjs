@@ -4252,7 +4252,6 @@ var MicrobitMore = /*#__PURE__*/function () {
     key: "sendOneCommand22222",
     value: function sendOneCommand22222(command) {
       var _this7 = this;
-      console.log('sendOneCommand9');
       var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve, reject) {
         _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', true // true // resolve after peripheral's response. // false
@@ -4267,43 +4266,23 @@ var MicrobitMore = /*#__PURE__*/function () {
     }
   }, {
     key: "sendOneCommand",
-    value:
-    /**
-     * Send a command to micro:bit.
-     * @param {object} command command to send.
-     * @param {number} command.id ID of the command.
-     * @param {Uint8Array} command.message Contents of the command.
-     * @return {Promise} a Promise that resolves when the data was sent and after send command interval.
-     */
-    function sendOneCommand(command) {
-      var _this8 = this;
-      var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
-      return new Promise(function (resolve, reject) {
-        _this8._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', true // true // resolve after peripheral's response. // false
-        ).then(function () {
-          console.log('Write successful');
-          resolve();
-        }).catch(function (error) {
-          console.error('Write failed', error);
-          reject(error);
-        });
-      });
+    value: function sendOneCommand(command) {
+      console.log('sendOneCommand0');
+      var data = new Uint8Array([command.id].concat(_toConsumableArray(command.message)));
+      return this._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, null, false // true // resolve after peripheral's response. // false
+      );
     }
 
-    /**
-     * Starts reading data from peripheral after BLE has connected to it.
-     */
-  }, {
-    key: "sendCommandSet22222",
-    value:
     /**
      * Send multiple commands sequentially.
      * @param {Array.<{id: number, message: Uint8Array}>} commands array of command.
      * @param {BlockUtility} util - utility object provided by the runtime.
      * @return {?Promise} a Promise that resolves when the all commands was sent.
      */
-    function sendCommandSet22222(commands, util) {
-      var _this9 = this;
+  }, {
+    key: "sendCommandSet22222",
+    value: function sendCommandSet22222(commands, util) {
+      var _this8 = this;
       if (!this.isConnected()) return Promise.resolve();
       if (this.bleBusy) {
         this.bleAccessWaiting = true;
@@ -4311,7 +4290,7 @@ var MicrobitMore = /*#__PURE__*/function () {
           util.yield(); // re-try this call after a while.
         } else {
           setTimeout(function () {
-            return _this9.sendCommandSet(commands, util);
+            return _this8.sendCommandSet(commands, util);
           }, 1);
         }
         return; // Do not return Promise.resolve() to re-try.
@@ -4320,21 +4299,21 @@ var MicrobitMore = /*#__PURE__*/function () {
       this.bleBusy = true;
       // Clear busy and BLE access waiting flag when the scratch-link does not respond.
       this.bleBusyTimeoutID = window.setTimeout(function () {
-        _this9.bleBusy = false;
-        _this9.bleAccessWaiting = false;
+        _this8.bleBusy = false;
+        _this8.bleAccessWaiting = false;
       }, 1000);
       return new Promise(function (resolve) {
         commands.reduce(function (acc, cur) {
           return acc.then(function () {
-            return _this9.sendOneCommand(cur);
+            return _this8.sendOneCommand(cur);
           });
         }, Promise.resolve()).then(function () {
-          window.clearTimeout(_this9.bleBusyTimeoutID);
+          window.clearTimeout(_this8.bleBusyTimeoutID);
         }).catch(function (err) {
-          _this9._ble.handleDisconnectError(err);
+          _this8._ble.handleDisconnectError(err);
         }).finally(function () {
-          _this9.bleBusy = false;
-          _this9.bleAccessWaiting = false;
+          _this8.bleBusy = false;
+          _this8.bleAccessWaiting = false;
           var endTime = performance.now(); // 終了時刻を取得
           console.log("sendCommandSet completed in ".concat(endTime - startTime, " ms")); // 経過時間を表示
           resolve();
@@ -4351,9 +4330,9 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "sendCommandSet",
     value: function sendCommandSet(commands, util) {
-      var _this10 = this;
+      var _this9 = this;
       commands.forEach(function (command) {
-        _this10.commandQueue.push(command);
+        _this9.commandQueue.push(command);
       });
 
       // キュー処理を開始
@@ -4370,18 +4349,18 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "processQueue",
     value: function processQueue() {
-      var _this11 = this;
+      var _this10 = this;
       if (this.processingQueue || this.commandQueue.length === 0) {
         return;
       }
       this.processingQueue = true;
       var _processNextCommand = function processNextCommand() {
-        if (_this11.commandQueue.length === 0) {
-          _this11.processingQueue = false;
+        if (_this10.commandQueue.length === 0) {
+          _this10.processingQueue = false;
           return;
         }
-        var command = _this11.commandQueue.shift();
-        _this11.sendOneCommand(command).then(function () {
+        var command = _this10.commandQueue.shift();
+        _this10.sendOneCommand(command).then(function () {
           _processNextCommand();
         }).catch(function (error) {
           console.error('Error processing command:', error);
@@ -4390,6 +4369,34 @@ var MicrobitMore = /*#__PURE__*/function () {
       };
       _processNextCommand();
     }
+
+    /**
+     * Send a command to micro:bit.
+     * @param {object} command command to send.
+     * @param {number} command.id ID of the command.
+     * @param {Uint8Array} command.message Contents of the command.
+     * @return {Promise} a Promise that resolves when the data was sent and after send command interval.
+     */
+  }, {
+    key: "sendOneCommand3333",
+    value: function sendOneCommand3333(command) {
+      var _this11 = this;
+      var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
+      return new Promise(function (resolve, reject) {
+        _this11._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', true // true // resolve after peripheral's response. // false
+        ).then(function () {
+          console.log('Write successful');
+          resolve();
+        }).catch(function (error) {
+          console.error('Write failed', error);
+          reject(error);
+        });
+      });
+    }
+
+    /**
+     * Starts reading data from peripheral after BLE has connected to it.
+     */
   }, {
     key: "_onConnect",
     value: function _onConnect() {
