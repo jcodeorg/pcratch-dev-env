@@ -885,7 +885,7 @@ var ja = {
 	"mbitMore.soundLevel": "音の大きさ",
 	"mbitMore.analogValue": "ピン [PIN] のアナログレベル",
 	"mbitMore.setPullMode": "ピン [PIN] を [MODE] 入力にする",
-	"mbitMore.setDigitalOut": "ピン [PIN] をデジタル出力 [LEVEL] にする",
+	"mbitMore.setDigitalOut": "ピン [PIN] に [LEVEL] を出力する",
 	"mbitMore.setAnalogOut": "ピン [PIN] を PWM 出力 [LEVEL] %にする",
 	"mbitMore.playTone": "[FREQ] Hzの音を [VOL] %の大きさで鳴らす",
 	"mbitMore.stopTone": "音を止める",
