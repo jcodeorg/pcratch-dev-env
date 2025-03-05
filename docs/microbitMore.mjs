@@ -924,7 +924,9 @@ var ja = {
 	"mbitMore.selectCommunicationRoute.bluetooth": "Bluetooth",
 	"mbitMore.selectCommunicationRoute.usb": "USB",
 	"mbitMore.selectCommunicationRoute.connect": "つなぐ",
-	"mbitMore.selectCommunicationRoute.cancel": "やめる"
+	"mbitMore.selectCommunicationRoute.cancel": "やめる",
+	"mbitMore.getRGB": "RGB [R] [G] [B]",
+	"mbitMore.setNeoPixcelColor": "NeoPixcel [N] を [COLOR] にする"
 };
 var pt = {
 	"mbitMore.name": "MicroBit More",
@@ -3304,7 +3306,8 @@ var BLECommand = {
   CMD_PIN: 0x01,
   CMD_DISPLAY: 0x02,
   CMD_AUDIO: 0x03,
-  CMD_DATA: 0x04
+  CMD_DATA: 0x04,
+  CMD_PIOT: 0x05 // for Pcratch IoT
 };
 
 /**
@@ -3329,8 +3332,16 @@ var MbitMoreDisplayCommand = {
   CLEAR: 0x00,
   TEXT: 0x01,
   PIXELS_0: 0x02,
-  PIXELS_1: 0x03,
-  NEOPIXEL: 0x04
+  PIXELS_1: 0x03
+};
+
+/**
+ * Enum for PcratchIoT.
+ * @readonly
+ * @enum {number}
+ */
+var MbitMorePIOTCommand = {
+  NEOPIXEL: 0x01
 };
 
 /**
@@ -4635,7 +4646,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       }
       // NeoPixel の色を設定するためのコマンドを作成
       var command = {
-        id: BLECommand.CMD_DISPLAY << 5 | MbitMoreDisplayCommand.NEOPIXEL,
+        id: BLECommand.CMD_PIOT << 5 | MbitMorePIOTCommand.NEOPIXEL,
         message: new Uint8Array([n, r, g, b])
       };
       // コマンドを送信
