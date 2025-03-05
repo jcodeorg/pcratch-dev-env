@@ -3329,7 +3329,8 @@ var MbitMoreDisplayCommand = {
   CLEAR: 0x00,
   TEXT: 0x01,
   PIXELS_0: 0x02,
-  PIXELS_1: 0x03
+  PIXELS_1: 0x03,
+  NEOPIXEL: 0x04
 };
 
 /**
@@ -4605,6 +4606,41 @@ var MicrobitMore = /*#__PURE__*/function () {
       }
       return null;
     }
+
+    /**
+     * Set NeoPixcel Color
+     * @property {number} args.N - number.
+     * @property {string} args.COLOR - Comma-separated RGB string.
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {?Promise} a Promise that resolves when sending done or undefined if this process was yield.
+     */
+  }, {
+    key: "setNeoPixcelColor",
+    value: function setNeoPixcelColor(n, color, util) {
+      var r, g, b;
+      try {
+        var _color$split$map = color.split(',').map(Number);
+        var _color$split$map2 = _slicedToArray(_color$split$map, 3);
+        r = _color$split$map2[0];
+        g = _color$split$map2[1];
+        b = _color$split$map2[2];
+        if (isNaN(r) || isNaN(g) || isNaN(b)) {
+          throw new Error('Invalid RGB values');
+        }
+      } catch (error) {
+        console.error('Error parsing RGB values:', error);
+        r = 0;
+        g = 0;
+        b = 0;
+      }
+      // NeoPixel の色を設定するためのコマンドを作成
+      var command = {
+        id: BLECommand.CMD_DISPLAY << 5 | MbitMoreDisplayCommand.NEOPIXEL,
+        message: new Uint8Array([n, r, g, b])
+      };
+      // コマンドを送信
+      return this.sendCommandSet([command], util);
+    }
   }]);
 }();
 
@@ -5745,6 +5781,46 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
               defaultValue: 'data'
             }
           }
+        }, {
+          opcode: 'getRGB',
+          text: formatMessage({
+            id: 'mbitMore.getRGB',
+            default: 'RGB [R] [G] [B]',
+            description: 'get the RGB value'
+          }),
+          blockType: blockType.REPORTER,
+          arguments: {
+            R: {
+              type: argumentType.NUMBER,
+              defaultValue: 100
+            },
+            G: {
+              type: argumentType.NUMBER,
+              defaultValue: 100
+            },
+            B: {
+              type: argumentType.NUMBER,
+              defaultValue: 100
+            }
+          }
+        }, {
+          opcode: 'setNeoPixcelColor',
+          text: formatMessage({
+            id: 'mbitMore.setNeoPixcelColor',
+            default: 'set [N] NeoPixcel with color [COLOR]',
+            description: 'set NeoPixcel color'
+          }),
+          blockType: blockType.COMMAND,
+          arguments: {
+            N: {
+              type: argumentType.NUMBER,
+              defaultValue: 0
+            },
+            COLOR: {
+              type: argumentType.STRING,
+              defaultValue: '0,0,0'
+            }
+          }
         }],
         menus: {
           buttonIDMenu: {
@@ -6503,6 +6579,35 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
     value: function whenConnectionChanged(args) {
       var state = args.STATE === 'connected';
       return state === this.microbit.isConnected();
+    }
+
+    /**
+     * Return the RGB string
+     * @param {object} args - the block's arguments.
+     * @property {number} args.R - Red.
+     * @property {number} args.G - Green.
+     * @property {number} args.B - Blue.
+     * @return {string} Comma-separated RGB string.
+     */
+  }, {
+    key: "getRGB",
+    value: function getRGB(args) {
+      return "".concat(args.R, ",").concat(args.G, ",").concat(args.B);
+    }
+
+    /**
+     * Rerutn the last content of the messge or undefined if the data which has the label is not received.
+     * @param {object} args - the block's arguments.
+     * @param {object} util - utility object provided by the runtime.
+     * @return {promise | undefined} - a Promise that resolves when the command was sent
+     *                                 or undefined if this process was yield.
+     * @property {number} args.N - number.
+     * @property {string} args.COLOR - Comma-separated RGB string.
+     */
+  }, {
+    key: "setNeoPixcelColor",
+    value: function setNeoPixcelColor(args, util) {
+      return this.microbit.setNeoPixcelColor(args.N, args.COLOR, util);
     }
   }], [{
     key: "formatMessage",
