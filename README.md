@@ -1,10 +1,31 @@
-# raspico-more-dev
-Raspberry Pi Pico More development environment
+# ぷくらっち開発環境
+『ぷくらっち』シリーズの共通開発Build環境です。
 
-# はじめかた
+# docker の起動方法
 docker-compose build
 docker-compose up -d
 docker exec -it raspico-more /bin/bash
+
+# ぷくらっち用 Pcratch IoT 拡張（『ぷくらっち』or『きたらっち』に、『Pcratch IoT』拡張ブロックを追加します）
+
+# ディレクトリ構造
+
+```
+pcratch/
+├── pcratch-dev-env/  (ビルド環境)
+|   ├── docker/
+|   │   ├── Dockerfile
+|   │   ├── docker-compose.yml
+|   │   ├── env/  (環境変数設定)
+|   │   └── scripts/  (セットアップスクリプト)
+|   ├── README.md
+|   └── docs/  (環境構築のドキュメント)
+└── pcratch-iot-ext/  (拡張モジュールのレポジトリ)
+    ├── dist/
+    ├── src/
+    ...
+```
+
 
 
 # モジュール
