@@ -2,9 +2,12 @@
 『ぷくらっち』シリーズの共通開発Build環境です。
 
 # docker の起動方法
+# docker desktop 起動
+# ターミナル起動
+cd docker
 docker-compose build
 docker-compose up -d
-docker exec -it raspico-more /bin/bash
+docker exec -it pcratch-dev-env /bin/bash
 
 # ぷくらっち用 Pcratch IoT 拡張（『ぷくらっち』or『きたらっち』に、『Pcratch IoT』拡張ブロックを追加します）
 
