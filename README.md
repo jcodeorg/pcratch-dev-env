@@ -4,10 +4,38 @@
 # docker の起動方法
 # docker desktop 起動
 # ターミナル起動
-cd docker
+# cd docker
 docker-compose build
 docker-compose up -d
 docker exec -it pcratch-dev-env /bin/bash
+
+# scratch-vm
+git clone https://github.com/jcodeorg/scratch-vm.git
+cd scratch-vm
+npm install
+npm link
+cd ..
+
+# scratch-gui
+git clone https://github.com/jcodeorg/scratch-gui.git
+cd scratch-gui
+npm install
+npm link scratch-vm
+npm link
+BUILD_MODE=dist npm run build
+# 必要に応じて
+npx update-browserslist-db@latest
+mkdir .vscode
+openssl req -x509 -newkey rsa:2048 -keyout .vscode/localhost-key.pem -out .vscode/localhost.pem -days 365 -nodes -subj "/CN=localhost"
+# scratch-gui 起動
+npm start
+cd ..
+# link 確認
+ls -la scratch-gui/node_modules | grep scratch-vm
+
+# xcratch.github.io
+git clone https://github.com/jcodeorg/xcratch.github.io.git
+
 
 # ぷくらっち用 Pcratch IoT 拡張（『ぷくらっち』or『きたらっち』に、『Pcratch IoT』拡張ブロックを追加します）
 

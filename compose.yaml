@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    container_name: pcratch-dev-env
+    tty: true
+    volumes:
+      - ../pcratch-iot-ext/:/pcratch-iot-ext
+    ports:
+      - "8073:8073" # scratch-vm
+      - "8601:8601" # development server
