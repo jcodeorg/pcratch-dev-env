@@ -4,11 +4,9 @@ services:
     container_name: pcratch-dev-env
     tty: true
     volumes:
-    #  - ./app/:/app
       - ../docs/:/docs
       - ../../pcratch-iot-ext/:/pcratch-iot-ext
-    #  - ../xcx-example/:/xcx-example
-    #  - ../scratch-vm/:/scratch-vm
-    #  - ../mbit-more-v2/:/mbit-more-v2
-    # ports:
-    #   - "5173:5173" # development server
+      - ../../scratch-vm/:/scratch-vm
+      - ../../scratch-gui/:/scratch-gui
+    ports:
+      - "8601:8601" # development server
