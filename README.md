@@ -62,17 +62,23 @@ pcratch/
 ## node 22.14.0
 # n lts
 n 22.14.0
-# git clone xcratch/scratch-vm
+# 
+git clone https://github.com/jcodeorg/scratch-vm.git
 cd /scratch-vm
 npm install
-# git clone xcratch/scratch-gui
+npm link
+cd /
+git clone https://github.com/jcodeorg/scratch-gui.git
 cd /scratch-gui
 npm install
+npm link scratch-vm
 ## ビルド
 cd /pcratch-iot-ext
 npm install
 npm run build
-https://jcodeorg.github.io/pcratch-iot-ext/dist/piotext.mjs
+cp dist/pcratchIoT.mjs docs/dist
+
+https://jcodeorg.github.io/pcratch-iot-ext/dist/pcratchIoT.mjs
 
 
 
