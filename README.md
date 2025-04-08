@@ -1,3 +1,30 @@
+
+## node 22.14.0
+# n lts
+n 22.14.0
+# 
+git clone https://github.com/jcodeorg/scratch-vm.git
+cd /scratch-vm
+npm install
+npm link
+cd /
+git clone https://github.com/jcodeorg/scratch-gui.git
+cd /scratch-gui
+npm install
+npm link scratch-vm
+## ビルド
+cd /pcratch-iot-ext
+npm install
+npm run build
+cp dist/pcratchIoT.mjs docs/dist
+
+https://jcodeorg.github.io/pcratch-iot-ext/dist/pcratchIoT.mjs
+
+
+
+# ココから下は、不要かも・・・
+
+
 # ぷくらっち開発環境
 『ぷくらっち』シリーズの共通開発Build環境です。
 
@@ -15,6 +42,7 @@ cd scratch-vm
 npm install
 npm link
 cd ..
+
 
 # scratch-gui
 git clone https://github.com/jcodeorg/scratch-gui.git
@@ -59,31 +87,6 @@ pcratch/
     ├── src/
     ...
 ```
-## node 22.14.0
-# n lts
-n 22.14.0
-# 
-git clone https://github.com/jcodeorg/scratch-vm.git
-cd /scratch-vm
-npm install
-npm link
-cd /
-git clone https://github.com/jcodeorg/scratch-gui.git
-cd /scratch-gui
-npm install
-npm link scratch-vm
-## ビルド
-cd /pcratch-iot-ext
-npm install
-npm run build
-cp dist/pcratchIoT.mjs docs/dist
-
-https://jcodeorg.github.io/pcratch-iot-ext/dist/pcratchIoT.mjs
-
-
-
-
-
 
 # 不要
 cp ./dist/microbitMore.mjs ../docs/
