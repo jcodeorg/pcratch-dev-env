@@ -16,10 +16,10 @@ npm link scratch-vm
 cd /pcratch-iot-ext
 npm install
 npm run build
-cp dist/pcratchIoT.mjs docs/dist
 
 https://jcodeorg.github.io/pcratch-iot-ext/dist/pcratchIoT.mjs
 
+# cp dist/pcratchIoT.mjs docs/dist
 
 
 # ココから下は、不要かも・・・
